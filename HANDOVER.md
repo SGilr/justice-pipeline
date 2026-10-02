@@ -11,14 +11,15 @@ An interactive, single-page data story about police numbers, crime, courts, pris
 - Local folder: `/Users/stangilmour/justice-pipeline`
 - Live site: https://justice.howpreventionworks.com (Cloudflare Pages project `justice-pipeline`, direct upload; DNS is a DNS-only CNAME `justice` pointing to `justice-pipeline.pages.dev`)
 - Repository: https://github.com/SGilr/justice-pipeline (public)
-- Claude artifact preview: https://claude.ai/artifact/CLWH5MU6MHpoLtvaJg8p5K (private). Republished on 3 October 2026 (version 9), so it matches the live site.
+- Claude artifact preview: https://claude.ai/artifact/CLWH5MU6MHpoLtvaJg8p5K (private). Republished on 3 October 2026 (version 10), so it matches the live site.
 
 ## Structure
 
 - `src/page.html`: the page source (HTML, CSS and vanilla JS with hand-built SVG charts). Edit this file.
 - `scripts/build_forces.py`: builds `data/forces.json` (43 force indicators and simplified boundaries) from the raw tables.
 - `scripts/fetch_weekly.py`: downloads the HMPPS weekly prison population and capacity bulletins (2024 to 2026) to `data/raw/weekly/` and writes `data/weekly_capacity.json`.
-- `scripts/build_page.py`: inlines `forces.json` and `weekly_capacity.json` into the page. It writes `site/index.html` (the deployable site) and `justice-pipeline.html` (the artifact version, with no document wrapper).
+- `scripts/build_perceptions.py`: extracts the CSEW confidence and fear series from the ONS tables to `data/perceptions.json`, recording the table and row for each.
+- `scripts/build_page.py`: inlines `forces.json`, `weekly_capacity.json` and `perceptions.json` into the page. It writes `site/index.html` (the deployable site) and `justice-pipeline.html` (the artifact version, with no document wrapper).
 - `data/raw/`: every source table, unchanged from publication.
 - `.venv/`: Python environment (pandas, odfpy, openpyxl, xlrd, pypdf). Not committed.
 
@@ -45,12 +46,13 @@ Working practice: make data changes on a branch, show the diff, and deploy only 
 2. One timeline: small multiples on a shared 2000 to 2026 axis covering police officers, PCSOs, officers per 100,000, real-terms funding, crime survey against recorded crime, charge rate, stop and search, Crown Court and magistrates' open cases, prison population, remand and children in custody. It shows government bands and event markers (unrest, policy, shock).
 3. Relative change: every series indexed to a chosen base year (2000, 2010 or 2019).
 4. Police and crime: a connected scatter of officers per 100,000 against CSEW crime.
-5. Pipeline since 2019: change at each stage, with the release figures (SDS40, ECSL, headroom, charge volume, median time to charge, cases open a year or more).
-6. The release valve: the progression model early release from 1 October 2026, with weekly headroom, tranche estimates, MoJ supply and demand projections with and without the Sentencing Act, and criticisms and safeguards.
-7. Forces: a choropleth of the 43 force areas with a ranked list. Measures are change in officers since 2010, officers per 100,000, recorded crime per 1,000, and the Black to White stop and search ratio.
-8. Children and disproportionality: youth custody, first-time entrants, ethnic minority share, and the stop and search ratio over time.
-9. Context: the events list.
-10. Data and notes: a table view, caveats and sources.
+5. Confidence and fear: six CSEW charts covering confidence in local police, trust in the police, foot patrol visibility, perceived national crime trend, worry about violent crime, and women's safety after dark.
+6. Pipeline since 2019: change at each stage, with the release figures (SDS40, ECSL, headroom, charge volume, median time to charge, cases open a year or more).
+7. The release valve: the progression model early release from 1 October 2026, with weekly headroom, tranche estimates, MoJ supply and demand projections with and without the Sentencing Act, and criticisms and safeguards.
+8. Forces: a choropleth of the 43 force areas with a ranked list. Measures are change in officers since 2010, officers per 100,000, recorded crime per 1,000, and the Black to White stop and search ratio.
+9. Children and disproportionality: youth custody, first-time entrants, ethnic minority share, and the stop and search ratio over time.
+10. Context: the events list.
+11. Data and notes: a table view, caveats and sources.
 
 ## Data status
 
@@ -88,9 +90,24 @@ Prison Reform Trust factfile figures have been checked against MoJ tables. These
 - SDS40 releases: 70,065 (September 2024 to March 2026).
 - Progression model: about 700 released on 1 October 2026, and about 4,500 first-day releases across ten tranches to June 2027. MoJ projections (January 2026, before the exclusions) put the saving at about 7,700 places by November 2027. Central demand then grows again to 95,900 by November 2032; the high scenario exceeds supply in 2027 and 2028 and again from 2030.
 - Children in custody: 418 (2024/25), down 86% since 2007/08. 44% were on remand in 2024/25, against 21% in 2016/17 (YJB Table 6.3). 62% of children remanded in custody whose cases ended in 2024/25 were acquitted or given a non-custodial sentence (YJB Table 6.6).
+- Confidence and fear (CSEW, 2025/26):
+  - overall confidence in local police 67% (peak 79% in 2015/16)
+  - trust in the police 74% (87% in 2017/18 and 2018/19)
+  - weekly foot patrol sightings 12.5% (39% in 2010/11)
+  - 80% think crime has risen nationally, 52% locally
+  - high worry about violent crime 9%
+  - feeling safe after dark: women 68%, men 88%
 - Political context: Andy Burnham has been Prime Minister since 20 July 2026, and the Justice Secretary is Alex Norris.
 
 ## Change log
+
+### 3 October 2026: confidence and fear
+
+- New section 04 (Confidence and fear) from ONS, Perception and experience of police and criminal justice system, year ending March 2026 (Tables 1, 2, 4, 10 and 21) and the annual supplementary tables (B1, B4 and B7). Later sections are renumbered.
+- Series breaks noted by ONS are drawn as dashed joins. Force-level confidence is not shown, because ONS advises extreme caution.
+- An ethnicity callout was added on ratings of local police: Black Caribbean 35%, Black African 62%, White 47%, with a small-sample caveat.
+- The revised-figure note no longer quotes 80,061.
+- Deployed (commit 2b1182e); artifact republished as version 10.
 
 ### 3 October 2026: logo link
 
