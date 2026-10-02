@@ -8,7 +8,7 @@ An interactive account of police numbers, crime, courts, prisons and children in
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python scripts/build_forces.py   # force indicators and simplified boundaries -> data/forces.json
 .venv/bin/python scripts/build_logo.py     # header and footer marks from the Oxon Advisory logos -> assets/oxa-wordmark.svg, assets/oxai-mark.svg (only if a logo changes)
-.venv/bin/python scripts/build_page.py     # inlines data into src/page.html -> site/index.html
+.venv/bin/python scripts/build_page.py     # inlines data, marks glossary terms (data/glossary.json) -> site/index.html
 ```
 
 `site/` is the deployable static site. `justice-pipeline.html` is the same page without the document wrapper, used for the Claude artifact preview.

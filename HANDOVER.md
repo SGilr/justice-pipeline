@@ -11,7 +11,7 @@ An interactive, single-page data story about police numbers, crime, courts, pris
 - Local folder: `/Users/stangilmour/justice-pipeline`
 - Live site: https://justice.howpreventionworks.com (Cloudflare Pages project `justice-pipeline`, direct upload; DNS is a DNS-only CNAME `justice` pointing to `justice-pipeline.pages.dev`)
 - Repository: https://github.com/SGilr/justice-pipeline (public)
-- Claude artifact preview: https://claude.ai/artifact/CLWH5MU6MHpoLtvaJg8p5K (private). Republished on 3 October 2026 (version 14), so it matches the live site.
+- Claude artifact preview: https://claude.ai/artifact/CLWH5MU6MHpoLtvaJg8p5K (private). Republished on 3 October 2026 (version 15), so it matches the live site.
 
 ## Structure
 
@@ -19,7 +19,8 @@ An interactive, single-page data story about police numbers, crime, courts, pris
 - `scripts/build_forces.py`: builds `data/forces.json` (43 force indicators and simplified boundaries) from the raw tables.
 - `scripts/fetch_weekly.py`: downloads the HMPPS weekly prison population and capacity bulletins (2024 to 2026) to `data/raw/weekly/` and writes `data/weekly_capacity.json`.
 - `scripts/build_perceptions.py`: extracts the CSEW confidence and fear series from the ONS tables to `data/perceptions.json`, recording the table and row for each.
-- `scripts/build_page.py`: inlines `forces.json`, `weekly_capacity.json` and `perceptions.json` into the page. It writes `site/index.html` (the deployable site) and `justice-pipeline.html` (the artifact version, with no document wrapper).
+- `data/glossary.json`: glossary definitions and the phrases each one matches. `scripts/glossary.py` marks the first appearance of each term in the static text at build time; a runtime pass in the page marks terms in text drawn by JavaScript.
+- `scripts/build_page.py`: inlines `forces.json`, `weekly_capacity.json` and `perceptions.json` into the page, and applies the glossary. It writes `site/index.html` (the deployable site) and `justice-pipeline.html` (the artifact version, with no document wrapper).
 - `data/raw/`: every source table, unchanged from publication.
 - `.venv/`: Python environment (pandas, odfpy, openpyxl, xlrd, pypdf). Not committed.
 
@@ -105,6 +106,15 @@ Prison Reform Trust factfile figures have been checked against MoJ tables. These
 - Political context: Andy Burnham has been Prime Minister since 20 July 2026, and the Justice Secretary is Alex Norris.
 
 ## Change log
+
+### 3 October 2026: glossary and Hinkle point
+
+- 34-term glossary in the data section. The first appearance of each term in the text has a dotted underline, with the definition on hover, tap or keyboard focus. Escape closes it, and each term is linked to its entry with aria-describedby.
+- 32 of 34 terms are marked. Operation Safeguard and Section 1 PACE appear only in chart graphics or a hidden map view.
+- "Council tax precept" was dropped, because the page no longer uses it.
+- To verify against primary sources: the ECSL definition ("up to 70 days by its final months") and the list of secure estate settings in "Children in custody".
+- The legitimacy reading adds that Hinkle et al. (2020) found limited effects of problem-oriented policing on fear of crime, legitimacy and collective efficacy.
+- Deployed (commit 4ab2d09); artifact republished as version 15.
 
 ### 3 October 2026: deployment evidence
 
