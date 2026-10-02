@@ -18,9 +18,9 @@
 <style>
 /* Layout: a single reading column with a sticky year scrubber; every chart shares one 2000 to 2026 time axis so the eye can drop vertically from police to prisons. */
 :root{
-  --bg:#f2f3ef; --surface:#fbfbf8; --ink:#13171b; --ink-2:#474d55; --muted:#7a8087;
+  --bg:#f2f3ef; --surface:#fbfbf8; --ink:#13171b; --ink-2:#474d55; --muted:#646a71;
   --grid:#e2e4de; --axis:#c3c6bf; --band:rgba(19,23,27,.045); --accent:#17324f; --hair:rgba(19,23,27,.12);
-  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948; --s9:#8c5a2b; --mid:#e3e2dd; --logo-1:#002046; --logo-2:rgba(0,32,70,.8); --logo-3:rgba(0,32,70,.6); --logo-t:#ffffff; --wm-1:#002046; --wm-2:#3b546f; --wm-3:#728296; --wm-t:#ffffff;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#14936a; --s4:#b37a00; --s5:#cc5287; --s6:#008300; --s7:#4a3aa7; --s8:#e34948; --s9:#8c5a2b; --mid:#e3e2dd; --logo-1:#002046; --logo-2:rgba(0,32,70,.8); --logo-3:rgba(0,32,70,.6); --logo-t:#ffffff; --wm-1:#002046; --wm-2:#3b546f; --wm-3:#728296; --wm-t:#ffffff;
   --display:"Spectral",Georgia,"Times New Roman",serif;
   --body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"Atkinson Hyperlegible Mono",ui-monospace,"SF Mono",Menlo,monospace;
@@ -64,7 +64,7 @@ header.hero .lede{gap:18px}
 .scrub .gov{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
 .scrub input[type=range]{width:100%;accent-color:var(--accent)}
 .scrub .ev{grid-column:1/-1;font-size:.84rem;color:var(--ink-2);min-height:1.3em}
-@media (max-width:640px){.scrub{gap:4px 12px;padding-block:6px}.scrub label.eyebrow{display:none}.scrub .yr{font-size:1.6rem}.scrub .gov{font-size:.62rem}.scrub .ev{font-size:.76rem}}
+@media (max-width:640px){.scrub{gap:4px 12px;padding-block:6px}.scrub label.eyebrow{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.scrub .yr{font-size:1.6rem}.scrub .gov{font-size:.62rem}.scrub .ev{font-size:.76rem}}
 .scrub .ev b{color:var(--ink)}
 .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .chip{font:inherit;font-size:.82rem;border:1px solid var(--hair);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
@@ -163,6 +163,11 @@ section>*,.card,.twocol>*,.three>*{min-width:0}
 .gtab td:first-child{white-space:normal;min-width:9ch}
 @media (max-width:640px){.gtab{font-size:.7rem}.gtab .bar{display:none!important}.gtab td,.gtab th{padding:5px 3px}}
 .gtab .bar{display:inline-block;height:8px;border-radius:0 3px 3px 0;background:var(--s1);vertical-align:middle;margin-right:6px}
+.skip,.skip-inline{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip:focus,.skip-inline:focus{position:fixed;left:16px;top:calc(env(safe-area-inset-top,0px) + 8px);width:auto;height:auto;z-index:20;background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:6px;font-weight:600}
+.evm:focus{outline:none}.evm:focus-visible rect{stroke:var(--accent);stroke-width:2.5;rx:3}
+.rank:focus-visible,main:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+main:focus{outline:none}
 details{background:var(--surface);border:1px solid var(--hair);border-radius:6px;padding:12px 16px}
 summary{cursor:pointer;font-weight:700}
 .tablewrap{overflow-x:auto;margin-top:12px}
@@ -189,6 +194,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
 @media (prefers-reduced-motion:no-preference){.fadein{animation:rise .6s ease-out both}@keyframes rise{from{transform:translateY(6px)}to{transform:none}}}
 </style>
 
+<a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
 
 <header class="hero">
@@ -207,6 +213,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
     <div><b>−86%</b><span>children in custody since 2007/08; half now from ethnic minority backgrounds</span></div>
   </div>
 </header>
+<main id="main" tabindex="-1">
 
 <div class="scrub" id="scrub" role="group" aria-label="Year scrubber">
   <div><div class="yr" id="yr">2019</div><div class="gov" id="gov"></div></div>
@@ -214,7 +221,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
     <label class="eyebrow" for="yearRange">Drag, use arrow keys, or hover any chart to move through time</label>
     <input type="range" id="yearRange" min="2000" max="2026" step="1" value="2019">
   </div>
-  <div class="ev" id="ev" aria-live="polite"></div>
+  <div class="ev" id="ev"></div>
 </div>
 
 <section id="timeline">
@@ -282,8 +289,8 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
     <div class="card"><h3>Willingness to cooperate</h3><p class="sub">Per cent agreeing, 2025/26; first year these questions were asked</p><div class="facts" id="relating"></div></div>
     <div class="card mech"><h3>Reading this for legitimacy</h3>
       <ul class="plist">
-        <li><b>The losses are in effectiveness and responsiveness more than conduct.</b> Since 2015/16, agreement that the police would treat people with respect fell 4 points, while agreement that they deal with local concerns and do a good job each fell about 14 points, and understanding local concerns fell 11.</li>
-        <li><b>How people are treated in contact matters most.</b> Victims who felt treated fairly were satisfied in 77% of incidents, against 12% for those who did not; for respect and for being kept well informed, satisfaction was about four times as high.</li>
+        <li><b>The losses are in effectiveness and responsiveness more than conduct.</b> Between 2015/16 and 2025/26, agreement that the police would treat people with respect fell 4 points, while agreement that they deal with local concerns and do a good job each fell about 14 points, and understanding local concerns fell 11.</li>
+        <li><b>How people are treated in contact matters most.</b> In 2025/26, victims who felt treated fairly were satisfied in 77% of incidents, against 12% for those who did not; for respect and for being kept well informed, satisfaction was about four times as high.</li>
         <li><b>Confidence is lowest where contact is most likely to be difficult.</b> People with experience of homelessness or care, recent victims, disabled people, bisexual people and Black Caribbean adults all report lower confidence and less expectation of fair treatment.</li>
         <li><b>Willingness to cooperate remains high.</b> Over 90% would call or help the police; fewer accept a duty to follow police orders (69%) or rate police standards of behaviour as good (70%).</li>
         <li><b>Visibility has fallen alongside confidence.</b> Weekly sightings of foot patrols fell from 39% to 12.5% since 2010/11. The survey shows the two moving together, not that one caused the other.</li>
@@ -359,15 +366,16 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
     <h2>Forty-three forces, very different stories</h2>
     <p>The national totals hide wide variation. Some forces still have fewer officers than in 2010 while others have grown by a fifth, and both crime rates and stop and search disparities vary severalfold between neighbouring areas. Choose a measure; hover or tab through the map, or read the ranked list.</p>
   </div>
-  <div class="controls" id="mapToggles" role="radiogroup" aria-label="Map measure"></div>
+  <div class="controls" id="mapToggles" role="group" aria-label="Map measure"></div>
   <div class="mapgrid">
     <div class="card">
       <h3 id="mapTitle"></h3><p class="sub" id="mapSub"></p>
+      <a class="skip-inline" href="#rank">Skip the map to the ranked list</a>
       <div class="chart map" id="map"></div>
       <div class="keyrow" id="mapKey" style="margin-top:8px"></div>
       <p class="note" id="mapNote" style="margin-top:8px"></p>
     </div>
-    <div class="card"><h3>Ranked</h3><p class="sub">Highest first. City of London is listed but not ranked on per-head measures.</p><div class="rank" id="rank"></div></div>
+    <div class="card"><h3>Ranked</h3><p class="sub">Highest first. City of London is listed but not ranked on per-head measures.</p><div class="rank" id="rank" tabindex="0" role="region" aria-label="Forces ranked by the selected measure"></div></div>
   </div>
 </section>
 
@@ -407,6 +415,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
     <h2>Read before citing</h2>
   </div>
   <details><summary>Table view of every series</summary><div class="tablewrap" id="table"></div><p class="note" style="margin-top:8px">≈ marks an official figure on a different basis; see notes. Blank means no comparable figure.</p></details>
+  <details><summary>Data behind the other charts</summary><div id="table2"></div><p class="note" style="margin-top:8px">The relative-change chart is computed from the series in the table above, rebased to the chosen year. Force figures are in the ranked list beside the map.</p></details>
   <ol class="caveats">
     <li>Every series is read from the published source tables listed below. Points marked ≈ are official figures on a slightly different basis: prison population for 2000 and 2001 (annual averages, not June), the crime survey for 2000 (calendar 1999), the funding index for 2000/01 and 2005/06 (IFS spending figures spliced to the Home Office series at 2010/11), and child first-time entrants where the series moves from financial to calendar years in 2014. Officer numbers before 2003 are not shown because no comparable published series was available.</li>
     <li>Police recorded crime excludes fraud and computer misuse and starts in 2002/03, when the National Crime Recording Standard took effect. It is shaped by recording practice: the National Crime Recording Standard (2002), the HMIC crime data integrity inspection (2014) and the 2023 counting-rule change for conduct crimes all shift the series. Its post-2014 rise mostly reflects better recording, not more crime.</li>
@@ -457,6 +466,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
   </ul>
 </section>
 
+</main>
 <footer>
   <div class="brand"><svg class="oxai" viewBox="22.1 1.6 448.5 91.7" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="OXAi"><g transform="translate(-676 -101)"><path class="p2" d="M283.008 166.036C283.008 157.721 289.749 150.98 298.064 150.98L410.719 150.98C419.034 150.98 425.775 157.721 425.775 166.036L425.775 226.258C425.775 234.574 419.034 241.315 410.719 241.315L298.064 241.315C289.749 241.315 283.008 234.574 283.008 226.258Z" transform="matrix(1 0 0 1.00129 571.136 -48.5422)"/><path class="p3" d="M432.092 166.036C432.092 157.721 438.833 150.98 447.148 150.98L560.435 150.98C568.75 150.98 575.491 157.721 575.491 166.036L575.491 226.258C575.491 234.574 568.75 241.315 560.435 241.315L447.148 241.315C438.833 241.315 432.092 234.574 432.092 226.258Z" transform="matrix(1 0 0 1.00129 571.136 -48.5422)"/><path class="p1" d="M126.974 166.773C126.974 158.399 133.762 151.611 142.136 151.611L260.897 151.611C269.271 151.611 276.059 158.399 276.059 166.773L276.059 227.416C276.059 235.79 269.271 242.578 260.897 242.578L142.136 242.578C133.762 242.578 126.974 235.79 126.974 227.416Z" transform="matrix(1 0 0 1.00129 571.136 -48.5422)"/><path class="pt" d="M719.02 160.01Q723.58 160.01 726.93 163.48Q730.27 166.95 730.27 172.14Q730.27 177.48 726.9 181.01Q723.53 184.54 718.75 184.54Q713.91 184.54 710.62 181.09Q707.33 177.65 707.33 172.19Q707.33 166.6 711.13 163.07Q714.43 160.01 719.02 160.01ZM718.69 161.27Q715.55 161.27 713.65 163.61Q711.28 166.51 711.28 172.12Q711.28 177.86 713.74 180.96Q715.62 183.31 718.71 183.31Q722.01 183.31 724.16 180.73Q726.31 178.15 726.31 172.6Q726.31 166.58 723.95 163.63Q722.05 161.27 718.69 161.27ZM746.07 171.01 751.1 178.52Q753.19 181.63 754.2 182.45Q755.21 183.27 756.77 183.36V184H746.71V183.36Q747.71 183.34 748.2 183.15Q748.56 183 748.79 182.68Q749.03 182.36 749.03 182.03Q749.03 181.63 748.87 181.23Q748.75 180.94 747.92 179.71L743.95 173.69L739.04 179.99Q738.27 180.99 738.11 181.33Q737.95 181.67 737.95 182.03Q737.95 182.58 738.42 182.94Q738.89 183.31 740.2 183.36V184H731.89V183.36Q732.77 183.27 733.41 183Q734.48 182.55 735.45 181.79Q736.42 181.03 737.66 179.45L743.19 172.46L738.58 165.7Q736.69 162.95 735.38 162.09Q734.07 161.24 732.36 161.19V160.55H743.19V161.19Q741.81 161.24 741.3 161.64Q740.79 162.03 740.79 162.52Q740.79 163.16 741.62 164.39L745.21 169.77L749.37 164.49Q750.1 163.56 750.26 163.21Q750.43 162.86 750.43 162.5Q750.43 162.14 750.22 161.86Q749.96 161.5 749.56 161.35Q749.16 161.2 747.92 161.19V160.55H756.23V161.19Q755.25 161.24 754.62 161.5Q753.69 161.9 752.91 162.57Q752.14 163.25 750.72 165.06ZM773.37 176.15H764.3L762.71 179.85Q762.12 181.22 762.12 181.89Q762.12 182.43 762.63 182.83Q763.14 183.24 764.83 183.36V184H757.46V183.36Q758.92 183.1 759.36 182.69Q760.24 181.86 761.31 179.31L769.55 160.01H770.15L778.31 179.52Q779.29 181.87 780.09 182.57Q780.9 183.27 782.33 183.36V184H773.09V183.36Q774.49 183.29 774.98 182.89Q775.47 182.5 775.47 181.92Q775.47 181.16 774.78 179.52ZM772.88 174.87 768.91 165.39 764.83 174.87Z"/><path class="pt" d="M790.75 161.48Q791.47 161.48 791.98 161.98Q792.48 162.48 792.48 163.21Q792.48 163.92 791.97 164.43Q791.46 164.94 790.75 164.94Q790.04 164.94 789.53 164.43Q789.02 163.92 789.02 163.21Q789.02 162.48 789.52 161.98Q790.02 161.48 790.75 161.48ZM790.97 168.35 787.55 180.47Q787.21 181.7 787.21 181.94Q787.21 182.22 787.37 182.39Q787.54 182.56 787.76 182.56Q788.02 182.56 788.38 182.29Q789.37 181.51 790.37 180.07L790.97 180.47Q789.8 182.27 788.21 183.5Q787.04 184.42 785.96 184.42Q785.26 184.42 784.81 183.99Q784.36 183.57 784.36 182.93Q784.36 182.29 784.79 180.8L787.04 173.05Q787.59 171.15 787.59 170.66Q787.59 170.28 787.32 170.04Q787.05 169.8 786.59 169.8Q786.21 169.8 785.01 169.99V169.32Z"/></g></svg><div><b>Prevention Informatics</b><span>a division of Oxon Advisory</span></div></div>
   Compiled October 2026; court and charge figures refreshed 2 October 2026. England and Wales only. Annual points; financial-year series are plotted at the year in which the year ends.</footer>
@@ -602,7 +612,7 @@ function drawRail(el){
     const yy=row%2?26:8+ (row>1?0:0);
     g+=`<g class="evm" tabindex="0" data-i="${i}" role="button" aria-label="${Math.floor(e[0])}: ${e[2]}" style="cursor:pointer">${glyph(e[1],xx,row?26:8)}<rect x="${xx-7}" y="${row?19:1}" width="14" height="14" fill="transparent"/></g>`;});
   el.innerHTML=`<svg viewBox="0 0 ${w} ${h}" height="${h}" role="group" aria-label="Event markers">${g}</svg>`;
-  el.querySelectorAll('.evm').forEach(m=>{const go=()=>setYear(Math.floor(EV[+m.dataset.i][0]),+m.dataset.i);m.addEventListener('pointerenter',go);m.addEventListener('focus',go);m.addEventListener('click',go);});
+  el.querySelectorAll('.evm').forEach(m=>{const go=()=>setYear(Math.floor(EV[+m.dataset.i][0]),+m.dataset.i);m.addEventListener('pointerenter',go);m.addEventListener('focus',go);m.addEventListener('click',go);m.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();go();}});});
 }
 
 function buildMultiples(){
@@ -623,6 +633,7 @@ function setYear(y,evIdx){YEAR=y;document.getElementById('yearRange').value=y;do
   document.getElementById('gov').textContent=govAt(y)+' government · PM '+pmAt(y);
   const evs=EV.filter(e=>Math.floor(e[0])===y);
   document.getElementById('ev').innerHTML=evs.length?evs.map(e=>`<b>${CAT[e[1]]}:</b> ${e[2]}`).join('  ·  '):'<span style="color:var(--muted)">No marked events this year</span>';
+  document.getElementById('yearRange').setAttribute('aria-valuetext',`${y}, ${govAt(y)} government, Prime Minister ${pmAt(y)}${evs.length?'; '+evs.map(e=>CAT[e[1]]+': '+e[2]).join('; '):''}`);
   updateCross();
   document.querySelectorAll('#evlist li').forEach(li=>li.style.background=+li.dataset.y===y?'var(--band)':'');}
 
@@ -855,8 +866,8 @@ const MAPS={
 };
 let MAPK='offChange';
 const mtg=document.getElementById('mapToggles');
-Object.keys(MAPS).forEach(k=>{const b=document.createElement('button');b.className='chip';b.setAttribute('role','radio');b.setAttribute('aria-checked',k===MAPK);b.setAttribute('aria-pressed',k===MAPK);b.textContent=MAPS[k].b;
-  b.onclick=()=>{MAPK=k;mtg.querySelectorAll('.chip').forEach(c=>{const on=c===b;c.setAttribute('aria-pressed',on);c.setAttribute('aria-checked',on)});drawMap()};mtg.appendChild(b)});
+Object.keys(MAPS).forEach(k=>{const b=document.createElement('button');b.className='chip';b.setAttribute('aria-pressed',k===MAPK);b.textContent=MAPS[k].b;
+  b.onclick=()=>{MAPK=k;mtg.querySelectorAll('.chip').forEach(c=>{const on=c===b;c.setAttribute('aria-pressed',on)});drawMap()};mtg.appendChild(b)});
 function binsFor(k,vals){
   if(MAPS[k].div)return{edges:[-5,-2,2,10],cols:['#c4302f','#ee9b98','var(--mid)','#86b6ef','#1c5cab'],labels:['below −5%','−5 to −2%','−2 to +2%','+2 to +10%','above +10%']};
   const v=vals.slice().sort((a,b)=>a-b);const q=i=>v[Math.min(v.length-1,Math.floor(v.length*i/5))];
@@ -868,7 +879,7 @@ function drawMap(){
   const colOf=v=>{if(v==null)return'url(#hatch)';let i=0;while(i<B.edges.length&&v>=B.edges[i])i++;return B.cols[i]};
   document.getElementById('mapTitle').textContent=M.t;document.getElementById('mapSub').textContent=M.sub;document.getElementById('mapNote').textContent=M.note;
   const el=document.getElementById('map');
-  el.innerHTML=`<svg viewBox="-10 -10 1020 ${FORCES.height+20}" role="img" aria-label="${M.t}, map of 43 police force areas"><defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="var(--surface)"/><line x1="0" y1="0" x2="0" y2="8" stroke="var(--muted)" stroke-width="2"/></pattern></defs>${FORCES.forces.map((f,i)=>`<path d="${f.path}" fill="${colOf(f[k])}" data-i="${i}" tabindex="0" aria-label="${f.name}: ${f[k]==null?'not shown':M.fmt(f[k])}"/>`).join('')}</svg><div class="tip" hidden></div>`;
+  el.innerHTML=`<svg viewBox="-10 -10 1020 ${FORCES.height+20}" role="img" aria-label="${M.t}, map of 43 police force areas"><defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="var(--surface)"/><line x1="0" y1="0" x2="0" y2="8" stroke="var(--muted)" stroke-width="2"/></pattern></defs>${FORCES.forces.map((f,i)=>`<path d="${f.path}" fill="${colOf(f[k])}" data-i="${i}" tabindex="0" role="img" aria-label="${f.name}: ${f[k]==null?'not shown':M.fmt(f[k])}"/>`).join('')}</svg><div class="tip" hidden></div>`;
   document.getElementById('mapKey').innerHTML=B.cols.map((c,i)=>`<span><i style="background:${c}"></i>${B.labels[i]}</span>`).join('')+`<span><i style="background:repeating-linear-gradient(45deg,var(--muted) 0 2px,var(--surface) 2px 6px)"></i>not shown</span>`;
   const svg=el.querySelector('svg'),tip=el.querySelector('.tip');
   const rows=FORCES.forces.map((f,i)=>({f,i})).sort((a,b)=>(b.f[k]??-1e9)-(a.f[k]??-1e9));
@@ -888,6 +899,23 @@ function drawMap(){
   rank.querySelectorAll('div').forEach(d=>{d.addEventListener('pointerenter',()=>show(+d.dataset.i));d.addEventListener('pointerleave',hide)});
 }
 
+
+/* ---------- tables for hover-only charts ---------- */
+function tbl(title,cols,rows){return `<h3 style="margin-top:14px">${title}</h3><div class="tablewrap"><table><thead><tr>${cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c==null?'':c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`}
+function drawExtraTables(){
+  let h='';
+  if(PERC){const ks=[['confidence','Confidence in local police'],['trust','Trust in police'],['patrol','See foot patrol weekly'],['rating','Rate police good or excellent'],['risingNational','Think crime rose nationally'],['risingLocal','Think crime rose locally'],['worryViolent','High worry, violent crime'],['safeWomen','Women safe after dark'],['safeMen','Men safe after dark']];
+    const ys=[...new Set(ks.flatMap(k=>Object.keys(PERC[k[0]].values).map(Number)))].sort((a,b)=>a-b);
+    h+=tbl('Confidence and fear (Crime Survey, per cent, year ending March)',['Year',...ks.map(k=>k[1])],ys.map(y=>[y,...ks.map(k=>PERC[k[0]].values[y]!=null?PERC[k[0]].values[y].toFixed(1):null)]));}
+  const cy=[...new Set([...Object.keys(FTE.v),...Object.keys(SHARE.v),...Object.keys(RATIO.v)].map(Number))].sort((a,b)=>a-b);
+  h+=tbl('Children and stop and search',['Year','Child first-time entrants (thousands)','Ethnic minority share of children in custody (%)','Stop and search, Black to White ratio'],cy.map(y=>[y,FTE.v[y]!=null?FTE.v[y].toFixed(2):null,SHARE.v[y]!=null?SHARE.v[y].toFixed(1):null,RATIO.v[y]!=null?RATIO.v[y].toFixed(1)+'×':null]));
+  h+=tbl('Progression model: estimated first-day releases by tranche (MoJ)',['Tranche','Released on day one','Now excluded'],TRANCHE.map((t,i)=>['T'+(i+1),nf.format(t[0]),nf.format(t[1])]));
+  h+=tbl('Projected adult prison demand and supply (MoJ, rounded to 100)',['Month','Supply','With Act, central','With Act, high','Without Act, central'],PROJ.d.map((d,i)=>[d,nf.format(PROJ.supply[i]),nf.format(PROJ.withC[i]),nf.format(PROJ.withH[i]),nf.format(PROJ.withoutC[i])]));
+  if(WEEKLY)h+=tbl('Weekly prison population and capacity (HMPPS)',['Date','Population','Useable capacity','Spare places'],WEEKLY.map(r=>[r.date,nf.format(r.pop),nf.format(r.cap),nf.format(r.headroom)]));
+  document.getElementById('table2').innerHTML=h;
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.tip').forEach(t=>t.hidden=true)});
+
 /* ---------- table ---------- */
 function drawTable(){
   const cols=['funding','officers','pcso','percap','csew','prc','charge','stops','crown','mags','prison','remand','children'];
@@ -899,7 +927,7 @@ function drawTable(){
 /* ---------- boot ---------- */
 buildMultiples();
 function renderAll(){renderMultiples();drawIndex();drawScatter();drawPipe();drawChildren();drawMap();drawHeadroom();drawTranches();drawProj();drawPerceptions();drawLegitimacy();}
-renderAll();drawTable();setYear(2019);
+renderAll();drawTable();drawExtraTables();setYear(2019);
 document.getElementById('yearRange').addEventListener('input',e=>setYear(+e.target.value));
 let rt;new ResizeObserver(()=>{clearTimeout(rt);rt=setTimeout(()=>{renderAll();setYear(YEAR)},120)}).observe(document.querySelector('.wrap'));
 })();
