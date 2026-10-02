@@ -26,3 +26,11 @@ Raw source files are in `data/raw/`, unchanged from publication:
 National series that predate these tables (officers and PCSOs before 2007, remand before 2018, children in custody before 2010, stop and search before 2018, and the real-terms funding index) are approximate reconstructions and are marked ≈ on the page. The notes section of the page lists every caveat.
 
 Contains public sector information licensed under the Open Government Licence v3.0.
+
+## Deploy
+
+Hosted on Cloudflare Pages (project `justice-pipeline`, direct upload), to be served at justice.howpreventionworks.com.
+
+```
+wrangler pages deploy site --project-name justice-pipeline --branch main
+```
