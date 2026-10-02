@@ -146,11 +146,11 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
   </div>
   <div class="ledger fadein" aria-label="Headline figures">
     <div><b>−78%</b><span>crime measured by the victim survey since the 1995 peak (CSEW, excluding fraud and computer misuse)</span></div>
-    <div><b>233</b><span>officers per 100,000 residents in 2026, against 258 in 2010</span></div>
+    <div><b>235</b><span>officers per 100,000 residents in 2026, against 258 in 2010 and 207 in 2018</span></div>
     <div><b>8.5%</b><span>of recorded crimes ended in a charge or summons in 2025/26, against 15.5% in 2014/15</span></div>
     <div><b>80,061</b><span>open Crown Court cases, March 2026; more than double the 2019 level</span></div>
     <div><b>1 in 5</b><span>people in prison are on remand, the highest share in at least 50 years</span></div>
-    <div><b>−86%</b><span>children in custody since 2008; over half now from ethnic minority backgrounds</span></div>
+    <div><b>−86%</b><span>children in custody since 2007/08; half now from ethnic minority backgrounds</span></div>
   </div>
 </header>
 
@@ -179,7 +179,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
   <div class="lede">
     <span class="eyebrow">02 · Relative change</span>
     <h2>What grew, what shrank, from the same starting line</h2>
-    <p>Every series rebased to 100 in a chosen year. Police funding was cut by about 15% in real terms after 2010 and has only recently recovered. From 2019 the police uplift added about a fifth to officer numbers. The Crown Court caseload and the remand population roughly doubled over the same period, while survey crime fell.</p>
+    <p>Every series rebased to 100 in a chosen year. Police funding fell by 13% in real terms between 2010/11 and 2014/15 and recovered from 2019. From 2019 the police uplift added about a fifth to officer numbers. The Crown Court caseload and the remand population roughly doubled over the same period, while survey crime fell.</p>
   </div>
   <div class="controls">
     <label for="baseSel" class="eyebrow">Base year</label>
@@ -212,7 +212,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
     <div><b>13,395</b><span>released early under End of Custody Supervised Licence, October 2023 to September 2024</span></div>
     <div><b>&lt; 1,500</b><span>spare prison places for seven months of 2024 and half of 2025</span></div>
     <div><b>41 days</b><span>median time from offence to charge in 2024/25, up from 14 days in 2015/16</span></div>
-    <div><b>19,164</b><span>Crown Court cases open for a year or more, June 2025; over 22,000 by March 2026</span></div>
+    <div><b>22,124</b><span>Crown Court cases open for a year or more in March 2026, against 5,209 in early 2016</span></div>
   </div>
 </section>
 
@@ -238,14 +238,14 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
   <div class="lede">
     <span class="eyebrow">06 · Children and disproportionality</span>
     <h2>Fewer children locked up; a widening ethnic gap among those who are</h2>
-    <p>The youth justice system is the success story of the period: first-time entrants down over 90% since 2007 and custody down by more than four fifths. The fall has been slower for children from ethnic minority backgrounds, who are now the majority of those held. In adult policing and prisons, Black people remain heavily over-represented.</p>
+    <p>The youth justice system is the success story of the period: first-time entrants down 90% since 2008/09 and custody down by more than four fifths. The fall has been slower for children from ethnic minority backgrounds, whose share of those held rose from 40% to around half between 2014/15 and 2020/21. In adult policing and prisons, Black people remain heavily over-represented.</p>
   </div>
   <div class="three">
     <div class="card"><h3>Children in custody</h3><p class="sub">Average under-18 custody population, financial year</p><div class="chart" id="chChild"></div></div>
-    <div class="card"><h3>Child first-time entrants</h3><p class="sub">Thousands, financial year</p><div class="chart" id="chFte"></div></div>
-    <div class="card"><h3>Ethnic minority share of children in custody</h3><p class="sub">Per cent of youth custody population</p><div class="chart" id="chShare"></div></div>
+    <div class="card"><h3>Child first-time entrants</h3><p class="sub">Thousands; years ending March to 2013, then calendar years (series break)</p><div class="chart" id="chFte"></div></div>
+    <div class="card"><h3>Ethnic minority share of children in custody</h3><p class="sub">Per cent of the average under-18 custody population, financial year. Black children: 21% in 2024/25, down from 29% in 2020/21</p><div class="chart" id="chShare"></div></div>
   </div>
-  <div class="card"><h3>Stop and search: how many times more likely if Black than if White</h3><p class="sub">Section 1 PACE and related powers, rate per 1,000 people by ethnicity, year ending March. The 2023 fall partly reflects new Census 2021 population denominators.</p><div class="chart" id="chRatio"></div></div>
+  <div class="card"><h3>Stop and search: how many times more likely if Black than if White</h3><p class="sub">All search powers, rate per 1,000 people by self-defined ethnicity, year ending March. The 2020/21 fall partly reflects the switch to Census 2021 population denominators.</p><div class="chart" id="chRatio"></div></div>
   <div class="callouts">
     <div><b>12% vs 4%</b><span>Black people's share of the prison population, against their share of the population of England and Wales</span></div>
     <div><b>+29%</b><span>more likely to be remanded in custody if a Black defendant (2024)</span></div>
@@ -268,22 +268,26 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
     <span class="eyebrow">08 · Data and notes</span>
     <h2>Read before citing</h2>
   </div>
-  <details><summary>Table view of every series</summary><div class="tablewrap" id="table"></div><p class="note" style="margin-top:8px">≈ marks an estimate or reconstructed value. Blank means no comparable figure.</p></details>
+  <details><summary>Table view of every series</summary><div class="tablewrap" id="table"></div><p class="note" style="margin-top:8px">≈ marks an official figure on a different basis; see notes. Blank means no comparable figure.</p></details>
   <ol class="caveats">
-    <li>Officers and PCSOs from 2007, police recorded crime, the crime survey, charge rates, court caseloads and every force-level figure are read directly from the published source tables. Points marked ≈ (officers and PCSOs before 2007, remand before 2018, children in custody before 2010, stop and search before 2018, and the funding index) are approximate reconstructions; verify them against the source tables before citation.</li>
+    <li>Every series is read from the published source tables listed below. Points marked ≈ are official figures on a slightly different basis: prison population for 2000 and 2001 (annual averages, not June), the crime survey for 2000 (calendar 1999), the funding index for 2000/01 and 2005/06 (IFS spending figures spliced to the Home Office series at 2010/11), and child first-time entrants where the series moves from financial to calendar years in 2014. Officer numbers before 2003 are not shown because no comparable published series was available.</li>
     <li>Police recorded crime excludes fraud and computer misuse and starts in 2002/03, when the National Crime Recording Standard took effect. It is shaped by recording practice: the National Crime Recording Standard (2002), the HMIC crime data integrity inspection (2014) and the 2023 counting-rule change for conduct crimes all shift the series. Its post-2014 rise mostly reflects better recording, not more crime.</li>
     <li>The Crime Survey (CSEW) excludes fraud and computer misuse here for comparability. The 2000 point is the 1999 calendar-year survey. The 2020/21 telephone survey is not comparable and is omitted. Lower response rates led to loss of accredited status in 2023, so treat the latest points with care.</li>
-    <li>Officer figures are full-time equivalent at 31 March in the 43 territorial forces. Rates use ONS mid-year population; 2025 and 2026 use projected population.</li>
-    <li>Prison and remand populations are June snapshots except 2025 (September). Crown Court and magistrates' caseloads are end of December except 2026 (end of March), from the Ministry of Justice criminal court statistics tables published June 2026.</li>
-    <li>Police funding is an index of total real-terms spending (central grant plus council tax precept). 2000/01, 2005/06, 2010/11 and 2014/15 come from IFS analysis; 2023/24 is placed at 5% below 2009/10 following the Institute for Government; 2025/26 applies the Home Office's stated 4.1% real-terms rise in force funding. Intermediate years are interpolated and the sources use different price bases, so read it as shape, not exact level.</li>
+    <li>Officer figures are full-time equivalent at 31 March in the 43 territorial forces. Rates use ONS mid-year population estimates; 2026 uses mid-2025.</li>
+    <li>Prison and remand populations are 30 June snapshots (MoJ tables A1.1 and the prison population data tool); the pipeline uses September 2025. Crown Court and magistrates' caseloads are end of December except 2026 (end of March), from the Ministry of Justice criminal court statistics tables published June 2026.</li>
+    <li>Police funding is the Home Office measure of overall police funding in 2025/26 prices (Police funding for England and Wales 2015 to 2026, Table 5), rebased to 2010/11 = 100. The 2000/01 and 2005/06 points are IFS estimates of total police spending in 2014/15 prices, scaled to the same base; they show direction rather than an exact level.</li>
     <li>Charge rates are the Home Office share of all recorded crimes assigned a charge or summons outcome, by the year the crime was recorded. Recent years can still rise as investigations close.</li>
-    <li>Stop and search ratios use Census 2011 denominators to 2022 and Census 2021 thereafter, which mechanically lowered the ratio.</li>
+    <li>Stop and search ratios are Home Office rates per 1,000 people by self-defined ethnicity (table SS_18), using Census 2011 populations to 2019/20 and Census 2021 from 2020/21; part of the 2020/21 fall reflects that change. Counts cover all search powers (table SS_23).</li>
   </ol>
   <h3 style="margin-top:8px">Sources</h3>
   <ul class="sources">
     <li><a href="https://www.gov.uk/government/statistics/police-workforce-england-and-wales-31-march-2026/police-workforce-england-and-wales-31-march-2026">Home Office, Police workforce, England and Wales (series to 31 March 2026)</a></li>
     <li><a href="https://www.ons.gov.uk/peoplepopulationandcommunity/crimeandjustice/bulletins/crimeinenglandandwales/yearendingmarch2026">ONS, Crime in England and Wales (to year ending March 2026)</a></li>
     <li><a href="https://www.gov.uk/government/statistics/crime-outcomes-in-england-and-wales-2025-to-2026/crime-outcomes-in-england-and-wales-2025-to-2026">Home Office, Crime outcomes in England and Wales 2025 to 2026</a></li>
+    <li><a href="https://www.gov.uk/government/statistics/police-funding-for-england-and-wales-2015-to-2026">Home Office, Police funding for England and Wales 2015 to 2026 (Table 5)</a></li>
+    <li><a href="https://www.gov.uk/government/statistics/offender-management-statistics-quarterly-april-to-june-2025">Ministry of Justice, Offender management statistics: prison population data tool to September 2025, and 2015 annual tables (A1.1, A1.2)</a></li>
+    <li><a href="https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/populationestimatesforukenglandandwalesscotlandandnorthernireland">ONS, Population estimates for England and Wales, mid-1838 to mid-2025 (Table 7)</a></li>
+    <li><a href="https://www.gov.uk/government/statistics/youth-justice-statistics-2018-to-2019">Youth Justice Board, Youth justice statistics 2018 to 2019 (first-time entrants to 2018/19)</a></li>
     <li><a href="https://ifs.org.uk/sites/default/files/output_url_files/bn208.pdf">IFS Briefing Note BN208, Police workforce and funding in England and Wales</a></li>
     <li><a href="https://www.instituteforgovernment.org.uk/publication/performance-tracker-2025/criminal-justice/police">Institute for Government, Performance Tracker 2025: Police</a></li>
     <li><a href="https://researchbriefings.files.parliament.uk/documents/CDP-2025-0031/CDP-2025-0031.pdf">House of Commons Library, Police Grant Report 2025/26</a></li>
@@ -312,28 +316,28 @@ const nf=new Intl.NumberFormat('en-GB');
 function mk(arr,start,est){const v={};arr.forEach((x,i)=>{if(x!=null)v[start+i]=x});return{v,est:new Set(est||[])}}
 
 /* ---------- data ---------- */
-const POP={2000:52.14,2001:52.36,2002:52.6,2003:52.86,2004:53.15,2005:53.58,2006:53.95,2007:54.39,2008:54.84,2009:55.24,2010:55.69,2011:56.17,2012:56.57,2013:56.95,2014:57.41,2015:57.89,2016:58.38,2017:58.74,2018:59.12,2019:59.44,2020:59.72,2021:59.64,2022:60.24,2023:60.85,2024:61.81,2025:62.3,2026:62.7};
+const POP={2000:52.14,2001:52.36,2002:52.6,2003:52.86,2004:53.15,2005:53.58,2006:53.95,2007:54.39,2008:54.84,2009:55.24,2010:55.69,2011:56.17,2012:56.58,2013:56.99,2014:57.44,2015:57.88,2016:58.37,2017:58.7,2018:59.01,2019:59.32,2020:59.43,2021:59.66,2022:60.32,2023:61.16,2024:61.79,2025:62.01,2026:62.01};
 const S={
- officers:{label:'Police officers',unit:'thousand FTE',c:'--s1',...mk([124.2,125.7,129.6,133.4,139.2,141.1,141.5,141.893,141.857,143.769,143.734,139.110,134.100,129.584,127.909,127.192,124.066,123.142,122.405,123.189,129.110,135.301,140.228,147.434,147.745,146.452,145.886],2000,[2000,2001,2002,2003,2004,2005,2006]),f:v=>nf.format(Math.round(v*1000))},
- pcso:{label:'PCSOs',unit:'thousand FTE',c:'--s1',...mk([null,null,null,null,4.0,6.2,6.8,13.529,15.807,16.507,16.918,15.820,14.393,14.205,13.066,12.370,11.043,10.213,10.139,9.547,9.248,9.284,8.750,7.806,7.568,7.315,7.259],2000,[2004,2005,2006]),f:v=>nf.format(Math.round(v*1000))},
+ officers:{label:'Police officers',unit:'thousand FTE',c:'--s1',...mk([null,null,null,132.509,138.468,141.059,141.523,141.893,141.857,143.769,143.734,139.110,134.100,129.584,127.909,127.192,124.066,123.142,122.405,123.189,129.110,135.301,140.228,147.434,147.745,146.452,145.886],2000,[]),f:v=>nf.format(Math.round(v*1000))},
+ pcso:{label:'PCSOs',unit:'thousand FTE',c:'--s1',...mk([null,null,null,1.176,3.418,6.214,6.769,13.529,15.807,16.507,16.918,15.820,14.393,14.205,13.066,12.370,11.043,10.213,10.139,9.547,9.248,9.284,8.750,7.806,7.568,7.315,7.259],2000,[]),f:v=>nf.format(Math.round(v*1000))},
  prc:{label:'Police recorded crime',unit:'million, excl. fraud',c:'--s2',...mk([null,null,null,5.791,5.844,5.477,5.426,5.322,4.881,4.630,4.265,4.078,3.904,3.553,3.507,3.575,3.899,4.322,4.890,5.266,5.305,4.616,5.327,5.578,5.403,5.307,5.235],2000,[]),f:v=>v.toFixed(1)+'m'},
  csew:{label:'Crime survey (CSEW)',unit:'million incidents, excl. fraud',c:'--s3',...mk([15.247,null,12.771,12.390,11.609,10.778,10.863,11.182,10.040,10.432,9.544,9.711,9.593,8.757,7.554,7.177,6.529,6.057,6.247,6.431,5.661,null,null,4.385,4.589,4.595,4.333],2000,[2000]),f:v=>v.toFixed(1)+'m'},
- prison:{label:'Prison population',unit:'thousand',c:'--s4',...mk([64.6,66.3,70.8,73.0,74.5,76.1,77.8,79.7,83.2,83.5,85.0,85.4,86.0,83.8,85.5,86.0,85.1,86.0,83.3,82.7,79.5,78.2,80.7,85.9,87.5,87.5,null],2000,[]),f:v=>nf.format(Math.round(v*1000))},
- remand:{label:'On remand',unit:'thousand',c:'--s5',...mk([12.8,12.4,13.1,13.0,13.0,12.9,13.0,13.2,13.1,13.0,12.4,12.0,11.7,11.0,10.6,10.1,9.6,9.4,9.2,9.0,11.4,13.0,14.6,15.5,16.9,17.7,null],2000,[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2020,2021]),f:v=>nf.format(Math.round(v*1000))},
+ prison:{label:'Prison population',unit:'thousand',c:'--s4',...mk([64.602,66.301,71.218,73.657,74.488,76.190,77.982,79.734,83.194,83.454,85.002,85.374,86.048,83.842,85.509,86.193,85.134,85.863,82.773,82.710,79.514,78.324,80.659,85.851,87.726,87.334,null],2000,[2000,2001]),f:v=>nf.format(Math.round(v*1000))},
+ remand:{label:'On remand',unit:'thousand',c:'--s5',...mk([null,null,13.081,13.073,12.495,12.864,13.067,12.844,13.440,13.456,13.004,12.464,11.324,10.971,12.197,11.785,9.288,9.638,9.285,9.145,11.388,12.727,13.409,15.523,17.070,17.701,null],2000,[]),f:v=>nf.format(Math.round(v*1000))},
  crown:{label:'Crown Court open cases',unit:'thousand',c:'--s6',...mk([43.110,38.980,33.049,38.123,57.058,58.617,62.689,67.116,74.016,80.098,80.061],2016,[]),f:v=>nf.format(Math.round(v*1000))},
  mags:{label:"Magistrates' open cases",unit:'thousand',c:'--ink-2',...mk([223.533,302.355,273.246,260.843,278.367,327.236,364.779,370.722],2019,[]),f:v=>nf.format(Math.round(v*1000))},
- children:{label:'Children in custody',unit:'average',c:'--s7',...mk([2800,2900,3100,2900,2800,2800,2800,2900,2950,2620,2418,2040,1963,1544,1216,1048,960,870,894,856,780,560,440,430,431,418,null],2000,[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2016]),f:v=>nf.format(Math.round(v))},
- stops:{label:'Stop and search',unit:'thousand searches',c:'--s8',...mk([1035,1140,1140,1180,1050,1000,917,541,387,304,277,371,577,695,524,529,529,510],2009,[2009,2010,2011,2013,2014,2024,2025,2026]),f:v=>nf.format(Math.round(v*1000))},
+ children:{label:'Children in custody',unit:'average',c:'--s7',...mk([null,2807,2847,3052,2771,2746,2832,2914,2932,2881,2418,2040,1963,1544,1216,1037,960,868,894,859,781,560,454,441,430,418,null],2000,[]),f:v=>nf.format(Math.round(v))},
+ stops:{label:'Stop and search',unit:'thousand searches, all powers',c:'--s8',...mk([1050.4,1233.2,1519.6,1406.0,1303.5,1189.9,1017.5,904.0,541.1,383.6,304.1,282.4,385.2,586.6,714.9,531.0,547.0,536.2,528.6],2007,[]),f:v=>nf.format(Math.round(v*1000))},
 };
-S.funding={label:'Police funding, real terms',unit:'index, 2010/11 = 100',c:'--s9',...mk([null,76.4,79.8,83.2,86.6,90.0,93.3,95.0,96.7,98.3,100,100,95.9,92.1,88.9,85.9,84.5,83.5,83.0,83.5,86,89,91,91,95,96,99.9],2000,[2002,2003,2004,2005,2007,2008,2009,2010,2012,2013,2014,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026]),f:v=>Math.round(v)};
+S.funding={label:'Police funding, real terms',unit:'index, 2010/11 = 100',c:'--s9',...mk([null,76.4,null,null,null,null,93.3,null,null,null,null,100,96.0,91.3,89.0,86.6,86.9,87.0,87.4,88.8,94.1,97.2,100.6,100.9,98.5,100.2,104.1],2000,[2001,2006]),f:v=>Math.round(v)};
 S.charge={label:'Charge rate',unit:'% of recorded crimes charged or summonsed',c:'--s2',...mk([15.5,13.1,11.2,9.1,7.8,7.0,7.3,5.6,5.7,6.4,7.3,8.5],2015,[]),f:v=>v.toFixed(1)+'%'};
 S.percap={label:'Officers per 100,000',unit:'per 100,000 residents',c:'--s1',v:{},est:new Set([2000,2001,2025,2026]),f:v=>Math.round(v)};
 YEARS.forEach(y=>{if(S.officers.v[y]!=null)S.percap.v[y]=S.officers.v[y]*1000/(POP[y]*10)});
-const FTE=mk([110.8,100.9,79.3,61.4,45.5,37.1,28.0,23.0,20.6,18.4,16.4,14.4,12.0,11.3,8.6,8.8,8.3,8.5,8.1],2007,[2008,2010,2011,2012,2018,2019,2021]);
-const SHARE={v:{2006:25,2016:41,2020:52,2024:51,2025:59},est:new Set([2020])};
+const FTE=mk([80.5,62.65,46.04,36.97,28.11,21.25,19.22,17.00,15.43,12.73,11.53,9.35,8.31,8.56,8.43,8.11],2009,[2014]);
+const SHARE=mk([39.5,41.5,45.0,45.0,48.3,50.4,52.1,51.0,49.7,49.6,50.4],2015,[]);
 const RATIO={};
 // stop and search financial years mapped to year ending
-RATIO.v={2011:7.0,2017:8.0,2018:9.5,2019:9.7,2020:8.9,2021:7.0,2022:4.9,2023:4.1,2024:3.7,2025:3.5};RATIO.est=new Set([2011,2017,2025]);
+RATIO.v={2011:6.5,2012:5.9,2013:4.4,2014:4.1,2015:4.4,2016:6.5,2017:8.4,2018:9.5,2019:9.7,2020:8.9,2021:5.5,2022:4.8,2023:4.1,2024:3.7,2025:3.8};RATIO.est=new Set();
 
 const GOV=[[1997.34,2010.36,'Labour'],[2010.36,2015.35,'Coalition'],[2015.35,2024.51,'Conservative'],[2024.51,2027,'Labour']];
 const govAt=y=>{const t=y+.5;const g=GOV.find(g=>t>=g[0]&&t<g[1]);return g?g[2]:''};
@@ -391,14 +395,14 @@ const PANELS=[
  {id:'pol',title:'Police officers',note:'Full-time equivalent, 31 March; axis starts at 110,000',series:['officers'],h:110,min:110,tick:v=>v+'k'},
  {id:'pcs',title:'PCSOs',note:'Community support officers, created in 2002; down by more than half since 2010',series:['pcso'],h:80,tick:v=>v+'k'},
  {id:'cap',title:'Officers per 100,000 residents',note:'Fell to 207 in 2018. Population growth means the uplift restored numbers, not density',series:['percap'],h:96,min:200,tick:v=>v},
- {id:'fund',title:'Police funding, real terms',note:'Index, 2010/11 = 100. Back near 2010/11 in total by 2025/26, but about 11% lower per resident',series:['funding'],h:96,min:70,tick:v=>v},
+ {id:'fund',title:'Police funding, real terms',note:'Index, 2010/11 = 100 (Home Office). Low point 2014/15; 4% above 2010/11 in 2025/26, but about 7% lower per resident',series:['funding'],h:96,min:70,tick:v=>v},
  {id:'crime',title:'Crime: survey and police records',note:'The survey falls while police records rise; recording practice explains most of the gap',series:['csew','prc'],h:120,tick:v=>v+'m'},
  {id:'chg',title:'Charge rate',note:'Share of all recorded crimes ending in a charge or summons, by year the crime was recorded',series:['charge'],h:90,tick:v=>v+'%'},
- {id:'ss',title:'Stop and search',note:'Searches under s1 PACE and related powers, year ending March',series:['stops'],h:96,tick:v=>v+'k'},
+ {id:'ss',title:'Stop and search',note:'All search powers, year ending March. The 2008/09 peak includes counter-terrorism searches under section 44',series:['stops'],h:96,tick:v=>v+'k'},
  {id:'crt',title:'Crown Court open cases',note:'Open caseload at year end; 2026 is end of March',series:['crown'],h:96,tick:v=>v+'k'},
  {id:'mag',title:"Magistrates' courts open cases",note:'Open caseload at year end; 2026 is end of March. Up two thirds since 2019',series:['mags'],h:96,tick:v=>v+'k'},
- {id:'pri',title:'Prison population',note:'June snapshots; axis starts at 60,000. Usable capacity 88,931 in September 2025',series:['prison'],h:100,min:60,tick:v=>v+'k'},
- {id:'rem',title:'Prisoners on remand',note:'Untried or awaiting sentence; pre-2018 values approximate',series:['remand'],h:90,tick:v=>v+'k'},
+ {id:'pri',title:'Prison population',note:'June snapshots (2000 and 2001 are annual averages); axis starts at 60,000. Usable capacity 88,931 in September 2025',series:['prison'],h:100,min:60,tick:v=>v+'k'},
+ {id:'rem',title:'Prisoners on remand',note:'Untried or convicted awaiting sentence, June snapshots from 2002',series:['remand'],h:90,tick:v=>v+'k'},
  {id:'yth',title:'Children in custody',note:'Average under-18 population',series:['children'],h:96,tick:v=>nf.format(v)},
 ];
 let YEAR=2019;const charts=[];
@@ -519,7 +523,7 @@ function drawIndex(){
 /* ---------- connected scatter ---------- */
 function drawScatter(){
   const el=document.getElementById('scChart');const w=Math.max(300,el.clientWidth),h=Math.min(440,Math.max(300,w*.55)),m={l:46,r:20,t:16,b:40};
-  const pts=YEARS.filter(y=>S.csew.v[y]!=null).map(y=>({y,px:S.percap.v[y],py:S.csew.v[y],est:S.csew.est.has(y)||y>=2023}));
+  const pts=YEARS.filter(y=>S.csew.v[y]!=null&&S.percap.v[y]!=null).map(y=>({y,px:S.percap.v[y],py:S.csew.v[y],est:S.csew.est.has(y)||y>=2023}));
   const xl=200,xh=265,yl=0,yh=16;
   const x=v=>m.l+(v-xl)/(xh-xl)*(w-m.l-m.r),y=v=>m.t+(1-(v-yl)/(yh-yl))*(h-m.t-m.b);
   let g='';
@@ -528,7 +532,7 @@ function drawScatter(){
   g+=`<text x="${(m.l+w-m.r)/2}" y="${h-6}" text-anchor="middle" font-size="11" fill="var(--ink-2)">Officers per 100,000 residents</text>`;
   let d='';pts.forEach((p,i)=>{d+=(i&&pts[i].y-pts[i-1].y===1?'L':'M')+x(p.px).toFixed(1)+','+y(p.py).toFixed(1)});
   g+=`<path d="${d}" fill="none" stroke="var(--s1)" stroke-opacity=".45" stroke-width="1.5"/>`;
-  const lab={2000:[-8,-8,'end'],2004:[8,-8],2010:[8,4],2014:[8,4],2018:[-8,4,'end'],2023:[-8,14,'end'],2026:[8,4]};
+  const lab={2003:[8,-6],2007:[8,-8],2010:[8,4],2014:[8,4],2018:[-8,4,'end'],2023:[-8,14,'end'],2026:[8,4]};
   pts.forEach(p=>{g+=`<circle cx="${x(p.px)}" cy="${y(p.py)}" r="5" fill="${p.est?'var(--surface)':'var(--s1)'}" stroke="var(--s1)" stroke-width="1.6"/>`;
     if(lab[p.y])g+=`<text x="${x(p.px)+lab[p.y][0]}" y="${y(p.py)+lab[p.y][1]}" text-anchor="${lab[p.y][2]||'start'}" font-size="11" fill="var(--ink)" font-family="var(--mono)" font-weight="500">${p.y}</text>`;
     g+=`<circle class="sp" data-y="${p.y}" cx="${x(p.px)}" cy="${y(p.py)}" r="12" fill="transparent"/>`;});
@@ -548,8 +552,8 @@ const PIPE=[
  ['Charge rate','All crimes, 2018/19 to 2025/26',7.8,8.5,'--s2',v=>v.toFixed(1)+'%'],
  ["Magistrates' open cases",'End 2019 to March 2026',223533,370722,'--ink-2',v=>nf.format(v)],
  ['Crown Court open cases','End 2019 to March 2026',38123,80061,'--s6',v=>nf.format(v)],
- ['People on remand','June 2019 to September 2025',9000,17700,'--s5',v=>nf.format(v)],
- ['Prison population','June 2019 to September 2025; 88,931 usable places',82700,87465,'--s4',v=>nf.format(v)],
+ ['People on remand','June 2019 to September 2025',9145,17700,'--s5',v=>nf.format(v)],
+ ['Prison population','June 2019 to September 2025; 88,931 usable places',82710,87393,'--s4',v=>nf.format(v)],
 ];
 function drawPipe(){
   const box=document.getElementById('pipe');const maxI=Math.max(...PIPE.map(p=>p[3]/p[2]*100));
@@ -582,10 +586,10 @@ function mini(elId,ser,opt){
   el.querySelector('.hit').addEventListener('pointerleave',()=>tip.hidden=true);
 }
 function drawChildren(){
-  mini('chChild',S.children,{c:'--s7',tick:v=>nf.format(v),lab:v=>nf.format(Math.round(v)),aria:'Children in custody fell from about 2,900 in 2008 to 418 in 2024/25'});
-  mini('chFte',FTE,{c:'--s7',tick:v=>v,lab:v=>v.toFixed(1)+'k',x0:2005,xt:[2005,2015,2025],aria:'Child first-time entrants fell from 110,800 in 2006/07 to 8,100 in 2024/25'});
-  mini('chShare',SHARE,{c:'--s7',max:100,step:25,tick:v=>v+'%',lab:v=>v+'%',dots:true,labelAll:true,x0:2004,xt:[2005,2015,2025],aria:'Ethnic minority share of children in custody rose from 25% in 2006 to over half'});
-  mini('chRatio',RATIO,{c:'--s8',h:190,max:12,step:3,tick:v=>v+'×',lab:v=>v.toFixed(1)+'×',dots:true,labelAll:true,x0:2010,xt:[2010,2014,2018,2022,2026],mark:[2022.5,'Census 2021 denominators'],aria:'Black to White stop and search ratio, peaking near ten times in 2019'});
+  mini('chChild',S.children,{c:'--s7',tick:v=>nf.format(v),lab:v=>nf.format(Math.round(v)),aria:'Children in custody fell from 2,932 in 2007/08 to 418 in 2024/25'});
+  mini('chFte',FTE,{c:'--s7',tick:v=>v,lab:v=>v.toFixed(1)+'k',x0:2008,xt:[2010,2015,2020,2024],aria:'Child first-time entrants fell from 80,500 in 2008/09 to 8,100 in 2024'});
+  mini('chShare',SHARE,{c:'--s7',max:100,step:25,tick:v=>v+'%',lab:v=>v+'%',dots:true,x0:2014,xt:[2015,2020,2025],aria:'Ethnic minority share of children in custody rose from 40% in 2014/15 to around half'});
+  mini('chRatio',RATIO,{c:'--s8',h:190,max:12,step:3,tick:v=>v+'×',lab:v=>v.toFixed(1)+'×',dots:true,labelAll:true,x0:2010,xt:[2010,2014,2018,2022,2026],mark:[2020.5,'Census 2021 denominators'],aria:'Black to White stop and search ratio, peaking near ten times in 2019'});
 }
 
 
