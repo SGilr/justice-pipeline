@@ -8,7 +8,7 @@
 :root{
   --bg:#f2f3ef; --surface:#fbfbf8; --ink:#13171b; --ink-2:#474d55; --muted:#646a71;
   --grid:#e2e4de; --axis:#c3c6bf; --band:rgba(19,23,27,.045); --accent:#17324f; --hair:rgba(19,23,27,.12);
-  --s1:#2a78d6; --s2:#eb6834; --s3:#14936a; --s4:#b37a00; --s5:#cc5287; --s6:#008300; --s7:#4a3aa7; --s8:#e34948; --s9:#8c5a2b; --mid:#e3e2dd; --logo-1:#002046; --logo-2:rgba(0,32,70,.8); --logo-3:rgba(0,32,70,.6); --logo-t:#ffffff; --wm-1:#002046; --wm-2:#3b546f; --wm-3:#728296; --wm-t:#ffffff;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#14936a; --s4:#b37a00; --s5:#cc5287; --s6:#008300; --s7:#4a3aa7; --s8:#e34948; --s9:#8c5a2b; --mid:#e3e2dd; --map-edge:#474d55; --logo-1:#002046; --logo-2:rgba(0,32,70,.8); --logo-3:rgba(0,32,70,.6); --logo-t:#ffffff; --wm-1:#002046; --wm-2:#3b546f; --wm-3:#728296; --wm-t:#ffffff;
   --display:"Spectral",Georgia,"Times New Roman",serif;
   --body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"Atkinson Hyperlegible Mono",ui-monospace,"SF Mono",Menlo,monospace;
@@ -16,12 +16,12 @@
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#101316; --surface:#171b1f; --ink:#f0f1ed; --ink-2:#c2c5bf; --muted:#8a9097;
   --grid:#252a2f; --axis:#3a4046; --band:rgba(240,241,237,.05); --accent:#a9c4e6; --hair:rgba(240,241,237,.12);
-  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s9:#c08a55; --mid:#4a4d50; --logo-1:#f7f4ee; --logo-2:#d6dde4; --logo-3:#728296; --logo-t:#002046; --wm-1:#f7f4ee; --wm-2:#d6dde4; --wm-3:#728296; --wm-t:#002046;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s9:#c08a55; --mid:#6e7378; --map-edge:#8a9097; --logo-1:#f7f4ee; --logo-2:#d6dde4; --logo-3:#728296; --logo-t:#002046; --wm-1:#f7f4ee; --wm-2:#d6dde4; --wm-3:#728296; --wm-t:#002046;
   color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#101316; --surface:#171b1f; --ink:#f0f1ed; --ink-2:#c2c5bf; --muted:#8a9097;
   --grid:#252a2f; --axis:#3a4046; --band:rgba(240,241,237,.05); --accent:#a9c4e6; --hair:rgba(240,241,237,.12);
-  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s9:#c08a55; --mid:#4a4d50; --logo-1:#f7f4ee; --logo-2:#d6dde4; --logo-3:#728296; --logo-t:#002046; --wm-1:#f7f4ee; --wm-2:#d6dde4; --wm-3:#728296; --wm-t:#002046;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s9:#c08a55; --mid:#6e7378; --map-edge:#8a9097; --logo-1:#f7f4ee; --logo-2:#d6dde4; --logo-3:#728296; --logo-t:#002046; --wm-1:#f7f4ee; --wm-2:#d6dde4; --wm-3:#728296; --wm-t:#002046;
   color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;padding-inline:16px;padding-block:0 64px}
@@ -110,12 +110,12 @@ select{font:inherit;font-size:.85rem;background:var(--surface);color:var(--ink);
 .mapgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start}
 @media (max-width:760px){.mapgrid{grid-template-columns:1fr}}
 .map svg{display:block;width:100%;height:auto;max-height:640px}
-.map path{stroke:var(--surface);stroke-width:1.2;stroke-linejoin:round;cursor:pointer;transition:opacity .15s}
-.map path.hl{stroke:var(--ink);stroke-width:2.4}
+.map path{stroke:var(--map-edge);stroke-width:.8;vector-effect:non-scaling-stroke;stroke-linejoin:round;cursor:pointer;transition:opacity .15s}
+.map path.hl{stroke:var(--ink);stroke-width:2.5}
 .map path:focus-visible{outline:none;stroke:var(--accent);stroke-width:3}
 .keyrow{display:flex;flex-wrap:wrap;gap:4px 12px;font-family:var(--mono);font-size:.74rem;color:var(--ink-2)}
 .keyrow span{display:inline-flex;gap:6px;align-items:center}
-.keyrow i{width:14px;height:10px;border-radius:2px;display:inline-block;border:1px solid var(--hair)}
+.keyrow i{width:14px;height:10px;border-radius:2px;display:inline-block;border:1px solid var(--map-edge)}
 .rank{max-height:620px;overflow-y:auto;display:grid;gap:0;font-size:.84rem}
 .rank div{display:grid;grid-template-columns:minmax(0,1fr) minmax(60px,38%) 6ch;gap:10px;align-items:center;padding:4px 6px;border-top:1px solid var(--grid);cursor:default}
 .rank div.hl{background:var(--band)}
@@ -412,6 +412,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
     <li>Prison and remand populations are 30 June snapshots (MoJ tables A1.1 and the prison population data tool), with June 2026 from the MoJ prison population tables at 30 June 2026 (Table 1.Q.1); the pipeline uses June 2026. Crown Court and magistrates' caseloads are end of December except 2026 (end of June), from the Ministry of Justice criminal court statistics tables for April to June 2026 (published 24 September 2026, Tables C1 and M1). That release revised earlier quarters, including end of March 2026, which now stands at 80,437 open Crown Court cases, revised from the first-published figure.</li>
     <li>Police funding is the Home Office measure of overall police funding in 2025/26 prices (Police funding for England and Wales 2015 to 2026, Table 5), rebased to 2010/11 = 100. The 2000/01 and 2005/06 points are IFS estimates of total police spending in 2014/15 prices, scaled to the same base; they show direction rather than an exact level.</li>
     <li>Charge rates are the Home Office share of all recorded crimes assigned a charge or summons outcome, by the year the crime was recorded. Recent years can still rise as investigations close.</li>
+    <li>Force map areas are outlined so each area stays distinguishable from the background and its neighbours at 3:1 or more, including the palest shades.</li>
     <li>Confidence and fear figures are from the Crime Survey for England and Wales: ONS, Perception and experience of police and criminal justice system, year ending March 2026 (Tables 1, 2, 4, 10 and 21), and ONS, Crime in England and Wales annual supplementary tables, year ending March 2026 (Tables B1, B4 and B7). Survey estimates carry sampling error; several questions are asked of a quarter of the sample, and the subgroup ratings by ethnicity rest on small samples (235 Black Caribbean respondents). ONS advises that force-level estimates should be treated with extreme caution, so these measures are shown nationally only. The legitimacy panels use Tables 4 (components of confidence), 5 (by personal characteristics), 17 (victim satisfaction by quality of contact) and 20 (relating with the police, first asked in 2025/26); † marks groups with fewer than 300 respondents.</li>
     <li>Refreshed 2 October 2026: Crown Court and magistrates' open caseloads, cases open for a year or more and median case age (MoJ criminal court statistics, April to June 2026, which revised earlier quarters); charge volumes (MoJ Criminal Justice Statistics quarterly, March 2026); the children's remand outcome year (2024/25). The weekly capacity chart runs to 28 September 2026, the latest bulletin published at the time of the refresh.</li>
     <li>The release valve section uses HMPPS weekly population and capacity bulletins (2024 to 2026), the MoJ analytical report on progression model tranche release volumes (August 2026), SDS40 and ECSL transparency data, and the MoJ Annual Statement on Prison Capacity 2025. The capacity projections were made before the August 2026 exclusions and before the October start date. Policy details follow the House of Commons Library briefing CBP-10974.</li>
