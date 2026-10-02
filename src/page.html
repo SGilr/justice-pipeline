@@ -130,6 +130,27 @@ select{font:inherit;font-size:.85rem;background:var(--surface);color:var(--ink);
 .facts b{font-family:var(--display);font-size:1.6rem;font-weight:600;display:block;line-height:1.1}
 .facts span{font-size:.84rem;color:var(--ink-2)}
 .mech{border-left:3px solid var(--s4);padding:4px 0 4px 14px;display:grid;gap:8px}
+.dumb{display:grid;gap:6px;font-size:.84rem}
+.dumb .row{display:grid;grid-template-columns:minmax(0,11.5rem) minmax(0,1fr) 3.4rem;gap:10px;align-items:center}
+.dumb .trk{position:relative;height:16px}
+.dumb .trk::before{content:"";position:absolute;left:0;right:0;top:7px;height:2px;background:var(--grid)}
+.dumb .seg{position:absolute;top:7px;height:2px;background:var(--s1);opacity:.45}
+.dumb .d{position:absolute;top:2px;width:12px;height:12px;border-radius:50%;margin-left:-6px;box-sizing:border-box}
+.dumb .d.old{border:2px solid var(--muted);background:var(--surface)}
+.dumb .d.new{background:var(--s1);border:2px solid var(--surface)}
+.dumb .chg{font-family:var(--mono);font-size:.76rem;text-align:right;color:var(--ink-2)}
+.dumb .ax{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.7rem;color:var(--muted);grid-column:2}
+.pairs{display:grid;gap:12px;font-size:.84rem}
+.pairs .lab{font-weight:600;margin-bottom:3px}
+.pairs .b{display:grid;grid-template-columns:5.5rem minmax(0,1fr) 3.2rem;gap:8px;align-items:center;margin-top:3px}
+.pairs .bar{height:10px;border-radius:0 4px 4px 0}
+.pairs .v{font-family:var(--mono);font-size:.78rem;text-align:right}
+section>*,.card,.twocol>*,.three>*{min-width:0}
+.gtab{width:100%;font-size:.8rem}
+.gtab td,.gtab th{padding:5px 8px}
+.gtab td:first-child{white-space:normal;min-width:9ch}
+@media (max-width:640px){.gtab{font-size:.7rem}.gtab .bar{display:none!important}.gtab td,.gtab th{padding:5px 3px}}
+.gtab .bar{display:inline-block;height:8px;border-radius:0 3px 3px 0;background:var(--s1);vertical-align:middle;margin-right:6px}
 details{background:var(--surface);border:1px solid var(--hair);border-radius:6px;padding:12px 16px}
 summary{cursor:pointer;font-weight:700}
 .tablewrap{overflow-x:auto;margin-top:12px}
@@ -235,6 +256,28 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
     <div class="card"><h3>Think crime has gone up nationally</h3><p class="sub">Per cent saying crime across the country has risen in the past few years; about half say the same of their local area</p><div class="chart" id="pcRising"></div></div>
     <div class="card"><h3>High worry about violent crime</h3><p class="sub">Per cent with a high level of worry about being a victim of violent crime</p><div class="chart" id="pcWorry"></div></div>
     <div class="card"><h3>Women who feel safe walking alone after dark</h3><p class="sub">Per cent feeling very or fairly safe; 88% of men in 2025/26</p><div class="chart" id="pcSafe"></div></div>
+  </div>
+  <div class="lede" style="margin-top:20px">
+    <h3 style="font-family:var(--display);font-size:1.35rem;font-weight:600">What the survey suggests about police legitimacy</h3>
+    <p>Legitimacy rests on whether people see the police as fair, respectful and effective, and whether they feel willing to cooperate. The Crime Survey measures each of these. Read together, the 2025/26 tables point to where confidence has been lost and where contact makes the biggest difference.</p>
+  </div>
+  <div class="twocol">
+    <div class="card"><h3>Where confidence has fallen</h3><p class="sub">Per cent agreeing, 2015/16 (hollow) against 2025/26 (filled)</p><div class="dumb" id="dumb"></div></div>
+    <div class="card"><h3>Quality of contact and victim satisfaction</h3><p class="sub">Per cent of incidents in which victims who reported to the police were satisfied, 2025/26</p><div class="pairs" id="pairs"></div></div>
+  </div>
+  <div class="card"><h3>Confidence and fair treatment by group</h3><p class="sub">Per cent with overall confidence in local police, and per cent agreeing police would treat them fairly, 2025/26. Groups with fewer than 300 respondents are marked</p><div class="tablewrap"><table class="gtab" id="gtab"></table></div></div>
+  <div class="twocol">
+    <div class="card"><h3>Willingness to cooperate</h3><p class="sub">Per cent agreeing, 2025/26; first year these questions were asked</p><div class="facts" id="relating"></div></div>
+    <div class="card mech"><h3>Reading this for legitimacy</h3>
+      <ul class="plist">
+        <li><b>The losses are in effectiveness and responsiveness more than conduct.</b> Since 2015/16, agreement that the police would treat people with respect fell 4 points, while agreement that they deal with local concerns and do a good job each fell about 14 points, and understanding local concerns fell 11.</li>
+        <li><b>How people are treated in contact matters most.</b> Victims who felt treated fairly were satisfied in 77% of incidents, against 12% for those who did not; for respect and for being kept well informed, satisfaction was about four times as high.</li>
+        <li><b>Confidence is lowest where contact is most likely to be difficult.</b> People with experience of homelessness or care, recent victims, disabled people, bisexual people and Black Caribbean adults all report lower confidence and less expectation of fair treatment.</li>
+        <li><b>Willingness to cooperate remains high.</b> Over 90% would call or help the police; fewer accept a duty to follow police orders (69%) or rate police standards of behaviour as good (70%).</li>
+        <li><b>Visibility has fallen alongside confidence.</b> Weekly sightings of foot patrols fell from 39% to 12.5% since 2010/11. The survey shows the two moving together, not that one caused the other.</li>
+      </ul>
+      <p class="note">These are associations in a cross-sectional survey. The contact figures cover only victims who reported to the police, and some groups rest on small samples. They show where legitimacy is weakest and which parts of contact go with satisfaction, not the effect of any intervention.</p>
+    </div>
   </div>
   <p class="note">Crime Survey for England and Wales, years ending March (calendar years before 2001). No comparable data for 2020/21 and 2021/22, when the survey ran by telephone. Dashed joins mark series breaks noted by ONS: police ratings and confidence before 2011/12, and feeling safe after dark before 2012/13.</p>
 </section>
@@ -360,7 +403,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
     <li>Prison and remand populations are 30 June snapshots (MoJ tables A1.1 and the prison population data tool), with June 2026 from the MoJ prison population tables at 30 June 2026 (Table 1.Q.1); the pipeline uses June 2026. Crown Court and magistrates' caseloads are end of December except 2026 (end of June), from the Ministry of Justice criminal court statistics tables for April to June 2026 (published 24 September 2026, Tables C1 and M1). That release revised earlier quarters, including end of March 2026, which now stands at 80,437 open Crown Court cases, revised from the first-published figure.</li>
     <li>Police funding is the Home Office measure of overall police funding in 2025/26 prices (Police funding for England and Wales 2015 to 2026, Table 5), rebased to 2010/11 = 100. The 2000/01 and 2005/06 points are IFS estimates of total police spending in 2014/15 prices, scaled to the same base; they show direction rather than an exact level.</li>
     <li>Charge rates are the Home Office share of all recorded crimes assigned a charge or summons outcome, by the year the crime was recorded. Recent years can still rise as investigations close.</li>
-    <li>Confidence and fear figures are from the Crime Survey for England and Wales: ONS, Perception and experience of police and criminal justice system, year ending March 2026 (Tables 1, 2, 4, 10 and 21), and ONS, Crime in England and Wales annual supplementary tables, year ending March 2026 (Tables B1, B4 and B7). Survey estimates carry sampling error; several questions are asked of a quarter of the sample, and the subgroup ratings by ethnicity rest on small samples (235 Black Caribbean respondents). ONS advises that force-level estimates should be treated with extreme caution, so these measures are shown nationally only.</li>
+    <li>Confidence and fear figures are from the Crime Survey for England and Wales: ONS, Perception and experience of police and criminal justice system, year ending March 2026 (Tables 1, 2, 4, 10 and 21), and ONS, Crime in England and Wales annual supplementary tables, year ending March 2026 (Tables B1, B4 and B7). Survey estimates carry sampling error; several questions are asked of a quarter of the sample, and the subgroup ratings by ethnicity rest on small samples (235 Black Caribbean respondents). ONS advises that force-level estimates should be treated with extreme caution, so these measures are shown nationally only. The legitimacy panels use Tables 4 (components of confidence), 5 (by personal characteristics), 17 (victim satisfaction by quality of contact) and 20 (relating with the police, first asked in 2025/26); † marks groups with fewer than 300 respondents.</li>
     <li>Refreshed 2 October 2026: Crown Court and magistrates' open caseloads, cases open for a year or more and median case age (MoJ criminal court statistics, April to June 2026, which revised earlier quarters); charge volumes (MoJ Criminal Justice Statistics quarterly, March 2026); the children's remand outcome year (2024/25). The weekly capacity chart runs to 28 September 2026, the latest bulletin published at the time of the refresh.</li>
     <li>The release valve section uses HMPPS weekly population and capacity bulletins (2024 to 2026), the MoJ analytical report on progression model tranche release volumes (August 2026), SDS40 and ECSL transparency data, and the MoJ Annual Statement on Prison Capacity 2025. The capacity projections were made before the August 2026 exclusions and before the October start date. Policy details follow the House of Commons Library briefing CBP-10974.</li>
     <li>Figures first taken from the Prison Reform Trust Bromley Briefings were checked against MoJ tables: SDS40 releases, ethnicity of the prison population (12.0% Black, June 2026), children on remand (43.8% of the custody population in 2024/25, YJB Table 6.3) and remand outcomes (61.6% acquitted or given a non-custodial sentence in 2024/25, YJB Table 6.6) match; ECSL releases are 13,325 in the MoJ table rather than 13,395; the headroom statement is replaced by counts from the weekly bulletins; the 29% higher remand likelihood for Black defendants is from MoJ Ethnicity and the Criminal Justice System 2024, Table 5_17.</li>
@@ -763,6 +806,18 @@ function drawProj(){
 /* ---------- confidence and fear ---------- */
 const PERC=/*PERCEPTIONS*/null;
 function pser(k,breaks){const v={};Object.entries(PERC[k].values).forEach(([y,x])=>v[+y]=x);return{v,est:new Set(breaks||[])}}
+
+function drawLegitimacy(){
+  if(!PERC||!PERC.legitimacy)return;const L=PERC.legitimacy,lo=40,hi=90,x=v=>((v-lo)/(hi-lo)*100).toFixed(1)+'%';
+  document.getElementById('dumb').innerHTML=L.components.map(c=>{const a=c.y2016,b=c.y2026,d=(b-a);
+    return `<div class="row"><span>${c.label.charAt(0).toUpperCase()+c.label.slice(1)}</span><span class="trk" role="img" aria-label="${c.label}: ${a}% in 2015/16, ${b}% in 2025/26"><span class="seg" style="left:${x(Math.min(a,b))};width:calc(${x(Math.max(a,b))} - ${x(Math.min(a,b))})"></span><span class="d old" style="left:${x(a)}"></span><span class="d new" style="left:${x(b)}"></span></span><span class="chg">${d>0?'+':''}${d.toFixed(1)}</span></div>`}).join('')+`<div class="row"><span></span><span class="ax"><span>${lo}%</span><span>${(lo+hi)/2}%</span><span>${hi}%</span></span><span></span></div>`;
+  document.getElementById('pairs').innerHTML=L.contact.map(c=>`<div><div class="lab">${c.label}</div>
+    <div class="b"><span>Yes</span><span class="bar" style="width:${c.yes.pct}%;background:var(--s1)"></span><span class="v">${c.yes.pct}%</span></div>
+    <div class="b"><span>No</span><span class="bar" style="width:${c.no.pct}%;background:var(--muted)"></span><span class="v">${c.no.pct}%</span></div></div>`).join('')+`<p class="note">Bases: ${L.contact.map(c=>`${c.label.toLowerCase()} ${nf.format(c.yes.base)} yes, ${nf.format(c.no.base)} no`).join('; ')} incidents.</p>`;
+  document.getElementById('gtab').innerHTML='<thead><tr><th>Group</th><th>Overall confidence</th><th>Would treat fairly</th><th>Respondents</th></tr></thead><tbody>'+
+    L.groups.map(g=>`<tr><td>${g.label}${g.base<300?' †':''}</td><td><span class="bar" style="width:${(g.confidence/100*80).toFixed(0)}px"></span>${g.confidence.toFixed(1)}%</td><td>${g.fair.toFixed(1)}%</td><td>${nf.format(g.base)}</td></tr>`).join('')+'</tbody>';
+  document.getElementById('relating').innerHTML=L.relating.map(r=>`<div><b>${Math.round(r.pct)}%</b><span>${r.label.replace(/^I would /,'would ').replace(/^The police show/,'say the police show')}</span></div>`).join('');
+}
 function drawPerceptions(){
   if(!PERC)return;const pc=v=>v+'%',lab=v=>Math.round(v)+'%';
   mini('pcConf',pser('confidence',[2012]),{c:'--s1',max:100,step:25,tick:pc,lab,x0:2005,xt:[2006,2016,2026],aria:'Overall confidence in local police, peak 79% in 2015/16, 67% in 2025/26'});
@@ -831,7 +886,7 @@ function drawTable(){
 
 /* ---------- boot ---------- */
 buildMultiples();
-function renderAll(){renderMultiples();drawIndex();drawScatter();drawPipe();drawChildren();drawMap();drawHeadroom();drawTranches();drawProj();drawPerceptions();}
+function renderAll(){renderMultiples();drawIndex();drawScatter();drawPipe();drawChildren();drawMap();drawHeadroom();drawTranches();drawProj();drawPerceptions();drawLegitimacy();}
 renderAll();drawTable();setYear(2019);
 document.getElementById('yearRange').addEventListener('input',e=>setYear(+e.target.value));
 let rt;new ResizeObserver(()=>{clearTimeout(rt);rt=setTimeout(()=>{renderAll();setYear(YEAR)},120)}).observe(document.querySelector('.wrap'));

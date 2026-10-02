@@ -219,5 +219,263 @@
    "2026": 87.6
   },
   "source": "annualsupplementarytablesyemarch2026.xlsx, Table B7, row 9 (Males), columns B to AB"
+ },
+ "legitimacy": {
+  "components": [
+   {
+    "label": "good job",
+    "y2016": 62.9,
+    "y2020": 55.4,
+    "y2026": 49.1,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 4, row 9 (Police doing a good/excellent job), columns B to T"
+   },
+   {
+    "label": "can be relied on when needed",
+    "y2016": 60.9,
+    "y2020": 58.4,
+    "y2026": 52.7,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 4, row 10 (Police can be relied upon when needed), columns B to T"
+   },
+   {
+    "label": "would treat you with respect",
+    "y2016": 87.1,
+    "y2020": 87.2,
+    "y2026": 83.0,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 4, row 11 (Police would treat you with respect), columns B to T"
+   },
+   {
+    "label": "would treat you fairly",
+    "y2016": 67.3,
+    "y2020": 66.7,
+    "y2026": 60.2,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 4, row 12 (Police would treat you fairly), columns B to T"
+   },
+   {
+    "label": "understand local concerns",
+    "y2016": 71.4,
+    "y2020": 66.1,
+    "y2026": 60.8,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 4, row 13 (Police understand local concerns), columns B to T"
+   },
+   {
+    "label": "deal with local concerns",
+    "y2016": 61.7,
+    "y2020": 53.0,
+    "y2026": 48.2,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 4, row 14 (Police deal with local concerns), columns B to T"
+   },
+   {
+    "label": "can be trusted",
+    "y2016": 80.0,
+    "y2020": 80.3,
+    "y2026": 72.0,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 4, row 15 (Police in this area can be trusted [note 5]), columns L to T"
+   },
+   {
+    "label": "overall confidence",
+    "y2016": 78.7,
+    "y2020": 74.2,
+    "y2026": 67.1,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 4, row 16 (Overall confidence in local police), columns B to T"
+   }
+  ],
+  "groups": [
+   {
+    "label": "All adults",
+    "fair": 60.2,
+    "confidence": 67.1,
+    "base": 30897,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E9 and I9, base J9"
+   },
+   {
+    "label": "Men",
+    "fair": 63.3,
+    "confidence": 67.4,
+    "base": 14897,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E17 and I17, base J17"
+   },
+   {
+    "label": "Women",
+    "fair": 57.2,
+    "confidence": 66.9,
+    "base": 16000,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E25 and I25, base J25"
+   },
+   {
+    "label": "White",
+    "fair": 58.7,
+    "confidence": 66.2,
+    "base": 25640,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E33 and I33, base J33"
+   },
+   {
+    "label": "Asian",
+    "fair": 71.1,
+    "confidence": 73.3,
+    "base": 2806,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E43 and I43, base J43"
+   },
+   {
+    "label": "Black",
+    "fair": 59.0,
+    "confidence": 68.9,
+    "base": 1418,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E49 and I49, base J49"
+   },
+   {
+    "label": "Black African",
+    "fair": 61.7,
+    "confidence": 72.0,
+    "base": 1050,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E50 and I50, base J50"
+   },
+   {
+    "label": "Black Caribbean",
+    "fair": 45.7,
+    "confidence": 52.0,
+    "base": 249,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E51 and I51, base J51"
+   },
+   {
+    "label": "Mixed",
+    "fair": 50.0,
+    "confidence": 60.5,
+    "base": 517,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E38 and I38, base J38"
+   },
+   {
+    "label": "White and Black Caribbean",
+    "fair": 52.2,
+    "confidence": 58.1,
+    "base": 144,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E39 and I39, base J39"
+   },
+   {
+    "label": "Disabled",
+    "fair": 54.8,
+    "confidence": 61.2,
+    "base": 7724,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E83 and I83, base J83"
+   },
+   {
+    "label": "Not disabled",
+    "fair": 61.7,
+    "confidence": 68.8,
+    "base": 23019,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E84 and I84, base J84"
+   },
+   {
+    "label": "Heterosexual",
+    "fair": 60.9,
+    "confidence": 67.5,
+    "base": 26280,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E93 and I93, base J93"
+   },
+   {
+    "label": "Gay or lesbian",
+    "fair": 54.4,
+    "confidence": 65.1,
+    "base": 499,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E94 and I94, base J94"
+   },
+   {
+    "label": "Bisexual",
+    "fair": 46.5,
+    "confidence": 62.8,
+    "base": 585,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E95 and I95, base J95"
+   },
+   {
+    "label": "Victim of crime in the past year",
+    "fair": 54.9,
+    "confidence": 58.8,
+    "base": 5270,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E101 and I101, base J101"
+   },
+   {
+    "label": "Not a victim",
+    "fair": 61.3,
+    "confidence": 68.9,
+    "base": 25627,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E102 and I102, base J102"
+   },
+   {
+    "label": "Ever homeless",
+    "fair": 50.3,
+    "confidence": 53.2,
+    "base": 1684,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E103 and I103, base J103"
+   },
+   {
+    "label": "Care-experienced as a child",
+    "fair": 49.4,
+    "confidence": 56.6,
+    "base": 483,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 5, cell E105 and I105, base J105"
+   }
+  ],
+  "contact": [
+   {
+    "label": "Treated fairly",
+    "yes": {
+     "pct": 76.9,
+     "base": 766,
+     "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 17, cell C9"
+    },
+    "no": {
+     "pct": 11.9,
+     "base": 401,
+     "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 17, cell C10"
+    }
+   },
+   {
+    "label": "Treated with respect",
+    "yes": {
+     "pct": 63.7,
+     "base": 942,
+     "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 17, cell C11"
+    },
+    "no": {
+     "pct": 15.5,
+     "base": 216,
+     "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 17, cell C12"
+    }
+   },
+   {
+    "label": "Kept well informed",
+    "yes": {
+     "pct": 83.2,
+     "base": 409,
+     "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 17, cell C24"
+    },
+    "no": {
+     "pct": 22.9,
+     "base": 497,
+     "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 17, cell C25"
+    }
+   }
+  ],
+  "relating": [
+   {
+    "label": "I would follow an order given by the police",
+    "pct": 68.7,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 20, cell B8"
+   },
+   {
+    "label": "The police show good standards of behaviour",
+    "pct": 70.3,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 20, cell B9"
+   },
+   {
+    "label": "I would feel comfortable calling the police",
+    "pct": 91.2,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 20, cell B10"
+   },
+   {
+    "label": "I would be willing to help the police",
+    "pct": 92.0,
+    "source": "perceptionsofpolicetablesyemarch2026.xlsx, Table 20, cell B11"
+   }
+  ]
  }
 }
