@@ -11,7 +11,7 @@ An interactive, single-page data story about police numbers, crime, courts, pris
 - Local folder: `/Users/stangilmour/justice-pipeline`
 - Live site: https://justice.howpreventionworks.com (Cloudflare Pages project `justice-pipeline`, direct upload; DNS is a DNS-only CNAME `justice` pointing to `justice-pipeline.pages.dev`)
 - Repository: https://github.com/SGilr/justice-pipeline (public)
-- Claude artifact preview: https://claude.ai/artifact/CLWH5MU6MHpoLtvaJg8p5K (private). Republished on 3 October 2026 (version 13), so it matches the live site.
+- Claude artifact preview: https://claude.ai/artifact/CLWH5MU6MHpoLtvaJg8p5K (private). Republished on 3 October 2026 (version 14), so it matches the live site.
 
 ## Structure
 
@@ -105,6 +105,13 @@ Prison Reform Trust factfile figures have been checked against MoJ tables. These
 - Political context: Andy Burnham has been Prime Minister since 20 July 2026, and the Justice Secretary is Alex Norris.
 
 ## Change log
+
+### 3 October 2026: deployment evidence
+
+- The police and crime text now explains that a national headcount says nothing about where officers are or what they do. It cites hot spots policing (Braga et al., 2019, Campbell Systematic Reviews 15(3) e1046: a small but consistent fall in crime, with diffusion of benefits more likely than displacement) and problem-oriented policing (Hinkle et al., 2020, Campbell Systematic Reviews 16(2) e1089: a 33.8% reduction relative to comparison areas, no significant displacement), and links to the College of Policing Crime Reduction Toolkit.
+- Wording was checked against the review abstracts via Crossref. Harvard references were added to the sources list.
+- Not yet used: Hinkle et al. found limited impacts of problem-oriented policing on fear of crime, legitimacy and collective efficacy, which could inform the legitimacy reading.
+- Deployed (commit f61ce37); artifact republished as version 14.
 
 ### 3 October 2026: force map outlines
 
