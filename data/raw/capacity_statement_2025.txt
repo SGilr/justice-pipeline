@@ -1,0 +1,461 @@
+Annual Statement 
+on Prison Capacity: 2025
+January 2026
+CP 1494
+
+Ministry of Justice
+Department Name
+Annual Statement on Prison Capacity: 
+2025
+Presented to Parliament by the Secretary of State for Justice  
+by Command of His Majesty
+January 2026
+CP 1494
+© Crown copyright 2026
+This publication is licensed under the terms of the Open Government Licence v3.0 except where 
+otherwise stated. To view this licence, visit nationalarchives.gov.uk/doc/open-government-
+licence/version/3
+Where we have identified any third party copyright information you will need to obtain permission 
+from the copyright holders concerned.
+This publication is available at www.gov.uk/official-documents
+Any enquiries regarding this publication should be sent to us at general.queries@justice.gov.uk
+ISBN 978-1-5286-6194-2
+E03529077 01/26
+Printed on paper containing 40% recycled fibre content minimum.
+Printed in the UK by HH Associates Ltd. on behalf of the Controller of His Majesty’s Stationery Office.
+Contents
+Introduction 6
+Prison Capacity 8
+Prison Staffing 11
+Probation Capacity 12
+Annex: Demand and Supply assumptions 15
+Ministry of Justice – Annual Statement on Prison Capacity: 2025
+Introduction
+1. This Government is committed to setting the highest standards for transparency on prison 
+and probation capacity, ensuring clear, accurate and accessible information for the public. This 
+second prison capacity annual statement sets out updated prison population projections, the 
+department’s latest supply forecasts, an update on prison staffing and the latest outlook on 
+probation caseloads and workforce capacity.
+2. By publishing annually, this Government is reinforcing accountability for both current and future 
+Governments, ensuring that decisions on prison and probation demand and capacity are evidence 
+based and balanced. This statement fulfills that commitment for 2025. The Sentencing Act 2026 
+contains a measure to make it a statutory duty to prepare and lay before parliament an annual 
+report on prison capacity, fulfilling our promise made in the 2024 statement.
+Context
+3. As Dame Anne Owers’ Prison Capacity Review1 made clear, the prison estate has been under 
+sustained pressure for over a decade. Aside from a brief two-week period at the start of the 
+COVID-19 pandemic, the last time the total prison estate occupancy was under 95% was more 
+than 12 years ago. At one point in 2024, there were fewer than 100 available spaces in the adult 
+male estate.
+1 I ndependent Prison Capacity Review: final report  
+(www.gov.uk/government/publications/independent-prison-capacity-review-final-report )
+4. In response to this crisis, in September 2024, the Government acted swiftly – changing the 
+automatic release point for Standard Determinate Sentences for some offences2 from 50% to 
+40% to prevent gridlock in the criminal justice system. We also published our 10-Year Prison 
+Capacity Strategy in December 2024,3 setting out our plans to build prisons at an exceptional rate. 
+This represents the largest expansion of the estate since the Victorian era, with up to £7 billion 
+committed between 2024 to 2025 and 2029 to 2030 towards the delivery of 14,000 new prison 
+places by 2031. We have delivered 2,900 of those places already.
+2 E xcluding sex offences, terror offences, serious violent offences of four years or more as well as certain 
+domestic-abuse related offences.
+3 1 0-year Prison Capacity Strategy  
+(www.gov.uk/government/publications/10-year-prison-capacity - strategy)
+5. However, without further action, the prison population is projected to increase by an average of 
+3,000 annually over the coming years, exceeding the number of prison places that will be available 
+despite the increase in supply. Without intervention, there would be catastrophic consequences 
+for the criminal justice system. If our prisons overflow, courts would be forced to suspend trials, 
+police would have to stop making arrests and the system’s ability to uphold justice would be 
+compromised. We have therefore been clear that our prison build programme alone will not be 
+sufficient. Whole system reform of the criminal justice system is essential so that it can better 
+serve the public.
+6 Ministry of Justice – Annual Statement on Prison Capacity: 2025
+Reforms
+6. That is why we launched the Independent Sentencing Review in October 2024, chaired by the 
+former Lord Chancellor, The Rt Hon David Gauke, to place the prison system on a more sustainable 
+footing going forward. The Sentencing Act 2026, that achieved Royal Assent on 22 January 2026, 
+takes forward many of the recommendations from the review that require legislation and 
+introduces other key reforms, including;
+• a presumption to suspend short custodial sentences of 12 months or less,
+• a new ‘earned progression model’ for standard determinate sentences,
+• a judicial finding of domestic abuse, and
+• the expansion of tough community-based sentences.
+7. These reforms are expected to reduce the prison population by around 7,500 by February 2028, 
+while keeping the public safe and improving outcomes for victims. The Sentencing Act 2026 
+also includes a measure to enable earlier removal of Foreign National Offenders from prison; 
+the potential impact of this is not yet included in these prison place projections.
+8. Probation and community services will also receive up to £700 million additional funding by the 
+financial year 2028 to 2029, compared to the financial year 2025 to 2026, to enable the delivery 
+of transformative reforms to sentencing based on the recommendations of the Independent 
+Sentencing Review.
+9. We have also commissioned Sir Brian Leveson to conduct an Independent Review of the Criminal 
+Courts, with the mandate to propose bold and ambitious reforms to improve timeliness in 
+the courts and deliver swifter justice for victims. The first part of the Review was published in 
+July 2025. The second part, focused on efficiency, is expected to be published early this year. The 
+projections in this statement do not yet incorporate the impacts of the Leveson Review reforms 
+on the prison population. The impact of these reforms will be set out in the Impact Assessment 
+published alongside the introduction of the relevant legislation, and those quantified effects will 
+be incorporated into future prison demand projections to ensure consistency.
+Outlook
+10. When the estimated impact of the Sentencing Act 2026 measures are factored in, our central 
+projection for the total adult male estate indicates that there is no longer a chronic deficit 
+extending into the next decade and supply is expected to meet demand – a significant step 
+forward. However, even with these reforms, the prison estate remains under considerable pressure 
+and will require ongoing investment, especially if prison population growth trends towards the 
+higher end of the projections.
+11. The criminal justice system cannot operate in isolation. To manage demand, it is essential that 
+the Government takes a unified approach to consider the downstream impact of wider policies 
+on courts, prisons and probation. This collective effort will help mitigate unintended pressures on 
+the system and ensure the reforms deliver their intended impact.
+12. This statement reflects our commitment to transparency and accountability across the criminal 
+justice system. As we lift the prison system out of this crisis, it signals a decisive shift towards 
+sustained long-term improvement: raising standards to keep the public safe, tackling reoffending 
+and prioritising rehabilitation. Our actions will increase capacity, strengthen accountability and 
+mark a turning point in improving prison performance.
+Ministry of Justice – Annual Statement on Prison Capacity: 2025 7
+Prison Capacity
+Adult Prison Population
+13. As of 30 September 2025, the adult prison population was 87,465. 69,398 were sentenced 
+prisoners, 17,700 were on remand, and 367 were non-criminal.
+14. As of 29 September 2025, the population of the adult prison estate was 87,021, comprising 83,517 
+in the adult male estate and 3,504 in the female estate. Usable operational capacity was 88,931.
+Demand Projections
+15. When accounting for the Sentencing Act 2026 measures, the adult prison population is projected 
+to rise to between 92,400 and 100,000 by November 2032, with a central estimate of 95,900. 
+This projected increase is driven by several factors including: continued growth in police charging 
+and prosecutorial activity; increased flows into the courts; and rising sentence lengths. These 
+increases are partially offset by changes in sentencing policy as part of the Sentencing Act 2026.
+Figure 1: Future demand: impact of the Sentencing Act 2026 measures on the adult prison estate4
+4 C hart presents data for the last week of the month from November 2025 to November 2032
+8 Ministry of Justice – Annual Statement on Prison Capacity: 2025
+Notes on the graph
+Figure 1 presents the estimated impact of measures in the Sentencing Act 2026, which the Government 
+introduced to Parliament on 2 September 2025, following the publication of the Independent Sentencing 
+Review in May 2025. The shaded area represents the high to low range of the demand projections, 
+accounting for these measures, with the solid blue line representing the central scenario. The dashed 
+blue line represents the central scenario of the demand projections without these measures. The range 
+and central estimates come from three plausible scenarios for future population growth, although it is 
+possible that the reality may lie outside of this range.
+Supply projections
+16. The supply of prison places in the adult male and women’s estate is expected to increase to 
+approximately 98,900 by November 2032, driven largely by strong progress on the prison build 
+programme. This expansion is essential to meet projected demand and maintain a safe and 
+secure estate.
+17. Since July 2024, c.2,900 additional prison places have been delivered, including the opening 
+of HMP Millsike (c.1,500 places) in March 2025 and a new houseblock at HMP Fosse Way 
+(c.250 places) in December 2025. By the end of 2025, c.5,000 prison places were under 
+construction, including new houseblocks at existing sites and a new prison in Leicestershire 
+(HMP Welland Oaks, c.1,700 places) scheduled to open in 2029. Major infrastructure projects 
+are always subject to external factors that could impact delivery timelines, however, based on 
+the latest assessment of our delivery plans, the Government has maintained the existing target 
+of 14,000 new places by 2031.
+18. Future prison build delivery timelines will be streamlined as a result of the planning reforms 
+introduced by this Government, which enable faster and more consistent delivery of prison 
+infrastructure, including Approved Premises, which were previously challenging to secure through 
+local planning authorities.5
+5 T he Crown Development Route, introduced in May enables applications for nationally important 
+developments, such as new prisons, to be submitted directly to the Planning Inspectorate, with final 
+decisions made by the Secretary of State for Housing, Communities and Local Government. The revised 
+National Planning Policy Framework (published in December 2024) further strengthens this approach and 
+makes clear that significant weight should be placed on the importance of new, expanded or upgraded 
+public service infrastructure when considering proposals.
+19. There are also a number of further initiatives in place (CRED and Q-branch) which are having a 
+significant positive impact on prison conditions. These initiatives emphasise our commitment to 
+enhancing prisoner rehabilitation and reducing reoffending rates, by empowering prisoners to build 
+new skills by undertaking tasks such as painting and decorating, floor laying and decency work in 
+staff and prisoner areas in prisons.
+Challenges
+20. While progress has been strong, the estate faces ongoing pressures. The prison builds are complex 
+capital projects, which are being delivered within challenging market conditions. This Government 
+will push for earlier delivery of places wherever possible, however, there will always be events that 
+cannot be planned for which may impact delivery. Additionally, planned maintenance mean there 
+will be some fluctuations in the supply line over the coming years.
+Ministry of Justice – Annual Statement on Prison Capacity: 2025 9
+21. This Government is committed to ensuring that we never again find ourselves with more prisoners 
+than space in prisons, and this also means prioritising maintenance, renewal and potential 
+expansion of the estate. The Ministry of Justice currently does not own any parcels of land that 
+would be suitable for new prisons beyond those already planned. No new land has been acquired 
+in over 10 years, which has meant there are now no new uncommitted sites in our pipeline.
+22. However, this Government has an ambition to secure new land in readiness should further prison 
+builds be required in future. Buying new land could allow us to capitalise on planning reforms and 
+to start to build new prisons faster. This approach would also allow us to close inefficient, high-cost 
+sites that no longer meet operational requirements.
+Capacity Gaps
+23. When the estimated impact of the Sentencing Act 2026 measures are factored in, supply is 
+expected to keep pace with demand growth in the central scenario.6 Without the Sentencing Act 
+2026 measures, demand is expected to exceed supply by June 2026 under the central scenario. 
+This assessment is subject to risks, which are covered in Annex A.
+6 T his assessment applies to the overall adult estate. Specific challenges may exist in certain parts of the 
+estate requiring further focus.
+Figure 2: Future demand and supply: adult prison estate including estimated impacts of the 
+Sentencing Act 2026 measures
+10 Ministry of Justice – Annual Statement on Prison Capacity: 2025
+Notes on the graph
+Figure 2 presents the capacity outlook following the impact of the Sentencing Act 2026 measures. The 
+dark orange continuous line represents the projected supply. The blue shaded area represents the high 
+to low range of the prison demand projections, and the dark blue line represents the central demand 
+projection, accounting for the measures discussed in Annex A. The dashed blue line represents the central 
+scenario of the demand projections without these measures.
+Prison Staffing
+24. Skilled and sufficient frontline staffing is essential to delivering safe, secure and rehabilitative prison 
+regimes. This Government is committed to retaining and building experienced frontline staff to 
+deliver quality outcomes.
+Current Staffing Levels
+25. The target staffing level reflects the number of staff required to run an optimal regime in 
+each prison, which is higher than the minimum needed for a prison to operate safely. As of 
+30 September 2025, staffing levels stood at 95% of the national target7 for Band 3-5 Prison 
+Officers8 across prison establishments and youth custody sites.9 This position represents a 
+decrease of 1,015 Full Time Equivalent (FTE) (4.3%) since the end of September 2024. As set 
+out below, we are taking steps to bolster the national staffing position through recruitment and 
+retention interventions and have seen an improving national picture on retention – as of the end of 
+September 2025, the resignation rate for officers was 7.0%, which is the lowest level for four years.
+7 This is based on hours adjusted Full time Equivalent (FTE).
+8 Band 3-5 prison officers comprise our key operational grades in prisons, as those who have the most direct 
+role in supervising and managing prisoners on a daily basis.
+9 HM Prison and Probation Service workforce statistics – GOV.UK  
+(www.gov.uk/government/collections/hm-prison-probation-service-workforce-statistics )
+R
+ecruitment and Retention
+26. Recruitment efforts continue at all sites with current or projected vacancies, supported by targeted 
+interventions where local recruitment and retention challenges are most acute. In the Long Term 
+High Security Estate (LTHSE), this includes targeted campaigns to bolster applicant pipelines and 
+support to encourage former officers to return to the service.
+27. All prison expansion projects are factored into staffing plans to ensure the timely recruitment 
+and development of experience needed to maintain safe and secure regimes. His Majesty’s Prison 
+and Probation Service and privately managed prison operators continue to share best practice to 
+improve recruitment and retention.
+Ministry of Justice – Annual Statement on Prison Capacity: 2025 11
+Probation Capacity
+Role and Demand
+28. The Probation Service does vital work supervising offenders released from prison on licence, 
+including undertaking risk assessment, sentence planning and resettlement activity prior to their 
+release from prison. It also supervises offenders on community orders or suspended sentence 
+orders. It plays a central role in managing risk, supporting rehabilitation and reducing reoffending, 
+and is critical to the safe functioning of the criminal justice system – keeping victims, communities 
+and the public safe.
+29. As of 30 June 2025, 244,209 people were under probation supervision:
+1. 61,073 had community orders
+2. 48,989 had suspended sentence orders with requirements
+3. 76,794 were being supported pre-release
+4. 63,638 were under post-release supervision
+30. Of the total population, 91% (221,914) were men and 9% (22,295) were women.
+31. Whilst overall probation caseloads have remained broadly stable over the past 10 to 15 years, the 
+nature and complexity of cases has changed significantly, with a higher proportion now assessed 
+as high-risk. This reflects changes in offending patterns, longer sentences, and more complex 
+needs relating to mental health and substance misuse. Between June 2019 and April 2024, there 
+was a 9-percentage point increase in identified mental health need in the community caseload 
+(from 52% to 61%).10
+10 S ource: Identified needs of offenders, custody and community, 31 October 2024 – GOV.UK  
+(www.gov.uk/government/statistics/identified-offender-needs-custody-and-community-
+31-o ctober-2024/identified-needs-of-offenders-custody-and-community-31-october-2024 )
+ When an offender’s risk increases, increased contact and intervention is 
+often necessary, thereby increasing workload intensity for local Probation Delivery Units (PDUs) 
+and frontline staff, even where headline caseload volumes have remained broadly stable. This can 
+include more intensive supervision, additional licence conditions, greater use of recall, and closer 
+collaboration through Multi-Agency Public Protection Arrangements (MAPPA).
+Workforce Capacity
+32. Over the same period that the caseload has become more complex, the service has also 
+undergone two major reorganisations. In 2014, Transforming Rehabilitation reforms divided 
+probation delivery into two parts: private sector-led Community Rehabilitation Companies (CRCs) 
+and the National Probation Service (NPS). The National Audit Office (NAO) subsequently reported 
+that these reforms had achieved poor value for money for the taxpayer. In June 2021, these 
+changes were reversed, and the service was reunified with all sentence management carried out 
+by the Probation Service.
+33. The legacy of these changes was a depleted workforce – both in terms of headcount and experience 
+– which reduced organisational resilience and placed sustained pressure on remaining staff.
+34. Since reunification, sustained action has been taken to rebuild the Probation Service. The total 
+workforce has grown by 22% since reunification in June 2021 – from 17,685 to 21,527 FTE as at 
+September 2025 (based on staff in probation grades). In that period, the number of Probation 
+Officers in post – the crucial staff grade responsible for supervising the highest risk offenders – 
+has increased by 1,024 FTE (a 23% increase).
+12 Ministry of Justice – Annual Statement on Prison Capacity: 2025
+35. As of 30 September 2025, the Probation Service had:
+1. 5,559 FTE Probation Officers in post, against a target staffing of 7,114 FTE (giving a 78% 
+staffing level). Staffing levels vary across Regional Probation Services (excluding Approved 
+Premises), with staffing ranging from 67% to 90% of target.
+2. 1,764 FTE Trainee Probation Officers in post.
+36. The Probation Service also exceeded the 2024 to 2025 trainee Probation Officer recruitment 
+target of 1,000, successfully onboarding 1,057 trainees.
+37. However, whilst promising, this workforce growth has occurred against a low baseline and has not 
+yet fully offset increased workload pressure or historic deficits in staffing.
+38. In this context, steps have therefore also been taken to ensure probation staff time is spent where 
+it can have the greatest impact through the ‘Reset’ and ‘Impact’ initiatives. These initiatives have 
+helped prioritise activity, but they do not remove the underlying pressure in the service. 
+39. As referenced in a recent NAO report, the sentence management capacity gap is projected to be 
+3,150 FTE for 2026 to 2027 (across all grades). This estimate takes account of expected growth 
+in caseloads, latest sentence management activity timings and planned recruitment.
+40. Whilst there are early signs of stabilisation in key areas of performance as staffing levels begin 
+to recover, further sustained action will be required to close the remaining capacity gap. This will 
+be particularly important as the impacts of sentencing changes are expected to become more 
+apparent by 2027/28, and ahead of any further impacts arising from the Independent Review of 
+Criminal Courts. Ensuring sufficient capacity will be essential for the service to consistently meet 
+demand and improve performance.
+Reform and Outlook
+41. Most recently, a number of measures to continue to rebuild the Probation Service and ensure 
+sufficient capacity have been announced, reflecting the Government’s commitment to a strong, 
+professional service at the heart of the criminal justice system.
+42. The Our Future Probation Service (OFPS) programme will be the central delivery vehicle for these, 
+and further, measures – with a core objective of reducing workload pressure by up to 25% by 
+March 2027.
+43. As noted earlier in the statement, this involves significant investment in the service – with 
+up to £700 million extra funding for probation and community services by 2028 to 2029, 
+a 45% increase on current funding. This will deliver the reforms in the Sentencing Act 2026, 
+support workforce growth, expanded use of electronic monitoring, and continued investment 
+in accommodation.
+44. For the 2025 to 2026 financial year, at least 1,300 Trainee Probation Officers will be onboarded 
+to strengthen future staffing levels. By 30 September 2027, Probation Officer staffing levels are 
+expected to rise to approximately 6,500 FTE, factoring in expected trainee graduates, forecast 
+attrition and promotions. While this will represent a notable increase, a projected deficit against 
+target staffing is likely to remain. There is also an inherent time lag before new Probation Officers 
+can carry full, complex caseloads independently, meaning that the full benefit of sustained 
+recruitment will take some time to materialise on the frontline.
+Ministry of Justice – Annual Statement on Prison Capacity: 2025 13
+45. Alongside workforce growth, we are also driving digital transformation across the Probation 
+Service to reduce reoffending and protect the public. More than 30 digital, data and AI initiatives 
+are underway that collectively reduce admin burden for frontline staff. Justice Transcribe – an 
+AI tool that transcribes and summarises supervision meetings with offenders – is being rolled 
+out across probation and has reduced time spent on note-taking by around 50%, with strong 
+user satisfaction.
+46. Better use of digital and data is planned at every step of the probation journey. This will free 
+up staff, support wellbeing and improve performance by having reliable integrated access to 
+information that will unlock insights and understanding. As with action across the prison estate, 
+these reforms will drive improved performance, strengthen public protection, support staff and 
+deliver better outcomes for victims, offenders and communities.
+47. Additional measures may be required in the future to continue to close the projected staffing gap, 
+as target staffing levels are reviewed to reflect changing demands on probation services. Given the 
+ongoing challenges in the prison estate, the impact of the Sentencing Act 2026, and reforms 
+to make the service more efficient, forecast targets are likely to evolve as the system responds to 
+changing demand, operational pressures and wider system conditions. The Government remains 
+committed to reporting on probation capacity issues transparently, as in this statement, as an 
+essential part of understanding pressures across the criminal justice system. In addition to this 
+annual statement, detailed quarterly statistics about the prison and probation workforce, and 
+probation caseload are published on a quarterly basis and can be found on GOV.UK.
+Figure 3: Forecast Probation Officer Staff in Post (FTE)
+ 
+N.B. Figures have been rounded to the nearest 100 FTE
+14 Ministry of Justice – Annual Statement on Prison Capacity: 2025
+Annex: Demand and Supply Assumptions
+Annex A: Demand Projections
+This annex sets out the assumptions and methodology underpinning the prison population projections 
+to  November 2032, including the estimated impact of the Sentencing Act 2026 measures.
+Demand Methodology
+The underlying demand projections are based on the population projections in the Accredited Official 
+Statistics which are published: Prison Population Projections: 2025 to 2030 – GOV.UK11 combined 
+with the estimated impact of the Sentencing Act 2026 measures, as set out in the Bill’s impact 
+Assessment as published on introduction available at: https://assets.publishing.service.gov.uk/
+media/68b6a680b0a373a01819fd02/SIGNED_SR_Bill_IA_1_Sept_2025_FINAL__SIGNED_.
+pdf
+11 www.gov.uk/government/statistics/prison-population-projections-2025-to-2030/prison-
+population-projections-2025-to-2030--2
+For these projections, the Ministry of Justice (MoJ), the Home Office and the Crown Prosecution Service 
+(CPS) have agreed scenarios reflecting potential upstream demand for prison places. These scenarios 
+are presented as a range to account for uncertainty, but they do not capture the full range of possible 
+outcomes.
+Published population projections cover the period up to March 2030. The annual statement covers a 
+longer horizon than the demand projection publication to provide transparency on the long-term prison 
+capacity outlook. To indicate a possible trajectory for the prison population beyond five years, the levels 
+of demand entering the criminal justice system seen over the final years of the published projections are 
+assumed to continue. Key assumptions such as the volume of demand flowing into the criminal justice 
+system, court capacity and sentencing practices are held constant at March 2030 levels to extrapolate 
+the projections to cover a longer period to November 2032. This longer time-period carries more 
+uncertainty, is experimental and provides an illustrative projection only.
+The estimates in this annual statement include the package of sentencing reforms proposed within 
+the Sentencing Act 2026. These reforms were not included in the Accredited Official Statistics as 
+they had not yet received final parliamentary approval at the time of modelling. Further detail on the 
+estimated impact of the Sentencing Act 2026 is available at: www.gov.uk/government/publications/
+sentencing-bill-2025
+As the impact of sentencing reform varies with the size of the prison population, our Sentencing 
+Act 2026 estimates are different in each of the demand scenarios. We reflect this by scaling the 
+published central Sentencing Act 2026 impacts12 according to the differences in the size of the relevant 
+sub-po pulations from each of our demand scenarios. For example, if remand levels are 5% lower in our 
+low-demand scenario, we assume that the impact of Sentencing Act 2026 measures on the remand 
+population will also be 5% lower under that scenario.
+12 www.gov.uk/government/publications/sentencing-bill-2025
+These projections are highly uncertain and subject to change. The true impacts may substantially differ 
+depending on police and prosecutorial activity, the behaviour of offenders, capacity of the courts and 
+decisions of the judiciary, and implementation timescales.
+Ministry of Justice – Annual Statement on Prison Capacity: 2025 15
+Annex B: Supply projection Assumptions
+The supply projections used in this publication were produced in November 2025. They cover the period 
+to November 2032.
+Assumptions and Methodology
+The modelling approach is broadly unchanged since the previous annual statement. Updates to data 
+inputs have informed some minor changes to planning assumptions. To estimate the capacity of prisons 
+in the total adult estate over the coming years, the following approach and assumptions were used:
+• Project the expansion of the estate through new prisons, houseblocks and refurbishments. 
+These are projects MoJ has a high confidence in delivering, typically with an Outline 
+Business Case or equivalent at the time of projections. Reasonable contingency is applied 
+to delivery timescales.
+• Project the number of places required to be offline for maintenance work through the 
+maintenance requirements of the estate, including places for fire safety work and security 
+improvements to the Long-Term High Security Estate (LTHSE).
+• Use historical averages and the latest operational data to inform our assumption about how 
+many places are permanently lost due to dilapidation.
+• Deduct an ‘operating margin’ to account for unusable places on any given day. For example, 
+some prisons are designed for specific types of prisoners so not all spaces can be utilised if 
+available spaces do not align with the types of prisoners in the estate. The operating margin 
+is regularly reviewed to ensure it is suitable for maintaining a safe regime.
+Risks
+Delivery timescales for planned expansion projects are based on the latest information but are subject 
+to revision due to uncertainties in external factors, like planning permission and site-specific complexities 
+(e.g. power and ground works). As with all major infrastructure projects, future prison supply depends 
+on funding from future Spending Review settlements; with funding required to complete delivery of the 
+14,000 places and for continued maintenance of the prison estate.
+The dilapidation assumption is based on historic averages and applied as an average expected loss per 
+year to future projections. The reality is likely to differ from this as cell losses will not occur smoothly 
+through the year, and we would expect some years to have below average losses and others above 
+average.
+The operating margin is based on the latest operational data at the time it is set. With changes in 
+composition of the estate, the usability of some cell types may change, leading to different operating 
+margins being set in the future.
+The supply line does not reflect the risk of unpredictable major shocks to supply, such as places lost to 
+disorder or temporary losses for other operational reasons.
+16 Ministry of Justice – Annual Statement on Prison Capacity: 2025
+Figure 4: Prison Supply and Demand Projections including estimated Sentencing Act 2026 
+impacts (figures rounded to the nearest 100)
+Date
+Total Supply 
+(Adult Estate)
+Total Demand  
+(Adult Estate including recently announced measures)
+Low Scenario Central Scenario High Scenario
+May 2026 89,900 88,600 88,800 89,200 
+November 2026 89,300 87,60 0 87 ,900 88,900 
+May 2027 88,300 85,800 86,300 87,60 0 
+November 2027 88,300 86,000 87, 20 0 88,400 
+May 2028 89,800 87, 20 0 88,600 90,200 
+November 2028 90,900 88,000 89,700 91,300 
+May 2029 93,200 89,200 91,000 93,100 
+November 2029 95,100 89,500 91,700 94,300 
+May 2030 95,900 90,500  92,600 95,700 
+November 2030 96,000 90,700 93,300 96,400 
+May 2031 96,400 91,600  94,200 97,50 0 
+November 2031 96,900 91,600 94,700 98,300 
+May 2032 98,300 92,200 95,300 99,100 
+November 2032 98,900 92,400 95,900 100,000 
+Ministry of Justice – Annual Statement on Prison Capacity: 2025 17
+Figure 5: Prison Supply and Demand Projections excluding estimated Sentencing Act 2026 
+impacts (figures rounded to the nearest 100)
+Date
+Total Supply 
+(Adult Estate)
+Total Demand  
+(Adult Estate including recently announced measures)
+Low Scenario Central Scenario High Scenario
+May 2026 89,900 89,500 89,700 90,200
+November 2026 89,300 91,300 91,800 92,900
+May 2027 88,300 93,000 93,700 95,100
+November 2027 88,300 93,500 94,900 96,300
+May 2028 89,800 94,800 96,400 98,200
+November 2028 90,900 95,600 97,60 0 99,300
+May 2029 93,200 96,800 98,900 101,100
+November 2029 95,100 97, 20 0 99,600 102,300
+May 2030 95,900 98,200 100,600 103,800
+November 2030 96,000 98,500 101,300 104,500
+May 2031 96,400 99,400 102,100 105,700
+November 2031 96,900 99,400 102,700 106,400
+May 2032 98,300 100,000 103,300 107, 20 0
+November 2032 98,900 100,200 103,900 108,200
+18 Ministry of Justice – Annual Statement on Prison Capacity: 2025
+
+E03529077
+ISBN 978-1-5286-6194-2

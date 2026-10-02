@@ -7,8 +7,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 src = (ROOT / "src" / "page.html").read_text()
 forces = (ROOT / "data" / "forces.json").read_text()
-body = src.replace("/*FORCES*/null", forces)
-assert body != src, "FORCES placeholder not found"
+weekly = (ROOT / "data" / "weekly_capacity.json").read_text()
+body = src.replace("/*FORCES*/null", forces).replace("/*WEEKLY*/null", weekly.replace("\n", ""))
+assert "/*FORCES*/" not in body and "/*WEEKLY*/" not in body, "placeholder not found"
 (ROOT / "justice-pipeline.html").write_text(body)
 title = "The Justice Pipeline"
 desc = "Police numbers, crime, courts, prisons and children in custody in England and Wales, 2000 to 2026, on one interactive timeline with force-level maps."

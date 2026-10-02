@@ -121,6 +121,14 @@ select{font:inherit;font-size:.85rem;background:var(--surface);color:var(--ink);
 .rank b{font-family:var(--mono);font-weight:500;font-size:.78rem;text-align:right}
 .rank .rb{height:8px;border-radius:0 4px 4px 0;background:var(--s1)}
 .rank .na{color:var(--muted)}
+.twocol{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}
+.plist{margin:0;padding-left:1.1em;display:grid;gap:8px;font-size:.9rem;color:var(--ink-2)}
+.plist b{color:var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:0 20px}
+.facts div{padding-block:10px;border-top:1px solid var(--hair)}
+.facts b{font-family:var(--display);font-size:1.6rem;font-weight:600;display:block;line-height:1.1}
+.facts span{font-size:.84rem;color:var(--ink-2)}
+.mech{border-left:3px solid var(--s4);padding:4px 0 4px 14px;display:grid;gap:8px}
 details{background:var(--surface);border:1px solid var(--hair);border-radius:6px;padding:12px 16px}
 summary{cursor:pointer;font-weight:700}
 .tablewrap{overflow-x:auto;margin-top:12px}
@@ -149,7 +157,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
     <div><b>235</b><span>officers per 100,000 residents in 2026, against 258 in 2010 and 207 in 2018</span></div>
     <div><b>8.5%</b><span>of recorded crimes ended in a charge or summons in 2025/26, against 15.5% in 2014/15</span></div>
     <div><b>80,061</b><span>open Crown Court cases, March 2026; more than double the 2019 level</span></div>
-    <div><b>1 in 5</b><span>people in prison are on remand, the highest share in at least 50 years</span></div>
+    <div><b>18%</b><span>of people in prison were on remand in June 2026, against 11% in 2019; the peak was 20% in 2025</span></div>
     <div><b>−86%</b><span>children in custody since 2007/08; half now from ethnic minority backgrounds</span></div>
   </div>
 </header>
@@ -179,7 +187,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
   <div class="lede">
     <span class="eyebrow">02 · Relative change</span>
     <h2>What grew, what shrank, from the same starting line</h2>
-    <p>Every series rebased to 100 in a chosen year. Police funding fell by 13% in real terms between 2010/11 and 2014/15 and recovered from 2019. From 2019 the police uplift added about a fifth to officer numbers. The Crown Court caseload and the remand population roughly doubled over the same period, while survey crime fell.</p>
+    <p>Every series rebased to 100 in a chosen year. Police funding fell by 13% in real terms between 2010/11 and 2014/15 and recovered from 2019. From 2019 the police uplift added about a fifth to officer numbers. Over the same period the Crown Court caseload doubled and the remand population rose by two thirds, while survey crime fell.</p>
   </div>
   <div class="controls">
     <label for="baseSel" class="eyebrow">Base year</label>
@@ -204,21 +212,63 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
   <div class="lede">
     <span class="eyebrow">04 · Capacity and strain</span>
     <h2>The pipeline since the uplift began</h2>
-    <p>Change from 2019 to the latest figure at each stage. The tick marks the 2019 level; the bar shows where each stage is now. Recorded crime is flat over the period, so the strain is not simply more crime. Courts that had cut sitting days in 2018/19 then lost a year to the pandemic and months to the 2022 barristers' strike; more officers and a recovering charge rate sent more cases in. Cases waited longer, more defendants were held on remand, and the prison estate ran out of room.</p>
+    <p>Change from 2019 to the latest figure at each stage. The tick marks the 2019 level; the bar shows where each stage is now. Recorded crime is flat over the period, so the strain is not simply more crime. Courts that had cut sitting days in 2018/19 then lost a year to the pandemic and months to the 2022 barristers' strike; more officers and a recovering charge rate sent more cases in. Cases waited longer, more defendants were held on remand, and the prison estate ran out of room. Remand has eased since mid-2025, falling 13% in the year to June 2026.</p>
   </div>
   <div class="pipe" id="pipe"></div>
   <div class="valve">
-    <div><b>38,042</b><span>people released early under SDS40 (40% release point) from September 2024</span></div>
-    <div><b>13,395</b><span>released early under End of Custody Supervised Licence, October 2023 to September 2024</span></div>
-    <div><b>&lt; 1,500</b><span>spare prison places for seven months of 2024 and half of 2025</span></div>
+    <div><b>70,065</b><span>people released under SDS40 (the 40% release point) between September 2024 and March 2026</span></div>
+    <div><b>13,325</b><span>released early under End of Custody Supervised Licence, October 2023 to September 2024</span></div>
+    <div><b>27 of 52</b><span>weeks in 2024 with fewer than 1,500 spare prison places (16 of 48 in 2025); the low was 839 in March 2024</span></div>
     <div><b>41 days</b><span>median time from offence to charge in 2024/25, up from 14 days in 2015/16</span></div>
     <div><b>22,124</b><span>Crown Court cases open for a year or more in March 2026, against 5,209 in early 2016</span></div>
   </div>
 </section>
 
+<section id="release">
+  <div class="lede">
+    <span class="eyebrow">05 · The release valve</span>
+    <h2>Early release, again: the progression model from 1 October 2026</h2>
+    <p>From 1 October 2026 most people serving a standard determinate sentence are released automatically at the one-third point, rather than at 40% (the SDS40 change of September 2024) or halfway. Some serving four years or more for more serious offences move from two thirds to half. After a review ordered by the new Prime Minister, Andy Burnham, the government excluded rape, certain child sexual offences and grooming offences, unlawful killing and historic indecent assault. Extended and life sentences are unaffected. Existing prisoners are being released in ten tranches by sentence length between October 2026 and June 2027.</p>
+  </div>
+  <div class="facts">
+    <div><b>about 700</b><span>released on 1 October, the first of ten tranches (MoJ estimate)</span></div>
+    <div><b>about 4,500</b><span>first-day releases across all ten tranches to June 2027, roughly one normal month of releases</span></div>
+    <div><b>about 1,400</b><span>who would have been released on a first day but are now excluded by the August 2026 offence exclusions</span></div>
+    <div><b>70,065</b><span>people released under SDS40 between September 2024 and March 2026</span></div>
+    <div><b>1,556</b><span>spare prison places on 28 September 2026, three days before the first tranche</span></div>
+  </div>
+  <div class="card"><h3>Spare places in the adult and youth prison estate, each week</h3><p class="sub">Useable operational capacity minus population, HMPPS weekly bulletins, January 2024 to September 2026</p><div class="chart" id="headChart"></div></div>
+  <div class="twocol">
+    <div class="card"><h3>First-day releases by tranche</h3><p class="sub">MoJ modelled estimates, rounded to the nearest 50. Grey shows people now kept in by the offence exclusions</p><div class="chart" id="trancheChart"></div>
+      <div class="legend" style="margin-top:6px"><span><i class="sw" style="background:var(--accent);height:10px"></i>Released on day one</span><span><i class="sw" style="background:var(--muted);height:10px"></i>Now excluded</span></div></div>
+    <div class="card mech"><h3>Why the relief is likely to be short-lived</h3>
+      <p>Moving the release point is a one-off cut to the stock of prisoners: everyone already past the new point leaves together, and from then on people simply leave a little earlier. It does nothing to the inflow. Remands, charges and sentence lengths keep pushing the population up, and the Ministry of Justice expects demand to grow by about 3,000 places a year without further action.</p>
+      <p>The Ministry's own January 2026 projections show the pattern. With the Sentencing Act, central demand dips to about 86,300 in May 2027 and then climbs again by around 1,500 to 2,000 places a year, reaching 95,900 by November 2032. In the high scenario demand exceeds supply in November 2027, through 2028 and again from November 2030. Those projections also predate the August exclusions, under which about 1,400 people who would have left on a first day stay in custody, so the real saving will be smaller.</p>
+      <p>SDS40 followed the same course: headroom rose to about 2,800 places after the October 2024 tranche and was back below 1,500 within four months.</p></div>
+  </div>
+  <div class="card"><h3>Projected demand for prison places against supply, adult estate</h3><p class="sub">MoJ Annual Statement on Prison Capacity 2025, Figures 4 and 5, rounded to the nearest 100</p><div class="chart" id="projChart"></div>
+    <div class="legend" style="margin-top:6px"><span><i class="sw" style="background:var(--ink)"></i>Supply</span><span><i class="sw" style="background:var(--s4)"></i>Demand with Sentencing Act, central</span><span><i class="sw" style="background:var(--s4);opacity:.45"></i>with Act, high scenario</span><span><i class="sw" style="background:var(--muted)"></i>Demand without the Act, central</span></div></div>
+  <div class="twocol">
+    <div class="card"><h3>Criticisms</h3><ul class="plist">
+      <li><b>Victims.</b> The Victims Commissioner and Domestic Abuse Commissioner asked for a delay in July 2026. The Domestic Abuse Commissioner remains concerned that most domestic abuse perpetrators are still eligible.</li>
+      <li><b>Scope.</b> The opposition argues the exclusions leave many violent offenders, including domestic abusers, eligible at one third; amendments to exclude sexual and violent offences were defeated.</li>
+      <li><b>"Earned" progression.</b> Release at one third is the default; critics note prisoners must break rules to lose it.</li>
+      <li><b>Probation.</b> Released people move onto caseloads in a service with 5,559 FTE probation officers against a target of 7,114 (June 2025).</li>
+      <li><b>Durability.</b> On the Ministry's own projections the system returns to the margin within a few years unless inflow, remand or sentence lengths change.</li>
+    </ul></div>
+    <div class="card"><h3>Safeguards the government points to</h3><ul class="plist">
+      <li>Offence exclusions, keeping about 1,400 first-day releases in custody, alongside extended and life sentences.</li>
+      <li>Intensive supervision after release, new restrictive licence conditions and wider electronic monitoring; GPS monitoring for 12 months for those convicted of rape or serious child sexual offences.</li>
+      <li>Up to 84 added days for breaches of prison rules, up from 42.</li>
+      <li>Up to £700 million more for probation and community services by 2028/29, and a national helpline for affected victims.</li>
+      <li>About 14,000 new prison places by 2031, of which 2,900 had been delivered by January 2026.</li>
+    </ul></div>
+  </div>
+</section>
+
 <section id="forces">
   <div class="lede">
-    <span class="eyebrow">05 · Forces</span>
+    <span class="eyebrow">06 · Forces</span>
     <h2>Forty-three forces, very different stories</h2>
     <p>The national totals hide wide variation. Some forces still have fewer officers than in 2010 while others have grown by a fifth, and both crime rates and stop and search disparities vary severalfold between neighbouring areas. Choose a measure; hover or tab through the map, or read the ranked list.</p>
   </div>
@@ -236,7 +286,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
 
 <section id="children">
   <div class="lede">
-    <span class="eyebrow">06 · Children and disproportionality</span>
+    <span class="eyebrow">07 · Children and disproportionality</span>
     <h2>Fewer children locked up; a widening ethnic gap among those who are</h2>
     <p>The youth justice system is the success story of the period: first-time entrants down 90% since 2008/09 and custody down by more than four fifths. The fall has been slower for children from ethnic minority backgrounds, whose share of those held rose from 40% to around half between 2014/15 and 2020/21. In adult policing and prisons, Black people remain heavily over-represented.</p>
   </div>
@@ -256,7 +306,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
 
 <section id="events">
   <div class="lede">
-    <span class="eyebrow">07 · Context</span>
+    <span class="eyebrow">08 · Context</span>
     <h2>Unrest, policy and shocks on the timeline</h2>
     <p>Disorder is hard to measure as a series, so it appears here as dated events. Select a year in the scrubber to see what happened that year.</p>
   </div>
@@ -265,7 +315,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
 
 <section id="data">
   <div class="lede">
-    <span class="eyebrow">08 · Data and notes</span>
+    <span class="eyebrow">09 · Data and notes</span>
     <h2>Read before citing</h2>
   </div>
   <details><summary>Table view of every series</summary><div class="tablewrap" id="table"></div><p class="note" style="margin-top:8px">≈ marks an official figure on a different basis; see notes. Blank means no comparable figure.</p></details>
@@ -277,6 +327,8 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
     <li>Prison and remand populations are 30 June snapshots (MoJ tables A1.1 and the prison population data tool); the pipeline uses September 2025. Crown Court and magistrates' caseloads are end of December except 2026 (end of March), from the Ministry of Justice criminal court statistics tables published June 2026.</li>
     <li>Police funding is the Home Office measure of overall police funding in 2025/26 prices (Police funding for England and Wales 2015 to 2026, Table 5), rebased to 2010/11 = 100. The 2000/01 and 2005/06 points are IFS estimates of total police spending in 2014/15 prices, scaled to the same base; they show direction rather than an exact level.</li>
     <li>Charge rates are the Home Office share of all recorded crimes assigned a charge or summons outcome, by the year the crime was recorded. Recent years can still rise as investigations close.</li>
+    <li>The release valve section uses HMPPS weekly population and capacity bulletins (2024 to 2026), the MoJ analytical report on progression model tranche release volumes (August 2026), SDS40 and ECSL transparency data, and the MoJ Annual Statement on Prison Capacity 2025. The capacity projections were made before the August 2026 exclusions and before the October start date. Policy details follow the House of Commons Library briefing CBP-10974.</li>
+    <li>Figures first taken from the Prison Reform Trust Bromley Briefings were checked against MoJ tables: SDS40 releases, ethnicity of the prison population (12.0% Black, June 2026), children on remand (43.8% of the custody population in 2024/25) and remand outcomes (62% acquitted or given a non-custodial sentence) match; ECSL releases are 13,325 in the MoJ table rather than 13,395; the headroom statement is replaced by counts from the weekly bulletins; the 29% higher remand likelihood for Black defendants is from MoJ Ethnicity and the Criminal Justice System 2024, Table 5_17.</li>
     <li>Stop and search ratios are Home Office rates per 1,000 people by self-defined ethnicity (table SS_18), using Census 2011 populations to 2019/20 and Census 2021 from 2020/21; part of the 2020/21 fall reflects that change. Counts cover all search powers (table SS_23).</li>
   </ol>
   <h3 style="margin-top:8px">Sources</h3>
@@ -300,6 +352,12 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
     <li><a href="https://www.gov.uk/government/statistics/criminal-court-statistics-quarterly-january-to-march-2026">Ministry of Justice, Criminal court statistics quarterly, January to March 2026 (tables M1 and C1)</a></li>
     <li><a href="https://geoportal.statistics.gov.uk/">ONS Open Geography Portal, Police Force Areas (December 2023) boundaries. Contains OS data © Crown copyright and database right 2023</a></li>
     <li><a href="https://www.ethnicity-facts-figures.service.gov.uk/crime-justice-and-the-law/policing/stop-and-search/latest">Ethnicity facts and figures, Stop and search</a></li>
+    <li><a href="https://commonslibrary.parliament.uk/research-briefings/cbp-10974/">House of Commons Library, Changes to automatic prisoner release dates in England and Wales (CBP-10974)</a></li>
+    <li><a href="https://www.gov.uk/government/publications/estimated-progression-model-tranche-release-volumes">Ministry of Justice, Estimated progression model tranche release volumes (August 2026)</a></li>
+    <li><a href="https://www.gov.uk/government/publications/annual-statement-on-prison-capacity-2025">Ministry of Justice, Annual Statement on Prison Capacity 2025</a></li>
+    <li><a href="https://www.gov.uk/government/publications/prison-population-weekly-estate-figures-2026">HMPPS, Prison population weekly estate figures 2024 to 2026</a></li>
+    <li><a href="https://www.gov.uk/government/collections/standard-determinate-sentence-sds40-release-data">Ministry of Justice, SDS40 release data</a> and <a href="https://www.gov.uk/government/publications/end-of-custody-supervised-licence-ecsl-detailed-data">ECSL detailed data</a></li>
+    <li><a href="https://www.gov.uk/government/statistics/ethnicity-and-the-criminal-justice-system-2024">Ministry of Justice, Ethnicity and the Criminal Justice System 2024</a></li>
     <li><a href="https://prisonreformtrust.org.uk/wp-content/uploads/2026/02/Winter-2026%E2%80%93factfile.pdf">Prison Reform Trust, Bromley Briefings Prison Factfile, Winter 2026</a></li>
     <li><a href="https://www.instituteforgovernment.org.uk/publication/performance-tracker-2025/criminal-justice/criminal-courts">Institute for Government, Performance Tracker 2025: Criminal courts</a></li>
   </ul>
@@ -322,8 +380,8 @@ const S={
  pcso:{label:'PCSOs',unit:'thousand FTE',c:'--s1',...mk([null,null,null,1.176,3.418,6.214,6.769,13.529,15.807,16.507,16.918,15.820,14.393,14.205,13.066,12.370,11.043,10.213,10.139,9.547,9.248,9.284,8.750,7.806,7.568,7.315,7.259],2000,[]),f:v=>nf.format(Math.round(v*1000))},
  prc:{label:'Police recorded crime',unit:'million, excl. fraud',c:'--s2',...mk([null,null,null,5.791,5.844,5.477,5.426,5.322,4.881,4.630,4.265,4.078,3.904,3.553,3.507,3.575,3.899,4.322,4.890,5.266,5.305,4.616,5.327,5.578,5.403,5.307,5.235],2000,[]),f:v=>v.toFixed(1)+'m'},
  csew:{label:'Crime survey (CSEW)',unit:'million incidents, excl. fraud',c:'--s3',...mk([15.247,null,12.771,12.390,11.609,10.778,10.863,11.182,10.040,10.432,9.544,9.711,9.593,8.757,7.554,7.177,6.529,6.057,6.247,6.431,5.661,null,null,4.385,4.589,4.595,4.333],2000,[2000]),f:v=>v.toFixed(1)+'m'},
- prison:{label:'Prison population',unit:'thousand',c:'--s4',...mk([64.602,66.301,71.218,73.657,74.488,76.190,77.982,79.734,83.194,83.454,85.002,85.374,86.048,83.842,85.509,86.193,85.134,85.863,82.773,82.710,79.514,78.324,80.659,85.851,87.726,87.334,null],2000,[2000,2001]),f:v=>nf.format(Math.round(v*1000))},
- remand:{label:'On remand',unit:'thousand',c:'--s5',...mk([null,null,13.081,13.073,12.495,12.864,13.067,12.844,13.440,13.456,13.004,12.464,11.324,10.971,12.197,11.785,9.288,9.638,9.285,9.145,11.388,12.727,13.409,15.523,17.070,17.701,null],2000,[]),f:v=>nf.format(Math.round(v*1000))},
+ prison:{label:'Prison population',unit:'thousand',c:'--s4',...mk([64.602,66.301,71.218,73.657,74.488,76.190,77.982,79.734,83.194,83.454,85.002,85.374,86.048,83.842,85.509,86.193,85.134,85.863,82.773,82.710,79.514,78.324,80.659,85.851,87.726,87.334,85.858],2000,[2000,2001]),f:v=>nf.format(Math.round(v*1000))},
+ remand:{label:'On remand',unit:'thousand',c:'--s5',...mk([null,null,13.081,13.073,12.495,12.864,13.067,12.844,13.440,13.456,13.004,12.464,11.324,10.971,12.197,11.785,9.288,9.638,9.285,9.145,11.388,12.727,13.409,15.523,17.070,17.701,15.386],2000,[]),f:v=>nf.format(Math.round(v*1000))},
  crown:{label:'Crown Court open cases',unit:'thousand',c:'--s6',...mk([43.110,38.980,33.049,38.123,57.058,58.617,62.689,67.116,74.016,80.098,80.061],2016,[]),f:v=>nf.format(Math.round(v*1000))},
  mags:{label:"Magistrates' open cases",unit:'thousand',c:'--ink-2',...mk([223.533,302.355,273.246,260.843,278.367,327.236,364.779,370.722],2019,[]),f:v=>nf.format(Math.round(v*1000))},
  children:{label:'Children in custody',unit:'average',c:'--s7',...mk([null,2807,2847,3052,2771,2746,2832,2914,2932,2881,2418,2040,1963,1544,1216,1037,960,868,894,859,781,560,454,441,430,418,null],2000,[]),f:v=>nf.format(Math.round(v))},
@@ -341,7 +399,7 @@ RATIO.v={2011:6.5,2012:5.9,2013:4.4,2014:4.1,2015:4.4,2016:6.5,2017:8.4,2018:9.5
 
 const GOV=[[1997.34,2010.36,'Labour'],[2010.36,2015.35,'Coalition'],[2015.35,2024.51,'Conservative'],[2024.51,2027,'Labour']];
 const govAt=y=>{const t=y+.5;const g=GOV.find(g=>t>=g[0]&&t<g[1]);return g?g[2]:''};
-const PM=[[1997.34,'Blair'],[2007.49,'Brown'],[2010.36,'Cameron'],[2016.54,'May'],[2019.56,'Johnson'],[2022.68,'Truss'],[2022.81,'Sunak'],[2024.51,'Starmer']];
+const PM=[[1997.34,'Blair'],[2007.49,'Brown'],[2010.36,'Cameron'],[2016.54,'May'],[2019.56,'Johnson'],[2022.68,'Truss'],[2022.81,'Sunak'],[2024.51,'Starmer'],[2026.55,'Burnham']];
 const pmAt=y=>{let p='';PM.forEach(q=>{if(y+.5>=q[0])p=q[1]});return p};
 
 const EV=[
@@ -373,6 +431,8 @@ const EV=[
  [2025.4,'p','Independent Sentencing Review reports'],
  [2025.55,'p','Independent Review of the Criminal Courts: limits on jury trial proposed'],
  [2026.1,'p','Sentencing Act 2026: presumption against short sentences'],
+ [2026.55,'p','Andy Burnham becomes Prime Minister; release changes paused for review, then offences excluded'],
+ [2026.75,'p','Progression model: release at one third begins (1 October)'],
 ];
 const CAT={u:'Unrest',p:'Policy',s:'Shock'};
 let evOn={u:true,p:true,s:false};
@@ -401,7 +461,7 @@ const PANELS=[
  {id:'ss',title:'Stop and search',note:'All search powers, year ending March. The 2008/09 peak includes counter-terrorism searches under section 44',series:['stops'],h:96,tick:v=>v+'k'},
  {id:'crt',title:'Crown Court open cases',note:'Open caseload at year end; 2026 is end of March',series:['crown'],h:96,tick:v=>v+'k'},
  {id:'mag',title:"Magistrates' courts open cases",note:'Open caseload at year end; 2026 is end of March. Up two thirds since 2019',series:['mags'],h:96,tick:v=>v+'k'},
- {id:'pri',title:'Prison population',note:'June snapshots (2000 and 2001 are annual averages); axis starts at 60,000. Usable capacity 88,931 in September 2025',series:['prison'],h:100,min:60,tick:v=>v+'k'},
+ {id:'pri',title:'Prison population',note:'June snapshots (2000 and 2001 are annual averages); axis starts at 60,000. Useable capacity 89,055 in September 2026',series:['prison'],h:100,min:60,tick:v=>v+'k'},
  {id:'rem',title:'Prisoners on remand',note:'Untried or convicted awaiting sentence, June snapshots from 2002',series:['remand'],h:90,tick:v=>v+'k'},
  {id:'yth',title:'Children in custody',note:'Average under-18 population',series:['children'],h:96,tick:v=>nf.format(v)},
 ];
@@ -552,8 +612,8 @@ const PIPE=[
  ['Charge rate','All crimes, 2018/19 to 2025/26',7.8,8.5,'--s2',v=>v.toFixed(1)+'%'],
  ["Magistrates' open cases",'End 2019 to March 2026',223533,370722,'--ink-2',v=>nf.format(v)],
  ['Crown Court open cases','End 2019 to March 2026',38123,80061,'--s6',v=>nf.format(v)],
- ['People on remand','June 2019 to September 2025',9145,17700,'--s5',v=>nf.format(v)],
- ['Prison population','June 2019 to September 2025; 88,931 usable places',82710,87393,'--s4',v=>nf.format(v)],
+ ['People on remand','June 2019 to June 2026',9145,15386,'--s5',v=>nf.format(v)],
+ ['Prison population','June 2019 to June 2026; 89,055 usable places in September 2026',82710,85858,'--s4',v=>nf.format(v)],
 ];
 function drawPipe(){
   const box=document.getElementById('pipe');const maxI=Math.max(...PIPE.map(p=>p[3]/p[2]*100));
@@ -592,6 +652,71 @@ function drawChildren(){
   mini('chRatio',RATIO,{c:'--s8',h:190,max:12,step:3,tick:v=>v+'×',lab:v=>v.toFixed(1)+'×',dots:true,labelAll:true,x0:2010,xt:[2010,2014,2018,2022,2026],mark:[2020.5,'Census 2021 denominators'],aria:'Black to White stop and search ratio, peaking near ten times in 2019'});
 }
 
+
+
+/* ---------- release valve ---------- */
+const WEEKLY=/*WEEKLY*/null;
+const TRANCHE=[[700,50],[650,100],[650,150],[550,200],[600,200],[500,300],[200,150],[200,200],[250,100],[250,50]];
+const PROJ={d:['May 26','Nov 26','May 27','Nov 27','May 28','Nov 28','May 29','Nov 29','May 30','Nov 30','May 31','Nov 31','May 32','Nov 32'],
+ supply:[89900,89300,88300,88300,89800,90900,93200,95100,95900,96000,96400,96900,98300,98900],
+ withC:[88800,87900,86300,87200,88600,89700,91000,91700,92600,93300,94200,94700,95300,95900],
+ withH:[89200,88900,87600,88400,90200,91300,93100,94300,95700,96400,97500,98300,99100,100000],
+ withoutC:[89700,91800,93700,94900,96400,97600,98900,99600,100600,101300,102100,102700,103300,103900]};
+function drawHeadroom(){
+  if(!WEEKLY)return;const el=document.getElementById('headChart');const w=Math.max(300,el.clientWidth),h=230,m={l:46,r:16,t:30,b:24};
+  const t=d=>new Date(d+'T00:00:00Z').getTime();const t0=t('2024-01-01'),t1=t('2026-10-31');
+  const x=v=>m.l+(v-t0)/(t1-t0)*(w-m.l-m.r);const ymax=3000;const y=v=>m.t+(1-v/ymax)*(h-m.t-m.b);
+  let g='';for(let v=0;v<=ymax;v+=1000)g+=`<line x1="${m.l}" x2="${w-m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/><text x="${m.l-6}" y="${y(v)+3.5}" text-anchor="end" font-size="10" fill="var(--muted)" font-family="var(--mono)">${nf.format(v)}</text>`;
+  ['2024-01-01','2024-07-01','2025-01-01','2025-07-01','2026-01-01','2026-07-01'].forEach(d=>g+=`<text x="${x(t(d))}" y="${h-6}" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="var(--mono)">${new Date(d).toLocaleDateString('en-GB',{month:'short',year:'numeric'})}</text>`);
+  const marks=[['2024-09-10','SDS40 tranches'],['2024-10-22',''],['2025-03-01','Operation Safeguard'],['2026-10-01','Progression model']];
+  marks.forEach((mk,i)=>{const xx=x(t(mk[0]));g+=`<line x1="${xx}" x2="${xx}" y1="${m.t-4}" y2="${h-m.b}" stroke="var(--ink)" stroke-opacity=".35"/><text x="${xx+(i===3?-4:4)}" y="${m.t-8}" font-size="10" fill="var(--ink-2)" text-anchor="${i===3?'end':'start'}" font-family="var(--body)">${mk[1]}</text>`});
+  let d='',a='';WEEKLY.forEach((r,i)=>{const xx=x(t(r.date)).toFixed(1),yy=y(Math.max(0,r.headroom)).toFixed(1);d+=(i?'L':'M')+xx+','+yy;});
+  a=d+`L${x(t(WEEKLY[WEEKLY.length-1].date))},${y(0)}L${x(t(WEEKLY[0].date))},${y(0)}Z`;
+  g+=`<path d="${a}" fill="var(--s4)" fill-opacity=".18"/><path d="${d}" fill="none" stroke="var(--s4)" stroke-width="2" stroke-linejoin="round"/>`;
+  const mn=WEEKLY.reduce((p,c)=>c.headroom<p.headroom?c:p);const last=WEEKLY[WEEKLY.length-1];
+  g+=`<circle cx="${x(t(mn.date))}" cy="${y(mn.headroom)}" r="4" fill="var(--s4)" stroke="var(--surface)" stroke-width="2"/><text x="${x(t(mn.date))+7}" y="${y(mn.headroom)+14}" font-size="11" fill="var(--ink-2)" font-family="var(--mono)">${nf.format(mn.headroom)} low</text>`;
+  g+=`<circle cx="${x(t(last.date))}" cy="${y(last.headroom)}" r="4" fill="var(--s4)" stroke="var(--surface)" stroke-width="2"/><text x="${x(t(last.date))-7}" y="${y(last.headroom)+16}" text-anchor="end" font-size="11" fill="var(--ink-2)" font-family="var(--mono)">${nf.format(last.headroom)}</text>`;
+  g+=`<line class="hcl" y1="${m.t}" y2="${h-m.b}" stroke="var(--ink)" visibility="hidden"/><rect class="hit" x="${m.l}" y="0" width="${w-m.l-m.r}" height="${h}" fill="transparent"/>`;
+  el.innerHTML=`<svg viewBox="0 0 ${w} ${h}" height="${h}" role="img" aria-label="Weekly spare prison places, low of ${mn.headroom} on ${mn.date}, ${last.headroom} on ${last.date}">${g}</svg><div class="tip" hidden></div>`;
+  const svg=el.querySelector('svg'),tip=el.querySelector('.tip'),cl=el.querySelector('.hcl');
+  el.querySelector('.hit').addEventListener('pointermove',ev=>{const r=svg.getBoundingClientRect();const px=(ev.clientX-r.left)*(w/r.width);const tt=t0+(px-m.l)/(w-m.l-m.r)*(t1-t0);
+    const n=WEEKLY.reduce((p,c)=>Math.abs(t(c.date)-tt)<Math.abs(t(p.date)-tt)?c:p);const xx=x(t(n.date));cl.setAttribute('x1',xx);cl.setAttribute('x2',xx);cl.setAttribute('visibility','visible');
+    tip.innerHTML=`<b>${new Date(n.date).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</b><br>Population ${nf.format(n.pop)}<br>Capacity ${nf.format(n.cap)}<br>Spare ${nf.format(n.headroom)}`;tip.hidden=false;
+    const tx=xx*r.width/w;tip.style.left=(tx>r.width/2?tx-tip.offsetWidth-10:tx+10)+'px';tip.style.top='8px';});
+  el.querySelector('.hit').addEventListener('pointerleave',()=>{tip.hidden=true;cl.setAttribute('visibility','hidden')});
+}
+function drawTranches(){
+  const el=document.getElementById('trancheChart');const w=Math.max(260,el.clientWidth),h=210,m={l:40,r:8,t:12,b:34};
+  const ymax=1000,bw=(w-m.l-m.r)/TRANCHE.length;const y=v=>m.t+(1-v/ymax)*(h-m.t-m.b);
+  let g='';for(let v=0;v<=ymax;v+=250)g+=`<line x1="${m.l}" x2="${w-m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/><text x="${m.l-6}" y="${y(v)+3.5}" text-anchor="end" font-size="10" fill="var(--muted)" font-family="var(--mono)">${v}</text>`;
+  TRANCHE.forEach((t,i)=>{const x0=m.l+i*bw+bw*.18,bwi=bw*.64;const yr=y(t[0]),ye=y(t[0]+t[1]);
+    g+=`<rect x="${x0}" y="${yr}" width="${bwi}" height="${y(0)-yr}" fill="var(--accent)"><title>Tranche ${i+1}: about ${t[0]} released, ${t[1]} now excluded</title></rect><rect x="${x0}" y="${ye}" width="${bwi}" height="${yr-ye-2}" fill="var(--muted)" opacity=".7"/>`;
+    g+=`<text x="${x0+bwi/2}" y="${h-m.b+13}" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="var(--mono)">T${i+1}</text>`;
+    if(i===0)g+=`<text x="${x0+bwi/2}" y="${yr-6-(yr-ye)}" text-anchor="middle" font-size="10" fill="var(--ink-2)" font-family="var(--mono)">700</text>`;});
+  g+=`<text x="${m.l}" y="${h-4}" font-size="10" fill="var(--muted)" font-family="var(--body)">Oct 2026</text><text x="${w-m.r}" y="${h-4}" text-anchor="end" font-size="10" fill="var(--muted)" font-family="var(--body)">Jun 2027</text>`;
+  el.innerHTML=`<svg viewBox="0 0 ${w} ${h}" height="${h}" role="img" aria-label="Estimated first-day releases by tranche: ${TRANCHE.map(t=>t[0]).join(', ')}">${g}</svg>`;
+}
+function drawProj(){
+  const el=document.getElementById('projChart');const w=Math.max(300,el.clientWidth),h=260,m={l:50,r:130,t:14,b:26};
+  const n=PROJ.d.length,x=i=>m.l+i/(n-1)*(w-m.l-m.r),lo=84000,hi=106000,y=v=>m.t+(1-(v-lo)/(hi-lo))*(h-m.t-m.b);
+  let g='';for(let v=lo;v<=hi;v+=4000)g+=`<line x1="${m.l}" x2="${w-m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/><text x="${m.l-6}" y="${y(v)+3.5}" text-anchor="end" font-size="10" fill="var(--muted)" font-family="var(--mono)">${nf.format(v/1000)}k</text>`;
+  PROJ.d.forEach((d,i)=>{if(i%2===1)g+=`<text x="${x(i)}" y="${h-8}" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="var(--mono)">${d}</text>`});
+  // gap shading between supply and central demand with Act where demand > supply (high scenario)
+  const line=(arr,col,op,wd)=>`<path d="${arr.map((v,i)=>(i?'L':'M')+x(i).toFixed(1)+','+y(v).toFixed(1)).join('')}" fill="none" stroke="${col}" stroke-opacity="${op}" stroke-width="${wd}" stroke-linejoin="round"/>`;
+  g+=line(PROJ.withoutC,'var(--muted)',1,2)+line(PROJ.withH,'var(--s4)',.45,2)+line(PROJ.withC,'var(--s4)',1,2.5)+line(PROJ.supply,'var(--ink)',1,2);
+  const labs=[[PROJ.withoutC,'Without Act 103.9k','var(--muted)'],[PROJ.withH,'High 100.0k','var(--s4)'],[PROJ.supply,'Supply 98.9k','var(--ink)'],[PROJ.withC,'Central 95.9k','var(--s4)']].map(l=>({y:y(l[0][n-1]),t:l[1],c:l[2]})).sort((a,b)=>a.y-b.y);
+  for(let i=1;i<labs.length;i++)if(labs[i].y-labs[i-1].y<14)labs[i].y=labs[i-1].y+14;
+  labs.forEach(l=>g+=`<text x="${w-m.r+8}" y="${l.y+4}" font-size="11" fill="var(--ink-2)" font-family="var(--body)">${l.t}</text>`);
+  const i27=3;g+=`<line x1="${x(i27)}" x2="${x(i27)}" y1="${y(PROJ.withC[i27])}" y2="${y(PROJ.withoutC[i27])}" stroke="var(--ink-2)" stroke-dasharray="2 3"/><text x="${x(i27)+6}" y="${y(PROJ.withoutC[i27])-8}" font-size="11" fill="var(--ink-2)" font-family="var(--display)" font-style="italic">about 7,700 places saved</text>`;
+  g+=`<rect class="hit" x="${m.l}" y="${m.t}" width="${w-m.l-m.r}" height="${h-m.t-m.b}" fill="transparent"/><line class="pcl" y1="${m.t}" y2="${h-m.b}" stroke="var(--ink)" visibility="hidden"/>`;
+  el.innerHTML=`<svg viewBox="0 0 ${w} ${h}" height="${h}" role="img" aria-label="Projected prison demand with and without the Sentencing Act against supply, 2026 to 2032">${g}</svg><div class="tip" hidden></div>`;
+  const svg=el.querySelector('svg'),tip=el.querySelector('.tip'),cl=el.querySelector('.pcl');
+  el.querySelector('.hit').addEventListener('pointermove',ev=>{const r=svg.getBoundingClientRect();const px=(ev.clientX-r.left)*(w/r.width);const i=Math.max(0,Math.min(n-1,Math.round((px-m.l)/(w-m.l-m.r)*(n-1))));
+    cl.setAttribute('x1',x(i));cl.setAttribute('x2',x(i));cl.setAttribute('visibility','visible');
+    tip.innerHTML=`<b>${PROJ.d[i].replace(/(\d\d)$/,'20$1')}</b><br>Supply ${nf.format(PROJ.supply[i])}<br>With Act, central ${nf.format(PROJ.withC[i])}<br>With Act, high ${nf.format(PROJ.withH[i])}<br>Without Act ${nf.format(PROJ.withoutC[i])}`;tip.hidden=false;
+    const tx=x(i)*r.width/w;tip.style.left=(tx>r.width/2?tx-tip.offsetWidth-10:tx+10)+'px';tip.style.top='8px';});
+  el.querySelector('.hit').addEventListener('pointerleave',()=>{tip.hidden=true;cl.setAttribute('visibility','hidden')});
+}
 
 /* ---------- force maps ---------- */
 const FORCES=/*FORCES*/null;
@@ -651,7 +776,7 @@ function drawTable(){
 
 /* ---------- boot ---------- */
 buildMultiples();
-function renderAll(){renderMultiples();drawIndex();drawScatter();drawPipe();drawChildren();drawMap();}
+function renderAll(){renderMultiples();drawIndex();drawScatter();drawPipe();drawChildren();drawMap();drawHeadroom();drawTranches();drawProj();}
 renderAll();drawTable();setYear(2019);
 document.getElementById('yearRange').addEventListener('input',e=>setYear(+e.target.value));
 let rt;new ResizeObserver(()=>{clearTimeout(rt);rt=setTimeout(()=>{renderAll();setYear(YEAR)},120)}).observe(document.querySelector('.wrap'));
