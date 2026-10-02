@@ -11,7 +11,7 @@ An interactive, single-page data story about police numbers, crime, courts, pris
 - Local folder: `/Users/stangilmour/justice-pipeline`
 - Live site: https://justice.howpreventionworks.com (Cloudflare Pages project `justice-pipeline`, direct upload; DNS is a DNS-only CNAME `justice` pointing to `justice-pipeline.pages.dev`)
 - Repository: https://github.com/SGilr/justice-pipeline (public)
-- Claude artifact preview: https://claude.ai/artifact/CLWH5MU6MHpoLtvaJg8p5K (private). Republished on 3 October 2026 (version 10), so it matches the live site.
+- Claude artifact preview: https://claude.ai/artifact/CLWH5MU6MHpoLtvaJg8p5K (private). Republished on 3 October 2026 (version 11), so it matches the live site.
 
 ## Structure
 
@@ -46,7 +46,12 @@ Working practice: make data changes on a branch, show the diff, and deploy only 
 2. One timeline: small multiples on a shared 2000 to 2026 axis covering police officers, PCSOs, officers per 100,000, real-terms funding, crime survey against recorded crime, charge rate, stop and search, Crown Court and magistrates' open cases, prison population, remand and children in custody. It shows government bands and event markers (unrest, policy, shock).
 3. Relative change: every series indexed to a chosen base year (2000, 2010 or 2019).
 4. Police and crime: a connected scatter of officers per 100,000 against CSEW crime.
-5. Confidence and fear: six CSEW charts covering confidence in local police, trust in the police, foot patrol visibility, perceived national crime trend, worry about violent crime, and women's safety after dark.
+5. Confidence and fear: six CSEW charts covering confidence in local police, trust in the police, foot patrol visibility, perceived national crime trend, worry about violent crime, and women's safety after dark. It is followed by a legitimacy subsection:
+   - components of confidence, 2015/16 against 2025/26
+   - victim satisfaction by quality of contact
+   - confidence and fair treatment by group
+   - willingness to cooperate
+   - a cautious reading of what these suggest
 6. Pipeline since 2019: change at each stage, with the release figures (SDS40, ECSL, headroom, charge volume, median time to charge, cases open a year or more).
 7. The release valve: the progression model early release from 1 October 2026, with weekly headroom, tranche estimates, MoJ supply and demand projections with and without the Sentencing Act, and criticisms and safeguards.
 8. Forces: a choropleth of the 43 force areas with a ranked list. Measures are change in officers since 2010, officers per 100,000, recorded crime per 1,000, and the Black to White stop and search ratio.
@@ -100,6 +105,17 @@ Prison Reform Trust factfile figures have been checked against MoJ tables. These
 - Political context: Andy Burnham has been Prime Minister since 20 July 2026, and the Justice Secretary is Alex Norris.
 
 ## Change log
+
+### 3 October 2026: police legitimacy panels
+
+- Added to section 04 from ONS perceptions tables, year ending March 2026:
+  - Table 4: components of confidence. Respect fell 4 points since 2015/16; "deal with local concerns" fell 13.5 and "good job" 13.8.
+  - Table 17: victim satisfaction 77% if treated fairly against 12% if not, and about four times as high for respect and for being kept informed.
+  - Table 5: 19 groups. The lowest are the ever homeless (53%), care-experienced (57%) and Black Caribbean adults (52%, from 249 respondents).
+  - Table 20: willingness to cooperate. 92% would help and 91% would call the police; 69% would follow an order and 70% say standards of behaviour are good.
+- The copy stresses association, not causation. The user asked how the data can inform current calls to improve police legitimacy; the specific announcement was not identified or cited.
+- Grid items are now prevented from widening the page on phones.
+- Deployed (commit 5e81d9b); artifact republished as version 11.
 
 ### 3 October 2026: confidence and fear
 
