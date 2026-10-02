@@ -8,7 +8,7 @@
 :root{
   --bg:#f2f3ef; --surface:#fbfbf8; --ink:#13171b; --ink-2:#474d55; --muted:#7a8087;
   --grid:#e2e4de; --axis:#c3c6bf; --band:rgba(19,23,27,.045); --accent:#17324f; --hair:rgba(19,23,27,.12);
-  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948; --s9:#8c5a2b; --mid:#e3e2dd; --logo-1:#002046; --logo-2:rgba(0,32,70,.8); --logo-3:rgba(0,32,70,.6); --logo-t:#ffffff;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948; --s9:#8c5a2b; --mid:#e3e2dd; --logo-1:#002046; --logo-2:rgba(0,32,70,.8); --logo-3:rgba(0,32,70,.6); --logo-t:#ffffff; --wm-1:#002046; --wm-2:#3b546f; --wm-3:#728296; --wm-t:#ffffff;
   --display:"Spectral",Georgia,"Times New Roman",serif;
   --body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"Atkinson Hyperlegible Mono",ui-monospace,"SF Mono",Menlo,monospace;
@@ -16,12 +16,12 @@
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#101316; --surface:#171b1f; --ink:#f0f1ed; --ink-2:#c2c5bf; --muted:#8a9097;
   --grid:#252a2f; --axis:#3a4046; --band:rgba(240,241,237,.05); --accent:#a9c4e6; --hair:rgba(240,241,237,.12);
-  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s9:#c08a55; --mid:#4a4d50; --logo-1:#f7f4ee; --logo-2:#d6dde4; --logo-3:#728296; --logo-t:#002046;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s9:#c08a55; --mid:#4a4d50; --logo-1:#f7f4ee; --logo-2:#d6dde4; --logo-3:#728296; --logo-t:#002046; --wm-1:#f7f4ee; --wm-2:#d6dde4; --wm-3:#728296; --wm-t:#002046;
   color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#101316; --surface:#171b1f; --ink:#f0f1ed; --ink-2:#c2c5bf; --muted:#8a9097;
   --grid:#252a2f; --axis:#3a4046; --band:rgba(240,241,237,.05); --accent:#a9c4e6; --hair:rgba(240,241,237,.12);
-  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s9:#c08a55; --mid:#4a4d50; --logo-1:#f7f4ee; --logo-2:#d6dde4; --logo-3:#728296; --logo-t:#002046;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s9:#c08a55; --mid:#4a4d50; --logo-1:#f7f4ee; --logo-2:#d6dde4; --logo-3:#728296; --logo-t:#002046; --wm-1:#f7f4ee; --wm-2:#d6dde4; --wm-3:#728296; --wm-t:#002046;
   color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;padding-inline:16px;padding-block:0 64px}
@@ -141,6 +141,9 @@ td:first-child,th:first-child{text-align:left}
 .caveats{font-size:.88rem;display:grid;gap:8px;padding-left:1.1em;margin:0;color:var(--ink-2)}
 footer .brand{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-bottom:14px}
 .oxai{height:40px;width:auto;flex:none}
+.oxa-wm{display:block;height:92px;width:auto;max-width:100%;margin-bottom:10px}
+.oxa-wm .w1{fill:var(--wm-1)}.oxa-wm .w2{fill:var(--wm-2)}.oxa-wm .w3{fill:var(--wm-3)}.oxa-wm .wt{fill:var(--wm-t)}.oxa-wm .wg{fill:var(--ink)}
+@media (max-width:640px){.oxa-wm{height:68px}}
 .oxai .p1{fill:var(--logo-1)}.oxai .p2{fill:var(--logo-2)}.oxai .p3{fill:var(--logo-3)}.oxai .pt{fill:var(--logo-t)}
 footer .brand b{display:block;font-family:var(--display);font-size:1.1rem;font-weight:600;color:var(--ink)}
 footer .brand span{font-size:.85rem;color:var(--ink-2)}
@@ -154,6 +157,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
 
 <header class="hero">
   <div class="lede fadein">
+    <!--WORDMARK-->
     <span class="eyebrow">England and Wales · 2000 to 2026</span>
     <h1>More police, less crime, fuller prisons</h1>
     <p class="dek">Officer numbers fell by a seventh after 2010 and were rebuilt by 2023. Survey crime kept falling through both. The strain in the system now sits downstream, in the courts, on remand and in prison cells.</p>
