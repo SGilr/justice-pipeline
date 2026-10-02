@@ -11,7 +11,7 @@ An interactive, single-page data story about police numbers, crime, courts, pris
 - Local folder: `/Users/stangilmour/justice-pipeline`
 - Live site: https://justice.howpreventionworks.com (Cloudflare Pages project `justice-pipeline`, direct upload; DNS is a DNS-only CNAME `justice` pointing to `justice-pipeline.pages.dev`)
 - Repository: https://github.com/SGilr/justice-pipeline (public)
-- Claude artifact preview: https://claude.ai/artifact/CLWH5MU6MHpoLtvaJg8p5K (private). Republished on 3 October 2026 (version 12), so it matches the live site.
+- Claude artifact preview: https://claude.ai/artifact/CLWH5MU6MHpoLtvaJg8p5K (private). Republished on 3 October 2026 (version 13), so it matches the live site.
 
 ## Structure
 
@@ -106,6 +106,13 @@ Prison Reform Trust factfile figures have been checked against MoJ tables. These
 
 ## Change log
 
+### 3 October 2026: force map outlines
+
+- Force areas now have a thin outline (`--map-edge`): #474d55 in light mode, giving 4.0 to 6.6:1 against the pale and neutral shades; #8a9097 in dark mode.
+- The dark-mode neutral shade (`--mid`) is lightened to #6e7378, 3.6:1 against the card. Legend swatches use the same outline.
+- This closes the last open audit finding apart from touch targets and screen reader testing. axe-core reports no violations.
+- Deployed (commit 8ce2b35); artifact republished as version 13.
+
 ### 3 October 2026: accessibility fixes
 
 - A WCAG 2.1 AA audit of the live site found 13 issues: 7 major and 6 minor. Fixes:
@@ -119,7 +126,7 @@ Prison Reform Trust factfile figures have been checked against MoJ tables. These
   - the slider describes the year in place of a live region
   - tables for the hover-only charts
 - After deploy, axe-core 4.10 on the live site reports no violations in light or dark mode.
-- Not done: the pale map bins (mitigated by the legend and ranked list), touch target sizes (advisory under 2.1), and real screen reader testing (VoiceOver, NVDA).
+- Not done at the time: the pale map bins (fixed later the same day by outlining force areas), touch target sizes (advisory under 2.1), and real screen reader testing (VoiceOver, NVDA).
 - The legitimacy reading now dates its comparisons: 2015/16 to 2025/26 for the falls, 2025/26 for satisfaction.
 - Deployed (commit bb66d05); artifact republished as version 12.
 - Deploy note: the custom domain can take 10 to 30 seconds after `wrangler pages deploy` to serve the new version. Re-check before concluding a deploy failed.
