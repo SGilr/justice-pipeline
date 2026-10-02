@@ -1,0 +1,655 @@
+<meta charset="utf-8">
+<title>The Justice Pipeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column with a sticky year scrubber; every chart shares one 2000 to 2026 time axis so the eye can drop vertically from police to prisons. */
+:root{
+  --bg:#f2f3ef; --surface:#fbfbf8; --ink:#13171b; --ink-2:#474d55; --muted:#7a8087;
+  --grid:#e2e4de; --axis:#c3c6bf; --band:rgba(19,23,27,.045); --accent:#17324f; --hair:rgba(19,23,27,.12);
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948; --s9:#8c5a2b; --mid:#e3e2dd;
+  --display:"Spectral",Georgia,"Times New Roman",serif;
+  --body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Atkinson Hyperlegible Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#101316; --surface:#171b1f; --ink:#f0f1ed; --ink-2:#c2c5bf; --muted:#8a9097;
+  --grid:#252a2f; --axis:#3a4046; --band:rgba(240,241,237,.05); --accent:#a9c4e6; --hair:rgba(240,241,237,.12);
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s9:#c08a55; --mid:#4a4d50;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#101316; --surface:#171b1f; --ink:#f0f1ed; --ink-2:#c2c5bf; --muted:#8a9097;
+  --grid:#252a2f; --axis:#3a4046; --band:rgba(240,241,237,.05); --accent:#a9c4e6; --hair:rgba(240,241,237,.12);
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s9:#c08a55; --mid:#4a4d50;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(2.1rem,5.2vw,3.6rem);line-height:1.05}
+h2{font-size:clamp(1.5rem,3vw,2.05rem);line-height:1.15}
+h3{font-family:var(--body);font-size:.95rem;font-weight:700;letter-spacing:.01em}
+p{margin:0;max-width:66ch}
+a{color:var(--accent)}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.dek{font-family:var(--display);font-size:clamp(1.1rem,2vw,1.3rem);color:var(--ink-2);line-height:1.45}
+section{padding-block:56px 8px;display:grid;gap:20px}
+.lede{display:grid;gap:14px}
+.note{font-size:.85rem;color:var(--muted)}
+/* hero */
+header.hero{padding-block:56px 12px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px;align-items:end;border-bottom:1px solid var(--hair)}
+header.hero .lede{gap:18px}
+.ledger{display:grid;gap:0;font-size:.92rem}
+.ledger div{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;padding-block:11px;border-top:1px solid var(--hair)}
+.ledger div:first-child{border-top:0}
+.ledger b{font-family:var(--display);font-size:1.75rem;font-weight:600;line-height:1;min-width:4.6ch}
+.ledger span{color:var(--ink-2)}
+@media (max-width:760px){header.hero{grid-template-columns:1fr;gap:24px}}
+/* scrubber */
+.scrub{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--hair);padding-block:10px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 18px;align-items:center}
+.scrub .yr{font-family:var(--display);font-size:2.2rem;font-weight:600;line-height:1;font-variant-numeric:lining-nums}
+.scrub .gov{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.scrub input[type=range]{width:100%;accent-color:var(--accent)}
+.scrub .ev{grid-column:1/-1;font-size:.84rem;color:var(--ink-2);min-height:1.3em}
+.scrub .ev b{color:var(--ink)}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{font:inherit;font-size:.82rem;border:1px solid var(--hair);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+.chip[aria-pressed=false]{color:var(--muted);background:transparent}
+.chip[aria-pressed=false] .sw{opacity:.25}
+.chip:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sw{width:12px;height:3px;border-radius:2px;display:inline-block}
+.glyph{width:12px;height:12px;display:inline-block}
+select{font:inherit;font-size:.85rem;background:var(--surface);color:var(--ink);border:1px solid var(--hair);border-radius:6px;padding:4px 8px}
+/* panels */
+.multiples{display:grid;gap:0;background:var(--surface);border:1px solid var(--hair);border-radius:6px;padding:8px 0}
+.panel{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:8px 14px;padding:10px 14px;border-top:1px solid var(--grid)}
+.panel:first-child{border-top:0}
+.panel .meta{display:grid;align-content:start;gap:4px}
+.panel .meta p{font-size:.8rem;color:var(--muted)}
+.panel .val{font-family:var(--mono);font-size:.82rem;color:var(--ink-2);display:grid;gap:2px}
+.panel .val i{font-style:normal;display:inline-flex;align-items:center;gap:6px}
+.chart{min-width:0;position:relative}
+.chart svg{display:block;width:100%;overflow:visible}
+@media (max-width:640px){.panel{grid-template-columns:1fr}.panel .meta p{display:none}}
+.rail{padding:4px 14px 0}
+.card{background:var(--surface);border:1px solid var(--hair);border-radius:6px;padding:16px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
+.card h3{margin-bottom:2px}
+.card .sub{font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:.78rem;line-height:1.4;padding:8px 10px;border-radius:6px;white-space:nowrap;z-index:3;font-family:var(--mono)}
+.tip[hidden]{display:none!important}
+/* pipeline */
+.pipe{display:grid;gap:0;background:var(--surface);border:1px solid var(--hair);border-radius:6px;padding:8px 16px}
+.stage{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr) auto;gap:6px 18px;align-items:center;padding-block:14px;border-top:1px solid var(--grid);position:relative}
+.stage:first-child{border-top:0}
+.stage .name{font-weight:700;font-size:.95rem}
+.stage .name small{display:block;font-weight:400;color:var(--muted);font-size:.78rem}
+.stage .num{font-family:var(--mono);font-size:.85rem;text-align:right;white-space:nowrap}
+.stage .num b{font-family:var(--display);font-size:1.35rem;font-weight:600;display:block}
+.bar{position:relative;height:22px}
+.bar .base{position:absolute;top:-4px;bottom:-4px;width:1px;background:var(--ink-2)}
+.bar .fill{position:absolute;top:5px;height:12px;left:0;border-radius:0 4px 4px 0}
+.bar .ghost{position:absolute;top:5px;height:12px;left:0;border-radius:0 4px 4px 0;background:var(--grid)}
+.bar .lab{position:absolute;top:-1px;font-family:var(--mono);font-size:.74rem;color:var(--ink-2);white-space:nowrap}
+@media (max-width:640px){.stage{grid-template-columns:1fr auto}.stage .bar{grid-column:1/-1;grid-row:2}}
+.valve{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px}
+.valve div{border-left:2px solid var(--ink-2);padding-left:12px}
+.valve b{font-family:var(--display);font-size:1.6rem;font-weight:600;display:block;line-height:1.1}
+.valve span{font-size:.85rem;color:var(--ink-2)}
+/* events */
+.evlist{list-style:none;margin:0;padding:0;display:grid;gap:0;columns:2 320px;column-gap:32px}
+.evlist li{break-inside:avoid;display:grid;grid-template-columns:3.2rem 14px minmax(0,1fr);gap:8px;padding-block:7px;border-top:1px solid var(--grid);font-size:.88rem}
+.evlist .y{font-family:var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.callouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:0 24px}
+.callouts div{padding-block:12px;border-top:1px solid var(--hair)}
+.callouts b{font-family:var(--display);font-size:1.7rem;font-weight:600;display:block;line-height:1.1}
+.callouts span{font-size:.86rem;color:var(--ink-2)}
+.mapgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:760px){.mapgrid{grid-template-columns:1fr}}
+.map svg{display:block;width:100%;height:auto;max-height:640px}
+.map path{stroke:var(--surface);stroke-width:1.2;stroke-linejoin:round;cursor:pointer;transition:opacity .15s}
+.map path.hl{stroke:var(--ink);stroke-width:2.4}
+.map path:focus-visible{outline:none;stroke:var(--accent);stroke-width:3}
+.keyrow{display:flex;flex-wrap:wrap;gap:4px 12px;font-family:var(--mono);font-size:.74rem;color:var(--ink-2)}
+.keyrow span{display:inline-flex;gap:6px;align-items:center}
+.keyrow i{width:14px;height:10px;border-radius:2px;display:inline-block;border:1px solid var(--hair)}
+.rank{max-height:620px;overflow-y:auto;display:grid;gap:0;font-size:.84rem}
+.rank div{display:grid;grid-template-columns:minmax(0,1fr) minmax(60px,38%) 6ch;gap:10px;align-items:center;padding:4px 6px;border-top:1px solid var(--grid);cursor:default}
+.rank div.hl{background:var(--band)}
+.rank b{font-family:var(--mono);font-weight:500;font-size:.78rem;text-align:right}
+.rank .rb{height:8px;border-radius:0 4px 4px 0;background:var(--s1)}
+.rank .na{color:var(--muted)}
+details{background:var(--surface);border:1px solid var(--hair);border-radius:6px;padding:12px 16px}
+summary{cursor:pointer;font-weight:700}
+.tablewrap{overflow-x:auto;margin-top:12px}
+table{border-collapse:collapse;font-family:var(--mono);font-size:.76rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+th,td{padding:4px 10px;text-align:right;border-bottom:1px solid var(--grid)}
+th{font-family:var(--body);font-weight:700;color:var(--ink-2);text-align:right;vertical-align:bottom;white-space:normal;min-width:7ch}
+td:first-child,th:first-child{text-align:left}
+.sources{font-size:.86rem;display:grid;gap:6px;padding-left:1.1em;margin:0}
+.caveats{font-size:.88rem;display:grid;gap:8px;padding-left:1.1em;margin:0;color:var(--ink-2)}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-size:.8rem;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.8rem;color:var(--ink-2)}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+@media (prefers-reduced-motion:no-preference){.fadein{animation:rise .6s ease-out both}@keyframes rise{from{transform:translateY(6px)}to{transform:none}}}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="lede fadein">
+    <span class="eyebrow">England and Wales · 2000 to 2026</span>
+    <h1>More police, less crime, fuller prisons</h1>
+    <p class="dek">Officer numbers fell by a seventh after 2010 and were rebuilt by 2023. Survey crime kept falling through both. The strain in the system now sits downstream, in the courts, on remand and in prison cells.</p>
+  </div>
+  <div class="ledger fadein" aria-label="Headline figures">
+    <div><b>−78%</b><span>crime measured by the victim survey since the 1995 peak (CSEW, excluding fraud and computer misuse)</span></div>
+    <div><b>233</b><span>officers per 100,000 residents in 2026, against 258 in 2010</span></div>
+    <div><b>8.5%</b><span>of recorded crimes ended in a charge or summons in 2025/26, against 15.5% in 2014/15</span></div>
+    <div><b>80,061</b><span>open Crown Court cases, March 2026; more than double the 2019 level</span></div>
+    <div><b>1 in 5</b><span>people in prison are on remand, the highest share in at least 50 years</span></div>
+    <div><b>−86%</b><span>children in custody since 2008; over half now from ethnic minority backgrounds</span></div>
+  </div>
+</header>
+
+<div class="scrub" id="scrub" role="group" aria-label="Year scrubber">
+  <div><div class="yr" id="yr">2019</div><div class="gov" id="gov"></div></div>
+  <div style="display:grid;gap:6px;min-width:0">
+    <label class="eyebrow" for="yearRange">Drag, use arrow keys, or hover any chart to move through time</label>
+    <input type="range" id="yearRange" min="2000" max="2026" step="1" value="2019">
+  </div>
+  <div class="ev" id="ev" aria-live="polite"></div>
+</div>
+
+<section id="timeline">
+  <div class="lede">
+    <span class="eyebrow">01 · One timeline</span>
+    <h2>The whole system on a shared clock</h2>
+    <p>Each strip has its own scale but the same years, so you can read down a column and see what police, crime, courts and prisons looked like at the same moment. Shaded bands mark the party in government. Dashed segments are estimates or breaks in the series; see the notes at the foot of the page.</p>
+  </div>
+  <div class="controls" id="evToggles" aria-label="Show event markers">
+    <span class="eyebrow" style="margin-right:4px">Markers</span>
+  </div>
+  <div class="multiples" id="multiples"></div>
+</section>
+
+<section id="index">
+  <div class="lede">
+    <span class="eyebrow">02 · Relative change</span>
+    <h2>What grew, what shrank, from the same starting line</h2>
+    <p>Every series rebased to 100 in a chosen year. Police funding was cut by about 15% in real terms after 2010 and has only recently recovered. From 2019 the police uplift added about a fifth to officer numbers. The Crown Court caseload and the remand population roughly doubled over the same period, while survey crime fell.</p>
+  </div>
+  <div class="controls">
+    <label for="baseSel" class="eyebrow">Base year</label>
+    <select id="baseSel"><option value="2000">2000</option><option value="2010">2010</option><option value="2019" selected>2019</option></select>
+    <span id="idxToggles" class="controls"></span>
+  </div>
+  <div class="card"><div class="chart" id="idxChart"></div><p class="note" id="idxNote" style="margin-top:6px"></p></div>
+</section>
+
+<section id="scatter">
+  <div class="lede">
+    <span class="eyebrow">03 · Police and crime</span>
+    <h2>Did more officers mean less crime?</h2>
+    <p>Each dot is a year: across is officers per 100,000 residents, up is crime measured by the victim survey. Crime fell steeply while officer density rose in the 2000s, and kept falling while it shrank after 2010. The national picture gives no simple dose and response; the research on targeted, hot spot and problem-oriented policing is where the effect shows.</p>
+  </div>
+  <div class="card"><div class="chart" id="scChart"></div>
+    <div class="legend" style="margin-top:8px"><span><svg class="glyph" viewBox="0 0 12 12"><circle cx="6" cy="6" r="4" fill="var(--s1)"/></svg>Survey year</span><span><svg class="glyph" viewBox="0 0 12 12"><circle cx="6" cy="6" r="4" fill="none" stroke="var(--s1)" stroke-width="1.5"/></svg>Estimate or post-pandemic survey (lower quality)</span></div>
+  </div>
+</section>
+
+<section id="pipeline">
+  <div class="lede">
+    <span class="eyebrow">04 · Capacity and strain</span>
+    <h2>The pipeline since the uplift began</h2>
+    <p>Change from 2019 to the latest figure at each stage. The tick marks the 2019 level; the bar shows where each stage is now. Recorded crime is flat over the period, so the strain is not simply more crime. Courts that had cut sitting days in 2018/19 then lost a year to the pandemic and months to the 2022 barristers' strike; more officers and a recovering charge rate sent more cases in. Cases waited longer, more defendants were held on remand, and the prison estate ran out of room.</p>
+  </div>
+  <div class="pipe" id="pipe"></div>
+  <div class="valve">
+    <div><b>38,042</b><span>people released early under SDS40 (40% release point) from September 2024</span></div>
+    <div><b>13,395</b><span>released early under End of Custody Supervised Licence, October 2023 to September 2024</span></div>
+    <div><b>&lt; 1,500</b><span>spare prison places for seven months of 2024 and half of 2025</span></div>
+    <div><b>41 days</b><span>median time from offence to charge in 2024/25, up from 14 days in 2015/16</span></div>
+    <div><b>19,164</b><span>Crown Court cases open for a year or more, June 2025; over 22,000 by March 2026</span></div>
+  </div>
+</section>
+
+<section id="forces">
+  <div class="lede">
+    <span class="eyebrow">05 · Forces</span>
+    <h2>Forty-three forces, very different stories</h2>
+    <p>The national totals hide wide variation. Some forces still have fewer officers than in 2010 while others have grown by a fifth, and both crime rates and stop and search disparities vary severalfold between neighbouring areas. Choose a measure; hover or tab through the map, or read the ranked list.</p>
+  </div>
+  <div class="controls" id="mapToggles" role="radiogroup" aria-label="Map measure"></div>
+  <div class="mapgrid">
+    <div class="card">
+      <h3 id="mapTitle"></h3><p class="sub" id="mapSub"></p>
+      <div class="chart map" id="map"></div>
+      <div class="keyrow" id="mapKey" style="margin-top:8px"></div>
+      <p class="note" id="mapNote" style="margin-top:8px"></p>
+    </div>
+    <div class="card"><h3>Ranked</h3><p class="sub">Highest first. City of London is listed but not ranked on per-head measures.</p><div class="rank" id="rank"></div></div>
+  </div>
+</section>
+
+<section id="children">
+  <div class="lede">
+    <span class="eyebrow">06 · Children and disproportionality</span>
+    <h2>Fewer children locked up; a widening ethnic gap among those who are</h2>
+    <p>The youth justice system is the success story of the period: first-time entrants down over 90% since 2007 and custody down by more than four fifths. The fall has been slower for children from ethnic minority backgrounds, who are now the majority of those held. In adult policing and prisons, Black people remain heavily over-represented.</p>
+  </div>
+  <div class="three">
+    <div class="card"><h3>Children in custody</h3><p class="sub">Average under-18 custody population, financial year</p><div class="chart" id="chChild"></div></div>
+    <div class="card"><h3>Child first-time entrants</h3><p class="sub">Thousands, financial year</p><div class="chart" id="chFte"></div></div>
+    <div class="card"><h3>Ethnic minority share of children in custody</h3><p class="sub">Per cent of youth custody population</p><div class="chart" id="chShare"></div></div>
+  </div>
+  <div class="card"><h3>Stop and search: how many times more likely if Black than if White</h3><p class="sub">Section 1 PACE and related powers, rate per 1,000 people by ethnicity, year ending March. The 2023 fall partly reflects new Census 2021 population denominators.</p><div class="chart" id="chRatio"></div></div>
+  <div class="callouts">
+    <div><b>12% vs 4%</b><span>Black people's share of the prison population, against their share of the population of England and Wales</span></div>
+    <div><b>+29%</b><span>more likely to be remanded in custody if a Black defendant (2024)</span></div>
+    <div><b>43%</b><span>of children in custody are on remand, up from about 21% a decade ago</span></div>
+    <div><b>62%</b><span>of children remanded in 2023/24 were later acquitted or given a non-custodial sentence</span></div>
+  </div>
+</section>
+
+<section id="events">
+  <div class="lede">
+    <span class="eyebrow">07 · Context</span>
+    <h2>Unrest, policy and shocks on the timeline</h2>
+    <p>Disorder is hard to measure as a series, so it appears here as dated events. Select a year in the scrubber to see what happened that year.</p>
+  </div>
+  <ul class="evlist" id="evlist"></ul>
+</section>
+
+<section id="data">
+  <div class="lede">
+    <span class="eyebrow">08 · Data and notes</span>
+    <h2>Read before citing</h2>
+  </div>
+  <details><summary>Table view of every series</summary><div class="tablewrap" id="table"></div><p class="note" style="margin-top:8px">≈ marks an estimate or reconstructed value. Blank means no comparable figure.</p></details>
+  <ol class="caveats">
+    <li>Officers and PCSOs from 2007, police recorded crime, the crime survey, charge rates, court caseloads and every force-level figure are read directly from the published source tables. Points marked ≈ (officers and PCSOs before 2007, remand before 2018, children in custody before 2010, stop and search before 2018, and the funding index) are approximate reconstructions; verify them against the source tables before citation.</li>
+    <li>Police recorded crime excludes fraud and computer misuse and starts in 2002/03, when the National Crime Recording Standard took effect. It is shaped by recording practice: the National Crime Recording Standard (2002), the HMIC crime data integrity inspection (2014) and the 2023 counting-rule change for conduct crimes all shift the series. Its post-2014 rise mostly reflects better recording, not more crime.</li>
+    <li>The Crime Survey (CSEW) excludes fraud and computer misuse here for comparability. The 2000 point is the 1999 calendar-year survey. The 2020/21 telephone survey is not comparable and is omitted. Lower response rates led to loss of accredited status in 2023, so treat the latest points with care.</li>
+    <li>Officer figures are full-time equivalent at 31 March in the 43 territorial forces. Rates use ONS mid-year population; 2025 and 2026 use projected population.</li>
+    <li>Prison and remand populations are June snapshots except 2025 (September). Crown Court and magistrates' caseloads are end of December except 2026 (end of March), from the Ministry of Justice criminal court statistics tables published June 2026.</li>
+    <li>Police funding is an index of total real-terms spending (central grant plus council tax precept). 2000/01, 2005/06, 2010/11 and 2014/15 come from IFS analysis; 2023/24 is placed at 5% below 2009/10 following the Institute for Government; 2025/26 applies the Home Office's stated 4.1% real-terms rise in force funding. Intermediate years are interpolated and the sources use different price bases, so read it as shape, not exact level.</li>
+    <li>Charge rates are the Home Office share of all recorded crimes assigned a charge or summons outcome, by the year the crime was recorded. Recent years can still rise as investigations close.</li>
+    <li>Stop and search ratios use Census 2011 denominators to 2022 and Census 2021 thereafter, which mechanically lowered the ratio.</li>
+  </ol>
+  <h3 style="margin-top:8px">Sources</h3>
+  <ul class="sources">
+    <li><a href="https://www.gov.uk/government/statistics/police-workforce-england-and-wales-31-march-2026/police-workforce-england-and-wales-31-march-2026">Home Office, Police workforce, England and Wales (series to 31 March 2026)</a></li>
+    <li><a href="https://www.ons.gov.uk/peoplepopulationandcommunity/crimeandjustice/bulletins/crimeinenglandandwales/yearendingmarch2026">ONS, Crime in England and Wales (to year ending March 2026)</a></li>
+    <li><a href="https://www.gov.uk/government/statistics/crime-outcomes-in-england-and-wales-2025-to-2026/crime-outcomes-in-england-and-wales-2025-to-2026">Home Office, Crime outcomes in England and Wales 2025 to 2026</a></li>
+    <li><a href="https://ifs.org.uk/sites/default/files/output_url_files/bn208.pdf">IFS Briefing Note BN208, Police workforce and funding in England and Wales</a></li>
+    <li><a href="https://www.instituteforgovernment.org.uk/publication/performance-tracker-2025/criminal-justice/police">Institute for Government, Performance Tracker 2025: Police</a></li>
+    <li><a href="https://researchbriefings.files.parliament.uk/documents/CDP-2025-0031/CDP-2025-0031.pdf">House of Commons Library, Police Grant Report 2025/26</a></li>
+    <li><a href="https://www.gov.uk/government/collections/criminal-court-statistics">Ministry of Justice, Criminal court statistics quarterly</a></li>
+    <li><a href="https://assets.publishing.service.gov.uk/media/69792efd75d4437096552090/OMSQ_Q3_2025.pdf">Ministry of Justice, Offender management statistics quarterly (Q3 2025)</a></li>
+    <li><a href="https://www.gov.uk/government/statistics/youth-justice-statistics-2024-to-2025">Youth Justice Board, Youth justice statistics 2024 to 2025</a></li>
+    <li><a href="https://www.ons.gov.uk/peoplepopulationandcommunity/crimeandjustice/datasets/policeforceareadatatables">ONS, Police force area data tables, year ending March 2026</a></li>
+    <li><a href="https://www.ons.gov.uk/peoplepopulationandcommunity/crimeandjustice/datasets/crimeinenglandandwalesappendixtables">ONS, Crime in England and Wales appendix tables (long-run series)</a></li>
+    <li><a href="https://www.gov.uk/government/statistics/police-workforce-england-and-wales-31-march-2026">Home Office, Police workforce open data tables, 2007 to 2026</a></li>
+    <li><a href="https://www.gov.uk/government/statistics/criminal-court-statistics-quarterly-january-to-march-2026">Ministry of Justice, Criminal court statistics quarterly, January to March 2026 (tables M1 and C1)</a></li>
+    <li><a href="https://geoportal.statistics.gov.uk/">ONS Open Geography Portal, Police Force Areas (December 2023) boundaries. Contains OS data © Crown copyright and database right 2023</a></li>
+    <li><a href="https://www.ethnicity-facts-figures.service.gov.uk/crime-justice-and-the-law/policing/stop-and-search/latest">Ethnicity facts and figures, Stop and search</a></li>
+    <li><a href="https://prisonreformtrust.org.uk/wp-content/uploads/2026/02/Winter-2026%E2%80%93factfile.pdf">Prison Reform Trust, Bromley Briefings Prison Factfile, Winter 2026</a></li>
+    <li><a href="https://www.instituteforgovernment.org.uk/publication/performance-tracker-2025/criminal-justice/criminal-courts">Institute for Government, Performance Tracker 2025: Criminal courts</a></li>
+  </ul>
+</section>
+
+<footer>Compiled October 2026. England and Wales only. Annual points; financial-year series are plotted at the year in which the year ends.</footer>
+</div>
+
+<script>
+(function(){
+const Y0=2000,Y1=2026,YEARS=[];for(let y=Y0;y<=Y1;y++)YEARS.push(y);
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const nf=new Intl.NumberFormat('en-GB');
+function mk(arr,start,est){const v={};arr.forEach((x,i)=>{if(x!=null)v[start+i]=x});return{v,est:new Set(est||[])}}
+
+/* ---------- data ---------- */
+const POP={2000:52.14,2001:52.36,2002:52.6,2003:52.86,2004:53.15,2005:53.58,2006:53.95,2007:54.39,2008:54.84,2009:55.24,2010:55.69,2011:56.17,2012:56.57,2013:56.95,2014:57.41,2015:57.89,2016:58.38,2017:58.74,2018:59.12,2019:59.44,2020:59.72,2021:59.64,2022:60.24,2023:60.85,2024:61.81,2025:62.3,2026:62.7};
+const S={
+ officers:{label:'Police officers',unit:'thousand FTE',c:'--s1',...mk([124.2,125.7,129.6,133.4,139.2,141.1,141.5,141.893,141.857,143.769,143.734,139.110,134.100,129.584,127.909,127.192,124.066,123.142,122.405,123.189,129.110,135.301,140.228,147.434,147.745,146.452,145.886],2000,[2000,2001,2002,2003,2004,2005,2006]),f:v=>nf.format(Math.round(v*1000))},
+ pcso:{label:'PCSOs',unit:'thousand FTE',c:'--s1',...mk([null,null,null,null,4.0,6.2,6.8,13.529,15.807,16.507,16.918,15.820,14.393,14.205,13.066,12.370,11.043,10.213,10.139,9.547,9.248,9.284,8.750,7.806,7.568,7.315,7.259],2000,[2004,2005,2006]),f:v=>nf.format(Math.round(v*1000))},
+ prc:{label:'Police recorded crime',unit:'million, excl. fraud',c:'--s2',...mk([null,null,null,5.791,5.844,5.477,5.426,5.322,4.881,4.630,4.265,4.078,3.904,3.553,3.507,3.575,3.899,4.322,4.890,5.266,5.305,4.616,5.327,5.578,5.403,5.307,5.235],2000,[]),f:v=>v.toFixed(1)+'m'},
+ csew:{label:'Crime survey (CSEW)',unit:'million incidents, excl. fraud',c:'--s3',...mk([15.247,null,12.771,12.390,11.609,10.778,10.863,11.182,10.040,10.432,9.544,9.711,9.593,8.757,7.554,7.177,6.529,6.057,6.247,6.431,5.661,null,null,4.385,4.589,4.595,4.333],2000,[2000]),f:v=>v.toFixed(1)+'m'},
+ prison:{label:'Prison population',unit:'thousand',c:'--s4',...mk([64.6,66.3,70.8,73.0,74.5,76.1,77.8,79.7,83.2,83.5,85.0,85.4,86.0,83.8,85.5,86.0,85.1,86.0,83.3,82.7,79.5,78.2,80.7,85.9,87.5,87.5,null],2000,[]),f:v=>nf.format(Math.round(v*1000))},
+ remand:{label:'On remand',unit:'thousand',c:'--s5',...mk([12.8,12.4,13.1,13.0,13.0,12.9,13.0,13.2,13.1,13.0,12.4,12.0,11.7,11.0,10.6,10.1,9.6,9.4,9.2,9.0,11.4,13.0,14.6,15.5,16.9,17.7,null],2000,[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2020,2021]),f:v=>nf.format(Math.round(v*1000))},
+ crown:{label:'Crown Court open cases',unit:'thousand',c:'--s6',...mk([43.110,38.980,33.049,38.123,57.058,58.617,62.689,67.116,74.016,80.098,80.061],2016,[]),f:v=>nf.format(Math.round(v*1000))},
+ mags:{label:"Magistrates' open cases",unit:'thousand',c:'--ink-2',...mk([223.533,302.355,273.246,260.843,278.367,327.236,364.779,370.722],2019,[]),f:v=>nf.format(Math.round(v*1000))},
+ children:{label:'Children in custody',unit:'average',c:'--s7',...mk([2800,2900,3100,2900,2800,2800,2800,2900,2950,2620,2418,2040,1963,1544,1216,1048,960,870,894,856,780,560,440,430,431,418,null],2000,[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2016]),f:v=>nf.format(Math.round(v))},
+ stops:{label:'Stop and search',unit:'thousand searches',c:'--s8',...mk([1035,1140,1140,1180,1050,1000,917,541,387,304,277,371,577,695,524,529,529,510],2009,[2009,2010,2011,2013,2014,2024,2025,2026]),f:v=>nf.format(Math.round(v*1000))},
+};
+S.funding={label:'Police funding, real terms',unit:'index, 2010/11 = 100',c:'--s9',...mk([null,76.4,79.8,83.2,86.6,90.0,93.3,95.0,96.7,98.3,100,100,95.9,92.1,88.9,85.9,84.5,83.5,83.0,83.5,86,89,91,91,95,96,99.9],2000,[2002,2003,2004,2005,2007,2008,2009,2010,2012,2013,2014,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026]),f:v=>Math.round(v)};
+S.charge={label:'Charge rate',unit:'% of recorded crimes charged or summonsed',c:'--s2',...mk([15.5,13.1,11.2,9.1,7.8,7.0,7.3,5.6,5.7,6.4,7.3,8.5],2015,[]),f:v=>v.toFixed(1)+'%'};
+S.percap={label:'Officers per 100,000',unit:'per 100,000 residents',c:'--s1',v:{},est:new Set([2000,2001,2025,2026]),f:v=>Math.round(v)};
+YEARS.forEach(y=>{if(S.officers.v[y]!=null)S.percap.v[y]=S.officers.v[y]*1000/(POP[y]*10)});
+const FTE=mk([110.8,100.9,79.3,61.4,45.5,37.1,28.0,23.0,20.6,18.4,16.4,14.4,12.0,11.3,8.6,8.8,8.3,8.5,8.1],2007,[2008,2010,2011,2012,2018,2019,2021]);
+const SHARE={v:{2006:25,2016:41,2020:52,2024:51,2025:59},est:new Set([2020])};
+const RATIO={};
+// stop and search financial years mapped to year ending
+RATIO.v={2011:7.0,2017:8.0,2018:9.5,2019:9.7,2020:8.9,2021:7.0,2022:4.9,2023:4.1,2024:3.7,2025:3.5};RATIO.est=new Set([2011,2017,2025]);
+
+const GOV=[[1997.34,2010.36,'Labour'],[2010.36,2015.35,'Coalition'],[2015.35,2024.51,'Conservative'],[2024.51,2027,'Labour']];
+const govAt=y=>{const t=y+.5;const g=GOV.find(g=>t>=g[0]&&t<g[1]);return g?g[2]:''};
+const PM=[[1997.34,'Blair'],[2007.49,'Brown'],[2010.36,'Cameron'],[2016.54,'May'],[2019.56,'Johnson'],[2022.68,'Truss'],[2022.81,'Sunak'],[2024.51,'Starmer']];
+const pmAt=y=>{let p='';PM.forEach(q=>{if(y+.5>=q[0])p=q[1]});return p};
+
+const EV=[
+ [2001.5,'u','Oldham, Burnley and Bradford disorders'],
+ [2002.3,'p','Police Reform Act creates PCSOs; National Crime Recording Standard'],
+ [2003.2,'u','Mass protests against the Iraq war'],
+ [2005.3,'p','Indeterminate sentences for public protection (IPP) take effect'],
+ [2005.5,'s','7 July London bombings'],
+ [2008.7,'s','Financial crisis'],
+ [2010.8,'p','Spending Review: police grant cut by about a fifth in real terms'],
+ [2010.9,'u','Student tuition fee protests'],
+ [2011.6,'u','August riots across English cities; prison population reaches a record'],
+ [2012.9,'p','First Police and Crime Commissioner elections'],
+ [2013.3,'p','LASPO Act; legal aid cut'],
+ [2014.4,'p','Best Use of Stop and Search scheme'],
+ [2014.9,'p','HMIC crime data integrity inspection; recording tightens'],
+ [2016.5,'s','EU referendum'],
+ [2018.5,'p','Crown Court sitting days cut; backlog at its low point'],
+ [2019.6,'p','Police uplift programme: 20,000 more officers announced'],
+ [2020.2,'s','Covid-19 lockdowns; jury trials paused'],
+ [2020.45,'u','Black Lives Matter protests'],
+ [2021.2,'u','Clapham Common vigil and Kill the Bill protests'],
+ [2022.3,'p','Police, Crime, Sentencing and Courts Act'],
+ [2022.5,'s','Criminal Bar barristers strike (April to October)'],
+ [2023.3,'p','Public Order Act 2023; uplift target reached'],
+ [2023.8,'p','End of Custody Supervised Licence early release begins'],
+ [2024.6,'u','Southport murders followed by summer disorder; over 1,000 charged'],
+ [2024.7,'p','SDS40 early release to relieve prison capacity'],
+ [2025.4,'p','Independent Sentencing Review reports'],
+ [2025.55,'p','Independent Review of the Criminal Courts: limits on jury trial proposed'],
+ [2026.1,'p','Sentencing Act 2026: presumption against short sentences'],
+];
+const CAT={u:'Unrest',p:'Policy',s:'Shock'};
+let evOn={u:true,p:true,s:false};
+function glyph(cat,x,y,r,fill){r=r||4.5;fill=fill||'var(--ink)';
+  if(cat==='u')return `<path d="M${x} ${y-r} L${x+r} ${y} L${x} ${y+r} L${x-r} ${y} Z" fill="${fill}"/>`;
+  if(cat==='p')return `<rect x="${x-r+1}" y="${y-r+1}" width="${2*r-2}" height="${2*r-2}" fill="var(--surface)" stroke="${fill}" stroke-width="1.6"/>`;
+  return `<circle cx="${x}" cy="${y}" r="${r-.5}" fill="none" stroke="${fill}" stroke-width="1.6"/>`;}
+
+/* ---------- helpers ---------- */
+function nice(max){const p=Math.pow(10,Math.floor(Math.log10(max)));const m=max/p;const s=m<=1.5?.25:m<=3?.5:m<=7?1:2;return{step:s*p,max:Math.ceil(max/(s*p))*s*p}}
+function linePath(ser,x,y,keys){ // returns solid and dashed path strings
+  let solid='',dash='';const ys=keys.filter(k=>ser.v[k]!=null);
+  for(let i=1;i<ys.length;i++){const a=ys[i-1],b=ys[i];const seg=`M${x(a).toFixed(1)},${y(ser.v[a]).toFixed(1)}L${x(b).toFixed(1)},${y(ser.v[b]).toFixed(1)}`;
+    if(b-a>1||ser.est.has(a)||ser.est.has(b))dash+=seg;else solid+=seg;}
+  return{solid,dash,ys};}
+const fmtTick=v=>v>=1000?nf.format(v):(Math.round(v*100)/100).toString();
+
+/* ---------- small multiples ---------- */
+const PANELS=[
+ {id:'pol',title:'Police officers',note:'Full-time equivalent, 31 March; axis starts at 110,000',series:['officers'],h:110,min:110,tick:v=>v+'k'},
+ {id:'pcs',title:'PCSOs',note:'Community support officers, created in 2002; down by more than half since 2010',series:['pcso'],h:80,tick:v=>v+'k'},
+ {id:'cap',title:'Officers per 100,000 residents',note:'Fell to 207 in 2018. Population growth means the uplift restored numbers, not density',series:['percap'],h:96,min:200,tick:v=>v},
+ {id:'fund',title:'Police funding, real terms',note:'Index, 2010/11 = 100. Back near 2010/11 in total by 2025/26, but about 11% lower per resident',series:['funding'],h:96,min:70,tick:v=>v},
+ {id:'crime',title:'Crime: survey and police records',note:'The survey falls while police records rise; recording practice explains most of the gap',series:['csew','prc'],h:120,tick:v=>v+'m'},
+ {id:'chg',title:'Charge rate',note:'Share of all recorded crimes ending in a charge or summons, by year the crime was recorded',series:['charge'],h:90,tick:v=>v+'%'},
+ {id:'ss',title:'Stop and search',note:'Searches under s1 PACE and related powers, year ending March',series:['stops'],h:96,tick:v=>v+'k'},
+ {id:'crt',title:'Crown Court open cases',note:'Open caseload at year end; 2026 is end of March',series:['crown'],h:96,tick:v=>v+'k'},
+ {id:'mag',title:"Magistrates' courts open cases",note:'Open caseload at year end; 2026 is end of March. Up two thirds since 2019',series:['mags'],h:96,tick:v=>v+'k'},
+ {id:'pri',title:'Prison population',note:'June snapshots; axis starts at 60,000. Usable capacity 88,931 in September 2025',series:['prison'],h:100,min:60,tick:v=>v+'k'},
+ {id:'rem',title:'Prisoners on remand',note:'Untried or awaiting sentence; pre-2018 values approximate',series:['remand'],h:90,tick:v=>v+'k'},
+ {id:'yth',title:'Children in custody',note:'Average under-18 population',series:['children'],h:96,tick:v=>nf.format(v)},
+];
+let YEAR=2019;const charts=[];
+const M={l:44,r:58,t:14,b:22};
+function xScale(w){return y=>M.l+(y-(Y0-.5))/(Y1-Y0+1)*(w-M.l-M.r)}
+
+function drawPanel(p,el,first){
+  const w=Math.max(280,el.clientWidth),h=p.h+(first?14:0),top=M.t+(first?14:0);
+  const x=xScale(w);
+  let max=0;p.series.forEach(k=>Object.values(S[k].v).forEach(v=>max=Math.max(max,v)));
+  const min=p.min||0;const n=nice((max-min)*1.08);n.max+=min;
+  const y=v=>top+(1-(v-min)/(n.max-min))*(h-top-M.b);
+  let g='';
+  GOV.forEach((gv,i)=>{const a=Math.max(x(Y0-.5),x(gv[0])),b=Math.min(x(Y1+.5),x(gv[1]));if(b<=a)return;
+    if(i%2===0)g+=`<rect x="${a}" y="${top-4}" width="${b-a}" height="${h-top-M.b+4}" fill="var(--band)"/>`;
+    if(first&&b-a>40)g+=`<text x="${a+4}" y="10" font-size="10" fill="var(--muted)" font-family="var(--mono)" letter-spacing=".06em">${gv[2].toUpperCase()}</text>`;});
+  for(let v=min;v<=n.max+1e-9;v+=n.step){const yy=y(v);g+=`<line x1="${M.l}" x2="${w-M.r}" y1="${yy}" y2="${yy}" stroke="var(--grid)"/><text x="${M.l-6}" y="${yy+3.5}" text-anchor="end" font-size="10" fill="var(--muted)" font-family="var(--mono)">${p.tick(Math.round(v*100)/100)}</text>`;}
+  EV.forEach(e=>{if(!evOn[e[1]])return;const xx=x(e[0]-.5);g+=`<line x1="${xx}" x2="${xx}" y1="${top-4}" y2="${h-M.b}" stroke="var(--ink)" stroke-opacity=".18"/>`;});
+  // x axis labels on every panel, light
+  [2000,2005,2010,2015,2020,2025].forEach(t=>{g+=`<text x="${x(t)}" y="${h-6}" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="var(--mono)">${t}</text>`});
+  p.series.forEach((k,i)=>{const s=S[k];const lp=linePath(s,x,y,YEARS);const col=`var(${s.c})`;const op=1;
+    g+=`<path d="${lp.solid}" fill="none" stroke="${col}" stroke-opacity="${op}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
+    g+=`<path d="${lp.dash}" fill="none" stroke="${col}" stroke-opacity="${op}" stroke-width="2" stroke-dasharray="3 3"/>`;
+    const last=lp.ys[lp.ys.length-1];g+=`<circle cx="${x(last)}" cy="${y(s.v[last])}" r="3.5" fill="${col}" stroke="var(--surface)" stroke-width="2"/>`;
+    g+=`<text x="${x(last)+8}" y="${y(s.v[last])+4}" font-size="11" fill="var(--ink-2)" font-family="var(--mono)">${p.series.length>1?(k==='pcso'?'PCSO ':k==='remand'?'Remand ':k==='prc'?'Police ':k==='csew'?'Survey ':''):''}${shortF(k,s.v[last])}</text>`;});
+  g+=`<g class="cross"><line class="cl" y1="${top-4}" y2="${h-M.b}" stroke="var(--ink)" stroke-width="1"/>${p.series.map(k=>`<circle class="cd" data-k="${k}" r="4.5" fill="var(${S[k].c})" stroke="var(--surface)" stroke-width="2"/>`).join('')}</g>`;
+  g+=`<rect class="hit" x="${M.l}" y="0" width="${w-M.l-M.r}" height="${h}" fill="transparent"/>`;
+  el.innerHTML=`<svg viewBox="0 0 ${w} ${h}" height="${h}" role="img" aria-label="${p.title}, ${Y0} to ${Y1}">${g}</svg>`;
+  const c={el,x,y,series:p.series,w};c.cross=el.querySelector('.cross');
+  const svg=el.querySelector('svg');const hit=el.querySelector('.hit');
+  const mv=ev=>{const r=svg.getBoundingClientRect();const px=(ev.clientX-r.left)*(w/r.width);const yr=Math.round((px-M.l)/(w-M.l-M.r)*(Y1-Y0+1)+Y0-.5);setYear(Math.max(Y0,Math.min(Y1,yr)));};
+  hit.addEventListener('pointermove',mv);hit.addEventListener('pointerdown',mv);
+  return c;}
+function shortF(k,v){if(k==='mags'||k==='crown')return Math.round(v*10)/10+'k';if(k==='charge')return v.toFixed(1)+'%';if(k==='funding')return Math.round(v);if(k==='prc'||k==='csew')return v.toFixed(1)+'m';if(k==='percap')return Math.round(v);if(k==='children')return nf.format(Math.round(v));return (v>=100?Math.round(v):v.toFixed(1))+'k'}
+
+function drawRail(el){
+  const w=Math.max(280,el.clientWidth),h=34;const x=xScale(w);
+  let g=`<line x1="${M.l}" x2="${w-M.r}" y1="17" y2="17" stroke="var(--axis)"/>`;
+  const placed=[];
+  EV.forEach((e,i)=>{if(!evOn[e[1]])return;let xx=x(e[0]-.5);let row=0;while(placed.some(p=>p.r===row&&Math.abs(p.x-xx)<9))row++;placed.push({x:xx,r:row});
+    const yy=row%2?26:8+ (row>1?0:0);
+    g+=`<g class="evm" tabindex="0" data-i="${i}" role="button" aria-label="${Math.floor(e[0])}: ${e[2]}" style="cursor:pointer">${glyph(e[1],xx,row?26:8)}<rect x="${xx-7}" y="${row?19:1}" width="14" height="14" fill="transparent"/></g>`;});
+  el.innerHTML=`<svg viewBox="0 0 ${w} ${h}" height="${h}" role="group" aria-label="Event markers">${g}</svg>`;
+  el.querySelectorAll('.evm').forEach(m=>{const go=()=>setYear(Math.floor(EV[+m.dataset.i][0]),+m.dataset.i);m.addEventListener('pointerenter',go);m.addEventListener('focus',go);m.addEventListener('click',go);});
+}
+
+function buildMultiples(){
+  const box=document.getElementById('multiples');
+  box.innerHTML=`<div class="rail"><div class="chart" id="rail"></div></div>`+PANELS.map(p=>`<div class="panel"><div class="meta"><h3>${p.title}</h3>${p.series.length>1?`<div class="legend">${p.series.map(k=>`<span><i class="sw" style="background:var(${S[k].c});${k==='pcso'?'opacity:.55':''}"></i>${S[k].label}</span>`).join('')}</div>`:''}<div class="val" id="val-${p.id}"></div><p>${p.note}</p></div><div class="chart" id="pc-${p.id}"></div></div>`).join('');
+}
+function renderMultiples(){
+  charts.length=0;drawRail(document.getElementById('rail'));
+  PANELS.forEach((p,i)=>charts.push(Object.assign(drawPanel(p,document.getElementById('pc-'+p.id),i===0),{p})));
+  updateCross();}
+function updateCross(){
+  charts.forEach(c=>{const xx=c.x(YEAR);c.cross.querySelector('.cl').setAttribute('x1',xx);c.cross.querySelector('.cl').setAttribute('x2',xx);
+    c.cross.querySelectorAll('.cd').forEach(d=>{const v=S[d.dataset.k].v[YEAR];if(v==null){d.setAttribute('visibility','hidden')}else{d.setAttribute('visibility','visible');d.setAttribute('cx',xx);d.setAttribute('cy',c.y(v))}});
+    const vb=document.getElementById('val-'+c.p.id);
+    vb.innerHTML=c.p.series.map(k=>{const s=S[k],v=s.v[YEAR];return `<i>${c.p.series.length>1?`<span class="sw" style="background:var(${s.c})"></span>`:''}${v==null?'no data':(s.est.has(YEAR)?'≈ ':'')+s.f(v)}</i>`}).join('');});
+}
+function setYear(y,evIdx){YEAR=y;document.getElementById('yearRange').value=y;document.getElementById('yr').textContent=y;
+  document.getElementById('gov').textContent=govAt(y)+' government · PM '+pmAt(y);
+  const evs=EV.filter(e=>Math.floor(e[0])===y);
+  document.getElementById('ev').innerHTML=evs.length?evs.map(e=>`<b>${CAT[e[1]]}:</b> ${e[2]}`).join('  ·  '):'<span style="color:var(--muted)">No marked events this year</span>';
+  updateCross();
+  document.querySelectorAll('#evlist li').forEach(li=>li.style.background=+li.dataset.y===y?'var(--band)':'');}
+
+/* event toggles */
+const tg=document.getElementById('evToggles');
+Object.keys(CAT).forEach(k=>{const b=document.createElement('button');b.className='chip';b.setAttribute('aria-pressed',evOn[k]);
+  b.innerHTML=`<svg class="glyph" viewBox="0 0 12 12" aria-hidden="true">${glyph(k,6,6,5)}</svg>${CAT[k]}`;
+  b.onclick=()=>{evOn[k]=!evOn[k];b.setAttribute('aria-pressed',evOn[k]);renderMultiples()};tg.appendChild(b);});
+
+/* event list */
+document.getElementById('evlist').innerHTML=EV.map(e=>`<li data-y="${Math.floor(e[0])}"><span class="y">${Math.floor(e[0])}</span><svg class="glyph" viewBox="0 0 12 12" aria-label="${CAT[e[1]]}" style="margin-top:5px">${glyph(e[1],6,6,5)}</svg><span>${e[2]}</span></li>`).join('');
+
+/* ---------- index chart ---------- */
+const IDX=['funding','officers','prc','csew','prison','remand','crown','mags','children'];
+const idxOn={funding:true,officers:true,prc:false,csew:true,prison:true,remand:true,crown:true,mags:true,children:true};
+const itg=document.getElementById('idxToggles');
+IDX.forEach(k=>{const b=document.createElement('button');b.className='chip';b.setAttribute('aria-pressed',idxOn[k]);b.innerHTML=`<span class="sw" style="background:var(${S[k].c})"></span>${S[k].label}`;b.onclick=()=>{idxOn[k]=!idxOn[k];b.setAttribute('aria-pressed',idxOn[k]);drawIndex()};itg.appendChild(b)});
+document.getElementById('baseSel').onchange=drawIndex;
+function drawIndex(){
+  const el=document.getElementById('idxChart');const base=+document.getElementById('baseSel').value;
+  const w=Math.max(300,el.clientWidth),h=Math.min(420,Math.max(300,w*.5)),m={l:44,r:130,t:16,b:26};
+  const years=YEARS;const x=yy=>m.l+(yy-Y0)/(Y1-Y0)*(w-m.l-m.r);
+  const ser=[],missing=[];
+  IDX.filter(k=>idxOn[k]).forEach(k=>{const s=S[k];const b=s.v[base];if(b==null){missing.push(s.label);return}
+    const v={};Object.keys(s.v).forEach(y=>v[y]=s.v[y]/b*100);ser.push({k,s,v,est:s.est});});
+  let lo=100,hi=100;ser.forEach(o=>Object.values(o.v).forEach(v=>{lo=Math.min(lo,v);hi=Math.max(hi,v)}));
+  const n=nice(hi*1.05);const lo2=Math.max(0,Math.floor(lo/25)*25);const step=n.max-lo2>200?50:25;
+  const y=v=>m.t+(1-(v-lo2)/(n.max-lo2))*(h-m.t-m.b);
+  let g='';
+  GOV.forEach((gv,i)=>{const a=Math.max(x(Y0),x(gv[0])),b=Math.min(x(Y1),x(gv[1]));if(b<=a||i%2)return;g+=`<rect x="${a}" y="${m.t}" width="${b-a}" height="${h-m.t-m.b}" fill="var(--band)"/>`});
+  for(let v=lo2;v<=n.max+1e-9;v+=step){g+=`<line x1="${m.l}" x2="${w-m.r}" y1="${y(v)}" y2="${y(v)}" stroke="${v===100?'var(--axis)':'var(--grid)'}" stroke-width="${v===100?1.5:1}"/><text x="${m.l-6}" y="${y(v)+3.5}" text-anchor="end" font-size="10" fill="var(--muted)" font-family="var(--mono)">${v}</text>`}
+  g+=`<line x1="${x(base)}" x2="${x(base)}" y1="${m.t}" y2="${h-m.b}" stroke="var(--ink-2)" stroke-opacity=".5"/><text x="${x(base)+4}" y="${m.t+10}" font-size="10" fill="var(--ink-2)" font-family="var(--mono)">${base} = 100</text>`;
+  [2000,2005,2010,2015,2020,2025].forEach(t=>g+=`<text x="${x(t)}" y="${h-8}" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="var(--mono)">${t}</text>`);
+  const labels=[];
+  ser.forEach(o=>{const lp=linePath({v:o.v,est:o.est},x,y,years);const col=`var(${o.s.c})`;
+    g+=`<path d="${lp.solid}" fill="none" stroke="${col}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><path d="${lp.dash}" fill="none" stroke="${col}" stroke-width="2" stroke-dasharray="3 3"/>`;
+    const last=lp.ys[lp.ys.length-1];g+=`<circle cx="${x(last)}" cy="${y(o.v[last])}" r="3.5" fill="${col}" stroke="var(--surface)" stroke-width="2"/>`;
+    labels.push({y:y(o.v[last]),x:x(last),t:`${o.s.label.replace('Crown Court open cases','Crown Court cases').replace('Crime survey (CSEW)','Crime survey').replace('Police recorded crime','Recorded crime').replace("Magistrates' open cases",'Magistrates')} ${Math.round(o.v[last])}`,col});});
+  labels.sort((a,b)=>a.y-b.y);for(let i=1;i<labels.length;i++)if(labels[i].y-labels[i-1].y<14)labels[i].y=labels[i-1].y+14;
+  const over=labels.length?labels[labels.length-1].y-(h-m.b):0;if(over>0)labels.forEach(l=>l.y-=over);
+  labels.forEach(l=>g+=`<text x="${w-m.r+8}" y="${l.y+4}" font-size="11" fill="var(--ink-2)" font-family="var(--body)">${l.t}</text><line x1="${l.x+4}" x2="${w-m.r+5}" y1="${l.y}" y2="${l.y}" stroke="${l.col}" stroke-opacity=".5"/>`);
+  g+=`<line class="icl" y1="${m.t}" y2="${h-m.b}" stroke="var(--ink)" visibility="hidden"/><rect class="hit" x="${m.l}" y="${m.t}" width="${w-m.l-m.r}" height="${h-m.t-m.b}" fill="transparent"/>`;
+  el.innerHTML=`<svg viewBox="0 0 ${w} ${h}" height="${h}" role="img" aria-label="Indexed change of selected series, ${base} equals 100">${g}</svg><div class="tip" hidden></div>`;
+  document.getElementById('idxNote').textContent=missing.length?`Hidden because there is no ${base} figure: ${missing.join(', ')}.`:'Hover the chart for exact index values.';
+  const svg=el.querySelector('svg'),tip=el.querySelector('.tip'),cl=el.querySelector('.icl');
+  el.querySelector('.hit').addEventListener('pointermove',ev=>{const r=svg.getBoundingClientRect();const px=(ev.clientX-r.left)*(w/r.width);const yr=Math.max(Y0,Math.min(Y1,Math.round((px-m.l)/(w-m.l-m.r)*(Y1-Y0)+Y0)));
+    cl.setAttribute('x1',x(yr));cl.setAttribute('x2',x(yr));cl.setAttribute('visibility','visible');
+    const rows=ser.filter(o=>o.v[yr]!=null).sort((a,b)=>b.v[yr]-a.v[yr]).map(o=>`<span style="color:var(${o.s.c})">■</span> ${o.s.label}: ${o.est.has(yr)?'≈':''}${Math.round(o.v[yr])}`);
+    tip.innerHTML=`<b>${yr}</b><br>${rows.join('<br>')||'No data'}`;tip.hidden=false;
+    const tx=(x(yr)/w)*r.width;tip.style.left=(tx>r.width/2?tx-tip.offsetWidth-12:tx+12)+'px';tip.style.top='12px';});
+  el.querySelector('.hit').addEventListener('pointerleave',()=>{tip.hidden=true;cl.setAttribute('visibility','hidden')});
+}
+
+/* ---------- connected scatter ---------- */
+function drawScatter(){
+  const el=document.getElementById('scChart');const w=Math.max(300,el.clientWidth),h=Math.min(440,Math.max(300,w*.55)),m={l:46,r:20,t:16,b:40};
+  const pts=YEARS.filter(y=>S.csew.v[y]!=null).map(y=>({y,px:S.percap.v[y],py:S.csew.v[y],est:S.csew.est.has(y)||y>=2023}));
+  const xl=200,xh=265,yl=0,yh=16;
+  const x=v=>m.l+(v-xl)/(xh-xl)*(w-m.l-m.r),y=v=>m.t+(1-(v-yl)/(yh-yl))*(h-m.t-m.b);
+  let g='';
+  for(let v=xl;v<=xh;v+=5)g+=`<line x1="${x(v)}" x2="${x(v)}" y1="${m.t}" y2="${h-m.b}" stroke="var(--grid)"/><text x="${x(v)}" y="${h-m.b+14}" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="var(--mono)">${v}</text>`;
+  for(let v=0;v<=yh;v+=4)g+=`<line x1="${m.l}" x2="${w-m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/><text x="${m.l-6}" y="${y(v)+3.5}" text-anchor="end" font-size="10" fill="var(--muted)" font-family="var(--mono)">${v}m</text>`;
+  g+=`<text x="${(m.l+w-m.r)/2}" y="${h-6}" text-anchor="middle" font-size="11" fill="var(--ink-2)">Officers per 100,000 residents</text>`;
+  let d='';pts.forEach((p,i)=>{d+=(i&&pts[i].y-pts[i-1].y===1?'L':'M')+x(p.px).toFixed(1)+','+y(p.py).toFixed(1)});
+  g+=`<path d="${d}" fill="none" stroke="var(--s1)" stroke-opacity=".45" stroke-width="1.5"/>`;
+  const lab={2000:[-8,-8,'end'],2004:[8,-8],2010:[8,4],2014:[8,4],2018:[-8,4,'end'],2023:[-8,14,'end'],2026:[8,4]};
+  pts.forEach(p=>{g+=`<circle cx="${x(p.px)}" cy="${y(p.py)}" r="5" fill="${p.est?'var(--surface)':'var(--s1)'}" stroke="var(--s1)" stroke-width="1.6"/>`;
+    if(lab[p.y])g+=`<text x="${x(p.px)+lab[p.y][0]}" y="${y(p.py)+lab[p.y][1]}" text-anchor="${lab[p.y][2]||'start'}" font-size="11" fill="var(--ink)" font-family="var(--mono)" font-weight="500">${p.y}</text>`;
+    g+=`<circle class="sp" data-y="${p.y}" cx="${x(p.px)}" cy="${y(p.py)}" r="12" fill="transparent"/>`;});
+  g+=`<text x="${x(203)}" y="${y(14.5)}" font-size="11" fill="var(--ink-2)" font-style="italic" font-family="var(--display)">2000s: more officers, crime falling</text>`;
+  g+=`<text x="${x(232)}" y="${y(2.2)}" font-size="11" fill="var(--ink-2)" font-style="italic" font-family="var(--display)" text-anchor="middle">2010s: fewer officers, crime still falling</text>`;
+  el.innerHTML=`<svg viewBox="0 0 ${w} ${h}" height="${h}" role="img" aria-label="Connected scatter of officers per 100,000 against survey crime by year">${g}</svg><div class="tip" hidden></div>`;
+  const tip=el.querySelector('.tip'),svg=el.querySelector('svg');
+  el.querySelectorAll('.sp').forEach(c=>{c.addEventListener('pointerenter',()=>{const yy=+c.dataset.y;const r=svg.getBoundingClientRect();tip.innerHTML=`<b>${yy}</b> · ${govAt(yy)}<br>${Math.round(S.percap.v[yy])} officers per 100k<br>Survey crime ${S.csew.v[yy].toFixed(1)}m`;tip.hidden=false;
+    const cx=+c.getAttribute('cx')*r.width/w,cy=+c.getAttribute('cy')*r.height/h;tip.style.left=(cx>r.width/2?cx-tip.offsetWidth-14:cx+14)+'px';tip.style.top=Math.max(0,cy-20)+'px';setYear(yy)});
+    c.addEventListener('pointerleave',()=>tip.hidden=true)});
+}
+
+/* ---------- pipeline ---------- */
+const PIPE=[
+ ['Police officers','FTE, March 2019 to March 2026',123171,145886,'--s1',v=>nf.format(v)],
+ ['Recorded crime','Excl. fraud, 2018/19 to 2025/26',5.266,5.235,'--s2',v=>v.toFixed(2)+'m'],
+ ['Charge rate','All crimes, 2018/19 to 2025/26',7.8,8.5,'--s2',v=>v.toFixed(1)+'%'],
+ ["Magistrates' open cases",'End 2019 to March 2026',223533,370722,'--ink-2',v=>nf.format(v)],
+ ['Crown Court open cases','End 2019 to March 2026',38123,80061,'--s6',v=>nf.format(v)],
+ ['People on remand','June 2019 to September 2025',9000,17700,'--s5',v=>nf.format(v)],
+ ['Prison population','June 2019 to September 2025; 88,931 usable places',82700,87465,'--s4',v=>nf.format(v)],
+];
+function drawPipe(){
+  const box=document.getElementById('pipe');const maxI=Math.max(...PIPE.map(p=>p[3]/p[2]*100));
+  const sc=82/maxI;
+  box.innerHTML=PIPE.map(p=>{const idx=p[3]/p[2]*100;const pct=Math.round(idx-100);
+   return `<div class="stage"><div class="name">${p[0]}<small>${p[1]}</small></div>
+   <div class="bar" role="img" aria-label="${p[0]} ${pct>=0?'up':'down'} ${Math.abs(pct)} per cent since 2019"><div class="fill" style="width:${idx*sc}%;background:var(${p[4]})"></div><div class="base" style="left:${100*sc}%"></div><span class="lab" style="left:calc(${idx*sc}% + 8px)">${pct>=0?'+':''}${pct}%</span></div>
+   <div class="num"><b>${p[5](p[3])}</b>from ${p[5](p[2])}</div></div>`}).join('');
+}
+
+/* ---------- children and disproportionality ---------- */
+function mini(elId,ser,opt){
+  const el=document.getElementById(elId);const w=Math.max(240,el.clientWidth),h=opt.h||170,m={l:40,r:44,t:12,b:22};
+  const x0=opt.x0||Y0;const x=yy=>m.l+(yy-x0)/(Y1-x0)*(w-m.l-m.r);
+  let max=0;Object.values(ser.v).forEach(v=>max=Math.max(max,v));const n=opt.max?{max:opt.max,step:opt.step}:nice(max*1.08);
+  const y=v=>m.t+(1-v/n.max)*(h-m.t-m.b);
+  let g='';for(let v=0;v<=n.max+1e-9;v+=n.step)g+=`<line x1="${m.l}" x2="${w-m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/><text x="${m.l-6}" y="${y(v)+3.5}" text-anchor="end" font-size="10" fill="var(--muted)" font-family="var(--mono)">${opt.tick(v)}</text>`;
+  (opt.xt||[2000,2010,2020]).forEach(t=>g+=`<text x="${x(t)}" y="${h-6}" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="var(--mono)">${t}</text>`);
+  if(opt.mark)g+=`<line x1="${x(opt.mark[0])}" x2="${x(opt.mark[0])}" y1="${m.t}" y2="${h-m.b}" stroke="var(--ink-2)" stroke-opacity=".5"/><text x="${x(opt.mark[0])+4}" y="${m.t+10}" font-size="10" fill="var(--ink-2)" font-family="var(--mono)">${opt.mark[1]}</text>`;
+  const lp=linePath(ser,x,y,YEARS);const col=`var(${opt.c})`;
+  g+=`<path d="${lp.solid}" fill="none" stroke="${col}" stroke-width="2" stroke-linejoin="round"/><path d="${lp.dash}" fill="none" stroke="${col}" stroke-width="2" stroke-dasharray="3 3"/>`;
+  lp.ys.forEach((yy,i)=>{const show=opt.dots||i===0||i===lp.ys.length-1;if(show)g+=`<circle cx="${x(yy)}" cy="${y(ser.v[yy])}" r="${opt.dots?4.5:3.5}" fill="${ser.est.has(yy)?'var(--surface)':col}" stroke="${ser.est.has(yy)?col:'var(--surface)'}" stroke-width="2"/>`;
+    if(i===lp.ys.length-1||(opt.labelAll)||i===0)g+=`<text x="${x(yy)+(i===0?-6:7)}" y="${y(ser.v[yy])+(i===0?-8:4)}" text-anchor="${i===0?'start':'start'}" font-size="11" fill="var(--ink-2)" font-family="var(--mono)">${opt.lab(ser.v[yy])}</text>`;});
+  g+=`<rect class="hit" x="${m.l}" y="0" width="${w-m.l-m.r}" height="${h}" fill="transparent"/>`;
+  el.innerHTML=`<svg viewBox="0 0 ${w} ${h}" height="${h}" role="img" aria-label="${opt.aria}">${g}</svg><div class="tip" hidden></div>`;
+  const svg=el.querySelector('svg'),tip=el.querySelector('.tip');
+  el.querySelector('.hit').addEventListener('pointermove',ev=>{const r=svg.getBoundingClientRect();const px=(ev.clientX-r.left)*(w/r.width);let yy=Math.round((px-m.l)/(w-m.l-m.r)*(Y1-x0)+x0);
+    const ks=Object.keys(ser.v).map(Number);const near=ks.reduce((a,b)=>Math.abs(b-yy)<Math.abs(a-yy)?b:a,ks[0]);
+    tip.innerHTML=`<b>${near}</b> ${ser.est.has(near)?'≈ ':''}${opt.lab(ser.v[near])}`;tip.hidden=false;const tx=x(near)*r.width/w;tip.style.left=(tx>r.width/2?tx-tip.offsetWidth-10:tx+10)+'px';tip.style.top=(y(ser.v[near])*r.height/h-30)+'px';});
+  el.querySelector('.hit').addEventListener('pointerleave',()=>tip.hidden=true);
+}
+function drawChildren(){
+  mini('chChild',S.children,{c:'--s7',tick:v=>nf.format(v),lab:v=>nf.format(Math.round(v)),aria:'Children in custody fell from about 2,900 in 2008 to 418 in 2024/25'});
+  mini('chFte',FTE,{c:'--s7',tick:v=>v,lab:v=>v.toFixed(1)+'k',x0:2005,xt:[2005,2015,2025],aria:'Child first-time entrants fell from 110,800 in 2006/07 to 8,100 in 2024/25'});
+  mini('chShare',SHARE,{c:'--s7',max:100,step:25,tick:v=>v+'%',lab:v=>v+'%',dots:true,labelAll:true,x0:2004,xt:[2005,2015,2025],aria:'Ethnic minority share of children in custody rose from 25% in 2006 to over half'});
+  mini('chRatio',RATIO,{c:'--s8',h:190,max:12,step:3,tick:v=>v+'×',lab:v=>v.toFixed(1)+'×',dots:true,labelAll:true,x0:2010,xt:[2010,2014,2018,2022,2026],mark:[2022.5,'Census 2021 denominators'],aria:'Black to White stop and search ratio, peaking near ten times in 2019'});
+}
+
+
+/* ---------- force maps ---------- */
+const FORCES=/*FORCES*/null;
+const SEQ=['#cde2fb','#86b6ef','#3987e5','#1c5cab','#0d366b'];
+const MAPS={
+ offChange:{b:'Officers since 2010',t:'Change in police officers, March 2010 to March 2026',sub:'Full-time equivalent officers, per cent change',fmt:v=>(v>0?'+':'')+v.toFixed(1)+'%',div:true,
+   note:'Thirty forces have more officers than in 2010 and thirteen still have fewer, with Cleveland, Hampshire and Merseyside furthest below. Source: Home Office police workforce open data.'},
+ per100k:{b:'Officers per 100,000',t:'Police officers per 100,000 residents, March 2026',sub:'FTE officers against mid-2024 resident population',fmt:v=>Math.round(v),
+   note:'The Metropolitan Police figure includes national functions such as counter-terrorism and protection. Visitor and commuter populations raise demand in some areas without raising resident numbers.'},
+ crimeRate:{b:'Recorded crime rate',t:'Police recorded crime per 1,000 residents, year ending March 2026',sub:'All offences excluding fraud and computer misuse',fmt:v=>v.toFixed(0),
+   note:'Recording practice differs between forces, and areas with large visitor populations show higher rates per resident. Source: ONS police force area tables.'},
+ ssRatio:{b:'Stop and search disparity',t:'Stop and search: how many times more likely if Black than if White',sub:'Section 1 PACE searches per 1,000 people, year ending March 2025, Census 2021 populations',fmt:v=>v.toFixed(1)+'×',
+   note:'Not shown where fewer than 30 searches of Black people were recorded, because the ratio is unstable. Self-defined ethnicity only. Source: Home Office stop and search tables.'}
+};
+let MAPK='offChange';
+const mtg=document.getElementById('mapToggles');
+Object.keys(MAPS).forEach(k=>{const b=document.createElement('button');b.className='chip';b.setAttribute('role','radio');b.setAttribute('aria-checked',k===MAPK);b.setAttribute('aria-pressed',k===MAPK);b.textContent=MAPS[k].b;
+  b.onclick=()=>{MAPK=k;mtg.querySelectorAll('.chip').forEach(c=>{const on=c===b;c.setAttribute('aria-pressed',on);c.setAttribute('aria-checked',on)});drawMap()};mtg.appendChild(b)});
+function binsFor(k,vals){
+  if(MAPS[k].div)return{edges:[-5,-2,2,10],cols:['#c4302f','#ee9b98','var(--mid)','#86b6ef','#1c5cab'],labels:['below −5%','−5 to −2%','−2 to +2%','+2 to +10%','above +10%']};
+  const v=vals.slice().sort((a,b)=>a-b);const q=i=>v[Math.min(v.length-1,Math.floor(v.length*i/5))];
+  const e=[q(1),q(2),q(3),q(4)];const f=MAPS[k].fmt;
+  return{edges:e,cols:SEQ,labels:[`under ${f(e[0])}`,`${f(e[0])} to ${f(e[1])}`,`${f(e[1])} to ${f(e[2])}`,`${f(e[2])} to ${f(e[3])}`,`${f(e[3])} and over`]};}
+function drawMap(){
+  if(!FORCES)return;const k=MAPK,M=MAPS[k];
+  const vals=FORCES.forces.map(f=>f[k]).filter(v=>v!=null);const B=binsFor(k,vals);
+  const colOf=v=>{if(v==null)return'url(#hatch)';let i=0;while(i<B.edges.length&&v>=B.edges[i])i++;return B.cols[i]};
+  document.getElementById('mapTitle').textContent=M.t;document.getElementById('mapSub').textContent=M.sub;document.getElementById('mapNote').textContent=M.note;
+  const el=document.getElementById('map');
+  el.innerHTML=`<svg viewBox="-10 -10 1020 ${FORCES.height+20}" role="img" aria-label="${M.t}, map of 43 police force areas"><defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="var(--surface)"/><line x1="0" y1="0" x2="0" y2="8" stroke="var(--muted)" stroke-width="2"/></pattern></defs>${FORCES.forces.map((f,i)=>`<path d="${f.path}" fill="${colOf(f[k])}" data-i="${i}" tabindex="0" aria-label="${f.name}: ${f[k]==null?'not shown':M.fmt(f[k])}"/>`).join('')}</svg><div class="tip" hidden></div>`;
+  document.getElementById('mapKey').innerHTML=B.cols.map((c,i)=>`<span><i style="background:${c}"></i>${B.labels[i]}</span>`).join('')+`<span><i style="background:repeating-linear-gradient(45deg,var(--muted) 0 2px,var(--surface) 2px 6px)"></i>not shown</span>`;
+  const svg=el.querySelector('svg'),tip=el.querySelector('.tip');
+  const rows=FORCES.forces.map((f,i)=>({f,i})).sort((a,b)=>(b.f[k]??-1e9)-(a.f[k]??-1e9));
+  const mx=Math.max(...vals.map(Math.abs));
+  const rank=document.getElementById('rank');
+  rank.innerHTML=rows.map((r,n)=>{const v=r.f[k];const w=v==null?0:Math.abs(v)/mx*100;
+    return `<div data-i="${r.i}"><span>${r.f[k]==null?'':(n+1)+'. '}${r.f.name}</span><span><span class="rb" style="display:block;width:${w}%;background:${v==null?'transparent':(M.div&&v<0?'#c4302f':'var(--s1)')}"></span></span><b class="${v==null?'na':''}">${v==null?'n/a':M.fmt(v)}</b></div>`}).join('');
+  const show=(i,ev)=>{const f=FORCES.forces[i];svg.querySelectorAll('path').forEach(p=>p.classList.toggle('hl',+p.dataset.i===i));
+    rank.querySelectorAll('div').forEach(d=>d.classList.toggle('hl',+d.dataset.i===i));
+    const p=svg.querySelector(`path[data-i="${i}"]`);p.parentNode.appendChild(p);
+    tip.innerHTML=`<b>${f.name}</b><br>${M.b}: ${f[k]==null?'not shown':M.fmt(f[k])}<br>Officers ${nf.format(f.off2010)} → ${nf.format(f.off2026)}${f.per100k?`<br>${Math.round(f.per100k)} per 100k residents`:''}${f.note?`<br>${f.note}`:''}`;tip.hidden=false;
+    const r=svg.getBoundingClientRect(),er=el.getBoundingClientRect();const vb=svg.viewBox.baseVal;
+    const cx=(f.c[0]-vb.x)/vb.width*r.width+(r.left-er.left),cy=(f.c[1]-vb.y)/vb.height*r.height+(r.top-er.top);
+    tip.style.left=Math.min(Math.max(0,cx+12),er.width-tip.offsetWidth)+'px';tip.style.top=Math.max(0,cy-tip.offsetHeight-8)+'px';};
+  const hide=()=>{tip.hidden=true;svg.querySelectorAll('path').forEach(p=>p.classList.remove('hl'));rank.querySelectorAll('div').forEach(d=>d.classList.remove('hl'))};
+  svg.querySelectorAll('path').forEach(p=>{p.addEventListener('pointerenter',()=>show(+p.dataset.i));p.addEventListener('focus',()=>show(+p.dataset.i));p.addEventListener('pointerleave',hide);p.addEventListener('blur',hide)});
+  rank.querySelectorAll('div').forEach(d=>{d.addEventListener('pointerenter',()=>show(+d.dataset.i));d.addEventListener('pointerleave',hide)});
+}
+
+/* ---------- table ---------- */
+function drawTable(){
+  const cols=['funding','officers','pcso','percap','csew','prc','charge','stops','crown','mags','prison','remand','children'];
+  let t='<table><thead><tr><th>Year</th><th>Government</th>'+cols.map(k=>`<th>${S[k].label}<br><span style="font-weight:400;color:var(--muted)">${S[k].unit}</span></th>`).join('')+'</tr></thead><tbody>';
+  YEARS.forEach(y=>{t+=`<tr><td>${y}</td><td style="text-align:left">${govAt(y)}</td>`+cols.map(k=>{const v=S[k].v[y];return `<td>${v==null?'':(S[k].est.has(y)?'≈':'')+(k==='percap'?Math.round(v):k==='children'?nf.format(v):v)}</td>`}).join('')+'</tr>'});
+  document.getElementById('table').innerHTML=t+'</tbody></table>';
+}
+
+/* ---------- boot ---------- */
+buildMultiples();
+function renderAll(){renderMultiples();drawIndex();drawScatter();drawPipe();drawChildren();drawMap();}
+renderAll();drawTable();setYear(2019);
+document.getElementById('yearRange').addEventListener('input',e=>setYear(+e.target.value));
+let rt;new ResizeObserver(()=>{clearTimeout(rt);rt=setTimeout(()=>{renderAll();setYear(YEAR)},120)}).observe(document.querySelector('.wrap'));
+})();
+</script>
