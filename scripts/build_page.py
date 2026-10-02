@@ -9,7 +9,9 @@ src = (ROOT / "src" / "page.html").read_text()
 forces = (ROOT / "data" / "forces.json").read_text()
 weekly = (ROOT / "data" / "weekly_capacity.json").read_text()
 body = src.replace("/*FORCES*/null", forces).replace("/*WEEKLY*/null", weekly.replace("\n", ""))
-assert "/*FORCES*/" not in body and "/*WEEKLY*/" not in body, "placeholder not found"
+logo = (ROOT / "assets" / "oxai-mark.svg").read_text()
+body = body.replace("<!--LOGO-->", logo)
+assert "/*FORCES*/" not in body and "<!--LOGO-->" not in body and "/*WEEKLY*/" not in body, "placeholder not found"
 (ROOT / "justice-pipeline.html").write_text(body)
 title = "The Justice Pipeline"
 desc = "Police numbers, crime, courts, prisons and children in custody in England and Wales, 2000 to 2026, on one interactive timeline with force-level maps."
