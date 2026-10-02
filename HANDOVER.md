@@ -11,7 +11,7 @@ An interactive, single-page data story about police numbers, crime, courts, pris
 - Local folder: `/Users/stangilmour/justice-pipeline`
 - Live site: https://justice.howpreventionworks.com (Cloudflare Pages project `justice-pipeline`, direct upload; DNS is a DNS-only CNAME `justice` pointing to `justice-pipeline.pages.dev`)
 - Repository: https://github.com/SGilr/justice-pipeline (public)
-- Claude artifact preview: https://claude.ai/artifact/CLWH5MU6MHpoLtvaJg8p5K (private). Republished on 3 October 2026 (version 11), so it matches the live site.
+- Claude artifact preview: https://claude.ai/artifact/CLWH5MU6MHpoLtvaJg8p5K (private). Republished on 3 October 2026 (version 12), so it matches the live site.
 
 ## Structure
 
@@ -106,6 +106,24 @@ Prison Reform Trust factfile figures have been checked against MoJ tables. These
 
 ## Change log
 
+### 3 October 2026: accessibility fixes
+
+- A WCAG 2.1 AA audit of the live site found 13 issues: 7 major and 6 minor. Fixes:
+  - darker muted text (#646a71, 4.9:1)
+  - darker light-mode prison, remand and crime survey colours (3.5:1 or more)
+  - a main landmark and skip links
+  - event marker focus rings and Enter/Space
+  - map buttons as plain toggle buttons, and map areas with an image role
+  - a focusable ranked list
+  - Escape closes tooltips
+  - the slider describes the year in place of a live region
+  - tables for the hover-only charts
+- After deploy, axe-core 4.10 on the live site reports no violations in light or dark mode.
+- Not done: the pale map bins (mitigated by the legend and ranked list), touch target sizes (advisory under 2.1), and real screen reader testing (VoiceOver, NVDA).
+- The legitimacy reading now dates its comparisons: 2015/16 to 2025/26 for the falls, 2025/26 for satisfaction.
+- Deployed (commit bb66d05); artifact republished as version 12.
+- Deploy note: the custom domain can take 10 to 30 seconds after `wrangler pages deploy` to serve the new version. Re-check before concluding a deploy failed.
+
 ### 3 October 2026: police legitimacy panels
 
 - Added to section 04 from ONS perceptions tables, year ending March 2026:
@@ -168,4 +186,4 @@ Sources: MoJ Criminal court statistics quarterly, April to June 2026 (Tables C1,
 - Track actual tranche releases and weekly headroom through to June 2027.
 - Add force-level charge rates from the Home Office outcomes open data.
 - Consider OS basemap tiles for sub-force zoom; this would need an API key proxied through Cloudflare.
-- Run an accessibility review (WCAG 2.1 AA).
+- Test with VoiceOver and NVDA.
