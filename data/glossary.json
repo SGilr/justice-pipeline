@@ -1,0 +1,302 @@
+[
+ {
+  "key": "csew",
+  "term": "Crime Survey for England and Wales (CSEW)",
+  "match": [
+   "victim survey",
+   "Crime Survey for England and Wales"
+  ],
+  "def": "A large household survey run for the Office for National Statistics. It asks people aged 16 and over about crimes they have experienced in the past year, whether or not they reported them to the police, so it is the best guide to long-term trends in crime against households and individuals."
+ },
+ {
+  "key": "fraud",
+  "term": "Fraud and computer misuse",
+  "match": [
+   "fraud and computer misuse"
+  ],
+  "def": "Offences such as scams and hacking. They are left out of the long-run comparisons here because the survey only began measuring them in 2016/17, and police figures for them are recorded nationally by Report Fraud (formerly Action Fraud) rather than by local forces."
+ },
+ {
+  "key": "prc",
+  "term": "Police recorded crime",
+  "match": [
+   "police records",
+   "Police recorded crime",
+   "recorded crime"
+  ],
+  "def": "Crimes reported to and recorded by the police under the Home Office Counting Rules. It reflects how readily people report and how strictly forces record, as well as how much crime happens, so its trend can differ from the Crime Survey."
+ },
+ {
+  "key": "ncrs",
+  "term": "National Crime Recording Standard",
+  "match": [
+   "National Crime Recording Standard"
+  ],
+  "def": "Rules introduced in April 2002 to make police recording of crime more consistent and victim-focused. Recorded crime rose when they came in, so earlier figures are not comparable."
+ },
+ {
+  "key": "fte",
+  "term": "Full-time equivalent (FTE)",
+  "match": [
+   "Full-time equivalent",
+   "full-time equivalent",
+   "FTE"
+  ],
+  "def": "A count that adds part-time staff as fractions of a full-time post, so two officers working half-time count as one."
+ },
+ {
+  "key": "pcso",
+  "term": "Police community support officer (PCSO)",
+  "match": [
+   "PCSOs",
+   "PCSO"
+  ],
+  "def": "Uniformed police staff who patrol neighbourhoods and support officers, with more limited powers than a police officer."
+ },
+ {
+  "key": "uplift",
+  "term": "Police uplift programme",
+  "match": [
+   "police uplift",
+   "uplift"
+  ],
+  "def": "The government programme announced in 2019 to recruit 20,000 additional police officers in England and Wales by March 2023."
+ },
+ {
+  "key": "realterms",
+  "term": "Real terms",
+  "match": [
+   "real terms"
+  ],
+  "def": "Money values adjusted for inflation, so spending in different years can be compared at the same prices."
+ },
+ {
+  "key": "pcc",
+  "term": "Police and Crime Commissioner",
+  "match": [
+   "Police and Crime Commissioner"
+  ],
+  "def": "In most force areas, an elected commissioner who sets police priorities and the budget and holds the chief constable to account. In London and some other areas a mayor holds these powers."
+ },
+ {
+  "key": "pfa",
+  "term": "Police force area",
+  "match": [
+   "force areas",
+   "police force area",
+   "Police Force Area"
+  ],
+  "def": "The area covered by one of the 43 territorial police forces in England and Wales."
+ },
+ {
+  "key": "charge",
+  "term": "Charge or summons",
+  "match": [
+   "charge or summons",
+   "charges or summonses",
+   "charge rate"
+  ],
+  "def": "A formal decision to prosecute: the suspect is charged or summonsed to appear at court. The charge rate is the share of recorded crimes that end this way."
+ },
+ {
+  "key": "pace",
+  "term": "Section 1 PACE",
+  "match": [
+   "Section 1 PACE",
+   "s1 PACE"
+  ],
+  "def": "The main stop and search power, under section 1 of the Police and Criminal Evidence Act 1984, with related powers such as those in the Misuse of Drugs Act 1971. Officers need reasonable grounds to suspect the person is carrying stolen or prohibited items, weapons or drugs."
+ },
+ {
+  "key": "ratio",
+  "term": "Black to White ratio",
+  "match": [
+   "Black to White ratio",
+   "times more likely if Black than if White",
+   "Black to White"
+  ],
+  "def": "How many times higher the rate of stop and search per 1,000 people is for Black people than for White people. A ratio of 1 would mean equal rates."
+ },
+ {
+  "key": "census",
+  "term": "Census denominators",
+  "match": [
+   "Census 2021 population denominators",
+   "Census 2021 denominators"
+  ],
+  "def": "The population counts used to turn numbers of searches into rates. Moving from 2011 to 2021 Census figures changed the rates even where the number of searches did not change."
+ },
+ {
+  "key": "opencases",
+  "term": "Open cases",
+  "match": [
+   "open Crown Court cases",
+   "open cases"
+  ],
+  "def": "Cases a court has received but not yet completed, often called the court backlog."
+ },
+ {
+  "key": "crown",
+  "term": "Crown Court",
+  "match": [
+   "Crown Court"
+  ],
+  "def": "The court for the most serious criminal cases, heard by a judge and jury, which also deals with appeals and with cases sent from the magistrates' courts for sentence."
+ },
+ {
+  "key": "mags",
+  "term": "Magistrates' courts",
+  "match": [
+   "magistrates' courts",
+   "Magistrates' courts",
+   "magistrates'"
+  ],
+  "def": "The courts where every criminal case starts and most are completed, heard by magistrates or a district judge without a jury."
+ },
+ {
+  "key": "remand",
+  "term": "Remand",
+  "match": [
+   "on remand",
+   "remand"
+  ],
+  "def": "Holding someone in prison after a court has refused bail, either before trial or after conviction while they await sentence. People remanded awaiting trial have not been convicted."
+ },
+ {
+  "key": "capacity",
+  "term": "Useable operational capacity and spare places",
+  "match": [
+   "spare prison places",
+   "useable operational capacity",
+   "spare places"
+  ],
+  "def": "Useable operational capacity is the number of prisoners the estate can hold without serious risk to order and safety, less a margin for cells that cannot be used on any given day. Spare places, or headroom, are that capacity minus the population."
+ },
+ {
+  "key": "sds",
+  "term": "Standard determinate sentence (SDS)",
+  "match": [
+   "standard determinate sentence"
+  ],
+  "def": "The most common prison sentence: a fixed term, with automatic release on licence partway through and the rest served in the community under supervision, with recall to prison for breaches."
+ },
+ {
+  "key": "sds40",
+  "term": "SDS40",
+  "match": [
+   "SDS40"
+  ],
+  "def": "The change from September 2024 that moved automatic release for most standard determinate sentences from the halfway point to 40% of the term, to relieve prison overcrowding. Sex offences, terrorism, serious violence with sentences of four years or more and some domestic abuse offences were excluded."
+ },
+ {
+  "key": "ecsl",
+  "term": "End of Custody Supervised Licence (ECSL)",
+  "match": [
+   "End of Custody Supervised Licence"
+  ],
+  "def": "An emergency scheme from October 2023 to September 2024 that released some prisoners before their automatic release date, by up to 70 days by its final months, to free prison places."
+ },
+ {
+  "key": "progression",
+  "term": "Progression model",
+  "match": [
+   "progression model"
+  ],
+  "def": "The release arrangement introduced by the Sentencing Act 2026 from 1 October 2026. Most people on standard determinate sentences are released automatically at the one-third point and some serious offences at half, with days added for breaking prison rules."
+ },
+ {
+  "key": "eds",
+  "term": "Extended and life sentences",
+  "match": [
+   "Extended and life sentences",
+   "extended and life sentences"
+  ],
+  "def": "Extended determinate sentences are for offenders assessed as dangerous: release needs Parole Board approval after at least two thirds of the term, followed by an extended licence. Life sentences have no fixed release date; the Parole Board decides once the minimum term has been served."
+ },
+ {
+  "key": "sentact",
+  "term": "Sentencing Act 2026",
+  "match": [
+   "Sentencing Act"
+  ],
+  "def": "The law that received Royal Assent on 22 January 2026. It introduced the progression model, a presumption to suspend prison sentences of 12 months or less, and wider use of community sentences."
+ },
+ {
+  "key": "safeguard",
+  "term": "Operation Safeguard",
+  "match": [
+   "Operation Safeguard"
+  ],
+  "def": "An emergency measure that lets adult male prisoners be held temporarily in police cells when prisons are full."
+ },
+ {
+  "key": "ipp",
+  "term": "Imprisonment for public protection (IPP)",
+  "match": [
+   "Indeterminate sentences for public protection (IPP)"
+  ],
+  "def": "An indeterminate sentence introduced in 2005 and abolished for new cases in 2012. People serving it are released only when the Parole Board agrees, however short their minimum term."
+ },
+ {
+  "key": "fte_youth",
+  "term": "First-time entrants",
+  "match": [
+   "first-time entrants",
+   "First-time entrants"
+  ],
+  "def": "Children aged 10 to 17 receiving their first caution or conviction, and so entering the formal youth justice system."
+ },
+ {
+  "key": "youthcustody",
+  "term": "Children in custody",
+  "match": [
+   "children in custody",
+   "Children in custody"
+  ],
+  "def": "Children under 18 held in young offender institutions, secure training centres, secure children's homes or the secure school, whether on remand or serving a sentence."
+ },
+ {
+  "key": "legitimacy",
+  "term": "Police legitimacy",
+  "match": [
+   "police legitimacy",
+   "Legitimacy"
+  ],
+  "def": "The public's belief that the police have the right to exercise authority, shown in trust, a sense that the police act fairly and lawfully, and willingness to cooperate and comply."
+ },
+ {
+  "key": "hotspots",
+  "term": "Hot spots policing",
+  "match": [
+   "crime hot spots",
+   "hot spots"
+  ],
+  "def": "Concentrating patrols or other police activity on the small places, often single streets or addresses, where crime clusters."
+ },
+ {
+  "key": "pop",
+  "term": "Problem-oriented policing",
+  "match": [
+   "Problem-oriented policing",
+   "problem-oriented policing"
+  ],
+  "def": "An approach that analyses the underlying causes of a recurring crime problem, designs a response, often with partners, and then assesses whether it worked."
+ },
+ {
+  "key": "displacement",
+  "term": "Displacement and diffusion of benefits",
+  "match": [
+   "crime moving elsewhere"
+  ],
+  "def": "Displacement is crime moving to nearby places or other times when police focus on one area. Diffusion of benefits is the opposite: crime also falls in the surrounding area."
+ },
+ {
+  "key": "seriesbreak",
+  "term": "Series break",
+  "match": [
+   "series breaks",
+   "series break"
+  ],
+  "def": "A point where the definition or method behind a statistic changed, so values before and after are not directly comparable. Shown on the charts as a dashed join."
+ }
+]

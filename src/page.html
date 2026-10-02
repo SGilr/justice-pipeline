@@ -156,6 +156,14 @@ section>*,.card,.twocol>*,.three>*{min-width:0}
 .evm:focus{outline:none}.evm:focus-visible rect{stroke:var(--accent);stroke-width:2.5;rx:3}
 .rank:focus-visible,main:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 main:focus{outline:none}
+.g{text-decoration:underline dotted;text-decoration-thickness:1.5px;text-underline-offset:3px;text-decoration-color:var(--ink-2);cursor:help;border-radius:2px}
+.g:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#gtip{position:fixed;max-width:min(340px,calc(100vw - 32px));white-space:normal;font-family:var(--body);font-size:.84rem;line-height:1.45;padding:10px 12px;z-index:30}
+#gtip b{display:block;margin-bottom:2px}
+.gloss{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:8px 20px;margin:8px 0 0;font-size:.88rem}
+.gloss dt{font-weight:700}.gloss dd{margin:0;color:var(--ink-2)}
+.gloss dt:target,.gloss dt:target+dd{background:var(--band)}
+@media (max-width:640px){.gloss{grid-template-columns:1fr;gap:2px}.gloss dd{margin-bottom:10px}}
 details{background:var(--surface);border:1px solid var(--hair);border-radius:6px;padding:12px 16px}
 summary{cursor:pointer;font-weight:700}
 .tablewrap{overflow-x:auto;margin-top:12px}
@@ -282,6 +290,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
         <li><b>How people are treated in contact matters most.</b> In 2025/26, victims who felt treated fairly were satisfied in 77% of incidents, against 12% for those who did not; for respect and for being kept well informed, satisfaction was about four times as high.</li>
         <li><b>Confidence is lowest where contact is most likely to be difficult.</b> People with experience of homelessness or care, recent victims, disabled people, bisexual people and Black Caribbean adults all report lower confidence and less expectation of fair treatment.</li>
         <li><b>Willingness to cooperate remains high.</b> Over 90% would call or help the police; fewer accept a duty to follow police orders (69%) or rate police standards of behaviour as good (70%).</li>
+        <li><b>Cutting crime does not by itself build legitimacy.</b> The review of problem-oriented policing that found a 34% fall in crime and disorder also found limited effects on fear of crime, legitimacy and collective efficacy (<a href="https://doi.org/10.1002/cl2.1089">Hinkle et al., 2020</a>). That fits the survey: between 2015/16 and 2025/26 confidence fell while crime measured by the survey kept falling.</li>
         <li><b>Visibility has fallen alongside confidence.</b> Weekly sightings of foot patrols fell from 39% to 12.5% since 2010/11. The survey shows the two moving together, not that one caused the other.</li>
       </ul>
       <p class="note">These are associations in a cross-sectional survey. The contact figures cover only victims who reported to the police, and some groups rest on small samples. They show where legitimacy is weakest and which parts of contact go with satisfaction, not the effect of any intervention.</p>
@@ -379,7 +388,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
     <div class="card"><h3>Child first-time entrants</h3><p class="sub">Thousands; years ending March to 2013, then calendar years (series break)</p><div class="chart" id="chFte"></div></div>
     <div class="card"><h3>Ethnic minority share of children in custody</h3><p class="sub">Per cent of the average under-18 custody population, financial year. Black children: 21% in 2024/25, down from 29% in 2020/21</p><div class="chart" id="chShare"></div></div>
   </div>
-  <div class="card"><h3>Stop and search: how many times more likely if Black than if White</h3><p class="sub">All search powers, rate per 1,000 people by self-defined ethnicity, year ending March. The 2020/21 fall partly reflects the switch to Census 2021 population denominators.</p><div class="chart" id="chRatio"></div></div>
+  <div class="card"><h3>Stop and search: how many times more likely if Black than if White</h3><p class="sub">The Black to White ratio of search rates per 1,000 people, all search powers, by self-defined ethnicity, year ending March. The 2020/21 fall partly reflects the switch to Census 2021 population denominators.</p><div class="chart" id="chRatio"></div></div>
   <div class="callouts">
     <div><b>12% vs 4%</b><span>Black people's share of the prison population, against their share of the population of England and Wales</span></div>
     <div><b>35%</b><span>of Black Caribbean adults rated their local police good or excellent in 2025/26, against 62% of Black African and 47% of White adults (small samples)</span></div>
@@ -420,6 +429,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
     <li>Figures first taken from the Prison Reform Trust Bromley Briefings were checked against MoJ tables: SDS40 releases, ethnicity of the prison population (12.0% Black, June 2026), children on remand (43.8% of the custody population in 2024/25, YJB Table 6.3) and remand outcomes (61.6% acquitted or given a non-custodial sentence in 2024/25, YJB Table 6.6) match; ECSL releases are 13,325 in the MoJ table rather than 13,395; the headroom statement is replaced by counts from the weekly bulletins; the 29% higher remand likelihood for Black defendants is from MoJ Ethnicity and the Criminal Justice System 2024, Table 5_17.</li>
     <li>Stop and search ratios are Home Office rates per 1,000 people by self-defined ethnicity (table SS_18), using Census 2011 populations to 2019/20 and Census 2021 from 2020/21; part of the 2020/21 fall reflects that change. Counts cover all search powers (table SS_23).</li>
   </ol>
+  <!--GLOSSARY-->
   <h3 style="margin-top:8px">Sources</h3>
   <ul class="sources">
     <li><a href="https://www.gov.uk/government/statistics/police-workforce-england-and-wales-31-march-2026/police-workforce-england-and-wales-31-march-2026">Home Office, Police workforce, England and Wales (series to 31 March 2026)</a></li>
@@ -908,6 +918,33 @@ function drawExtraTables(){
   document.getElementById('table2').innerHTML=h;
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.tip').forEach(t=>t.hidden=true)});
+/* ---------- glossary terms ---------- */
+const GLOSS=/*GLOSSMATCH*/null;
+const GSKIP='a,h1,h2,h3,button,label,summary,svg,script,style,select,option,th,dt,.g,.tip';
+function markGlossary(){
+  if(!GLOSS)return;const root=document.querySelector('main');if(!root)return;
+  Object.entries(GLOSS).forEach(([key,phrases])=>{
+    if(document.querySelector(`.g[data-g="${key}"]`))return;
+    const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement&&!n.parentElement.closest(GSKIP)&&n.nodeValue.trim()?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT});
+    let n;while((n=w.nextNode())){for(const ph of phrases){const re=new RegExp('(^|[^A-Za-z])('+ph.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')(?![A-Za-z])');const m=re.exec(n.nodeValue);
+      if(m){const st=m.index+m[1].length,r=document.createRange();r.setStart(n,st);r.setEnd(n,st+m[2].length);const sp=document.createElement('span');sp.className='g';sp.tabIndex=0;sp.dataset.g=key;sp.setAttribute('aria-describedby','gdef-'+key);r.surroundContents(sp);return;}}}
+  });
+}
+(function(){
+  const tip=document.createElement('div');tip.id='gtip';tip.className='tip';tip.setAttribute('role','tooltip');tip.hidden=true;(document.querySelector('main')||document.body).appendChild(tip);
+  let cur=null;
+  const show=el=>{cur=el;const dd=document.getElementById('gdef-'+el.dataset.g),dt=document.getElementById('g-'+el.dataset.g);if(!dd)return;
+    tip.innerHTML=`<b>${dt?dt.textContent:''}</b>${dd.textContent}`;tip.hidden=false;
+    const r=el.getBoundingClientRect(),tw=tip.offsetWidth,th=tip.offsetHeight,vw=document.documentElement.clientWidth;
+    let x=Math.min(Math.max(16,r.left),vw-tw-16),y=r.bottom+8;if(y+th>window.innerHeight-8)y=Math.max(8,r.top-th-8);
+    tip.style.left=x+'px';tip.style.top=y+'px';};
+  const hide=()=>{tip.hidden=true;cur=null};
+  document.addEventListener('pointerover',e=>{const g=e.target.closest&&e.target.closest('.g');if(g)show(g)});
+  document.addEventListener('pointerout',e=>{const g=e.target.closest&&e.target.closest('.g');if(g&&!g.contains(e.relatedTarget))hide()});
+  document.addEventListener('focusin',e=>{if(e.target.classList&&e.target.classList.contains('g'))show(e.target)});
+  document.addEventListener('focusout',e=>{if(e.target.classList&&e.target.classList.contains('g'))hide()});
+  window.addEventListener('scroll',()=>{if(cur&&document.activeElement===cur)show(cur);else hide()},{passive:true});
+})();
 
 /* ---------- table ---------- */
 function drawTable(){
@@ -919,7 +956,7 @@ function drawTable(){
 
 /* ---------- boot ---------- */
 buildMultiples();
-function renderAll(){renderMultiples();drawIndex();drawScatter();drawPipe();drawChildren();drawMap();drawHeadroom();drawTranches();drawProj();drawPerceptions();drawLegitimacy();}
+function renderAll(){renderMultiples();drawIndex();drawScatter();drawPipe();drawChildren();drawMap();drawHeadroom();drawTranches();drawProj();drawPerceptions();drawLegitimacy();markGlossary();}
 renderAll();drawTable();drawExtraTables();setYear(2019);
 document.getElementById('yearRange').addEventListener('input',e=>setYear(+e.target.value));
 let rt;new ResizeObserver(()=>{clearTimeout(rt);rt=setTimeout(()=>{renderAll();setYear(YEAR)},120)}).observe(document.querySelector('.wrap'));

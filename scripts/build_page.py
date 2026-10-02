@@ -13,7 +13,13 @@ logo = (ROOT / "assets" / "oxai-mark.svg").read_text()
 body = body.replace("<!--LOGO-->", logo)
 body = body.replace("/*PERCEPTIONS*/null", (ROOT / "data" / "perceptions.json").read_text().replace("\n", ""))
 body = body.replace("<!--WORDMARK-->", (ROOT / "assets" / "oxa-wordmark.svg").read_text())
-assert "/*FORCES*/" not in body and "<!--LOGO-->" not in body and "<!--WORDMARK-->" not in body and "/*WEEKLY*/" not in body and "/*PERCEPTIONS*/" not in body, "placeholder not found"
+import sys; sys.path.insert(0, str(ROOT / "scripts"))
+import glossary
+body, gloss_report = glossary.apply(body)
+body = body.replace("/*GLOSSMATCH*/null", json.dumps({t["key"]: t["match"] for t in json.loads((ROOT / "data" / "glossary.json").read_text())}))
+missing = [k for k, used in gloss_report if used is None]
+print("glossary terms marked:", sum(1 for _, u in gloss_report if u), "of", len(gloss_report), ("; not found in text: " + ", ".join(missing)) if missing else "")
+assert "/*FORCES*/" not in body and "<!--LOGO-->" not in body and "<!--WORDMARK-->" not in body and "/*WEEKLY*/" not in body and "/*PERCEPTIONS*/" not in body and "/*GLOSSMATCH*/" not in body, "placeholder not found"
 (ROOT / "justice-pipeline.html").write_text(body)
 title = "The Justice Pipeline"
 desc = "Police numbers, crime, courts, prisons and children in custody in England and Wales, 2000 to 2026, on one interactive timeline with force-level maps."
