@@ -141,7 +141,10 @@ td:first-child,th:first-child{text-align:left}
 .caveats{font-size:.88rem;display:grid;gap:8px;padding-left:1.1em;margin:0;color:var(--ink-2)}
 footer .brand{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-bottom:14px}
 .oxai{height:40px;width:auto;flex:none}
-.oxa-wm{display:block;height:92px;width:auto;max-width:100%;margin-bottom:10px}
+.oxa-link{display:inline-block;justify-self:start;border-radius:6px;margin-bottom:10px}
+.oxa-link:hover{opacity:.85}
+.oxa-link:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.oxa-wm{display:block;height:92px;width:auto;max-width:100%}
 .oxa-wm .w1{fill:var(--wm-1)}.oxa-wm .w2{fill:var(--wm-2)}.oxa-wm .w3{fill:var(--wm-3)}.oxa-wm .wt{fill:var(--wm-t)}.oxa-wm .wg{fill:var(--ink)}
 @media (max-width:640px){.oxa-wm{height:68px}}
 .oxai .p1{fill:var(--logo-1)}.oxai .p2{fill:var(--logo-2)}.oxai .p3{fill:var(--logo-3)}.oxai .pt{fill:var(--logo-t)}
@@ -157,7 +160,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--hair);font-si
 
 <header class="hero">
   <div class="lede fadein">
-    <!--WORDMARK-->
+    <a class="oxa-link" href="https://www.oxonadvisory.com/" title="Oxon Advisory"><!--WORDMARK--></a>
     <span class="eyebrow">England and Wales · 2000 to 2026</span>
     <h1>More police, less crime, fuller prisons</h1>
     <p class="dek">Officer numbers fell by a seventh after 2010 and were rebuilt by 2023. Survey crime kept falling through both. The strain in the system now sits downstream, in the courts, on remand and in prison cells.</p>
