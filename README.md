@@ -1,6 +1,6 @@
 # The Justice Pipeline
 
-An interactive account of police numbers, crime, courts, prisons and children in custody in England and Wales, 2000 to 2026, with force-level maps. Produced by Oxon Advisory as part of Prevention Works (howpreventionworks.com).
+An interactive account of police numbers, crime, courts, prisons and children in custody in England and Wales, 2000 to 2026, with force-level maps. Produced by Prevention Informatics, a division of Oxon Advisory. Hosted at justice.howpreventionworks.com.
 
 ## Build
 

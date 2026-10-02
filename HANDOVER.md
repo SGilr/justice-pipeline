@@ -1,10 +1,10 @@
 # The Justice Pipeline: project handover
 
-Updated 2 October 2026.
+Updated 2 October 2026 (court and charge refresh on branch refresh-2026-10).
 
 ## What it is
 
-An interactive, single-page data story about police numbers, crime, courts, prisons and children in custody in England and Wales, 2000 to 2026. It is produced by Oxon Advisory and is part of the Prevention Works suite (howpreventionworks.com). It follows Stan Gilmour's house style: UK English, sentence case headings, no em dashes, and an analytical register.
+An interactive, single-page data story about police numbers, crime, courts, prisons and children in custody in England and Wales, 2000 to 2026. It is produced by Prevention Informatics, a division of Oxon Advisory, and hosted at justice.howpreventionworks.com. It follows Stan Gilmour's house style: UK English, sentence case headings, no em dashes, and an analytical register.
 
 ## Where things are
 
@@ -76,8 +76,8 @@ Prison Reform Trust factfile figures have been checked against MoJ tables. These
 
 - Officers: 145,886 FTE (March 2026). That is 235 per 100,000 residents, against 258 in 2010 and 207 in 2018.
 - Recorded crime excluding fraud: 5.24m (2025/26). CSEW excluding fraud and computer misuse: 4.3m, down 78% since 1995.
-- Charge rate: 8.5% (2025/26), against 15.5% in 2014/15.
-- Open cases: Crown Court 80,061; magistrates' courts 370,722 (March 2026).
+- Charge rate: 8.5% (2025/26), against 15.5% in 2014/15. Charges or summonses: 550,778 in the year to March 2026, up 15.5% (MoJ CJSQ Table Q1.2).
+- Open cases: Crown Court 80,829 (23,706 open a year or more, 7,255 two years or more, median age 203 days); magistrates' courts 380,230 (June 2026, MoJ CCSQ April to June 2026, which revised March 2026 Crown Court to 80,437).
 - Prison population: 85,858; remand 15,386, or 18% (June 2026). Headroom was 1,556 on 28 September 2026.
 - SDS40 releases: 70,065 (September 2024 to March 2026).
 - Progression model: about 700 released on 1 October 2026, and about 4,500 first-day releases across ten tranches to June 2027. MoJ projections (January 2026, before the exclusions) put the saving at about 7,700 places by November 2027. Central demand then grows again to 95,900 by November 2032; the high scenario exceeds supply in 2027 and 2028 and again from 2030.
