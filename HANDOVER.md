@@ -11,7 +11,7 @@ An interactive, single-page data story about police numbers, crime, courts, pris
 - Local folder: `/Users/stangilmour/justice-pipeline`
 - Live site: https://justice.howpreventionworks.com (Cloudflare Pages project `justice-pipeline`, direct upload; DNS is a DNS-only CNAME `justice` pointing to `justice-pipeline.pages.dev`)
 - Repository: https://github.com/SGilr/justice-pipeline (public)
-- Claude artifact preview: https://claude.ai/artifact/CLWH5MU6MHpoLtvaJg8p5K (private). Republished on 3 October 2026 (version 7), so it matches the live site.
+- Claude artifact preview: https://claude.ai/artifact/CLWH5MU6MHpoLtvaJg8p5K (private). Republished on 3 October 2026 (version 8), so it matches the live site.
 
 ## Structure
 
@@ -91,6 +91,11 @@ Prison Reform Trust factfile figures have been checked against MoJ tables. These
 - Political context: Andy Burnham has been Prime Minister since 20 July 2026, and the Justice Secretary is Alex Norris.
 
 ## Change log
+
+### 3 October 2026: header logo
+
+- The full Oxon Advisory lockup (pills, wordmark and tagline) now sits at the top left of the hero, above the eyebrow: 92px tall on desktop and 68px on phones. `scripts/build_logo.py` builds it as `assets/oxa-wordmark.svg` from `assets/logo-wordmark-source.svg`, a copy of `~/code/oxa-design-system/assets/logo-wordmark.svg`, with outlined lettering and token colours that reverse in dark mode.
+- Deployed (commit 5cf8b09); artifact republished as version 8.
 
 ### 3 October 2026: footer mark
 
